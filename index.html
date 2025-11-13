@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"> <!--setting the language-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280"> <!-- setting the viewport width -->
+    <title>Mini-Golf & Supplies</title> <!-- title  -->
+	<meta name="author" content="Bradley Larkin"><!-- Gives credit to the author -->
+	<link rel="author" href="https://github.com/UnavoidableArrowgance?tab=repositories">
+	<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> <!-- https://www.walmart.com/ip/Callaway-Strata-Boom-Golf-Balls-Multi-Color-24-Pack/733938494 -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"><!-- linking the favicon that appears for the tab  -->
+    <link rel="stylesheet" href="styles.css"> <!-- linking the style sheet -->
+    <script src="script.js" async></script> <!--linking the javascript-->
+</head>
+<body>
+    <header>
+        <section id="home"> <!-- for anchor links -->
+            <h1>Air riders Chart</h1> <!-- page title -->
+        </section>
+        <nav>
+            <ul><!-- links for anchor tags, taking to points on this page -->
+                <li><a href="#home">Home</a></li> 
+                <li><a href="#products">Products</a></li>
+                <li><a href="#game">Game</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">&#x2600;&#xfe0f;</button> <!-- Sun symbol for different color modes toggled -->
+    </header>
+
+
+    <main>
+
+        <div class="controls">
+            <label for="machineSelect">Select Air Ride Machine:</label>
+            <select id="machineSelect">
+            <option value="default">-- Choose Machine --</option>
+            <option value="bulkStar">Bulk Star</option>
+            <option value="compactStar">Compact Star</option>
+            <option value="formulaStar">Formula Star</option>
+            <option value="jetStar">Jet Star</option>
+            <option value="rexWheelie">Rex Wheelie</option>
+            <option value="rocketStar">Rocket Star</option>
+            <option value="shadowStar">Shadow Star</option>
+            <option value="slickStar">Slick Star</option>
+            <option value="swerveStar">Swerve Star</option>
+            <option value="turboStar">Turbo Star</option>
+            <option value="wagonStar">Wagon Star</option>
+            <option value="warpStar">Warp Star</option>
+            <option value="wheelieBike">Wheelie Bike</option>
+            <option value="wheelieScooter">Wheelie Scooter</option>
+            <option value="wingedStar">Winged Star</option>
+            </select>
+
+            <button id="submitBtn">Submit</button>
+            
+            <button id="clearBtn">Clear</button>
+
+        </div>
+
+
+
+
+        <div class="chart-container">
+            <!-- Background image -->
+            <img src="images/empty chart.png" alt="Background" class="chart-background">
+            
+            <!-- Canvas on top -->
+            <canvas id="myCanvas" width="860" height="985"></canvas>
+        </div>
+
+        <script src="chart.js"></script>
+    </main>
+</body>

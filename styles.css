@@ -1,0 +1,139 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* End of reset */
+
+
+
+
+:root {  /* setting custom variables for easy uniform colors and fonts, and for easy changing through javascript */
+    --win-lose1:#fffc3a;
+    --win-lose2:#8c8f00;
+    --white: #FFFFFF;
+    --lt-gray: #F8F8F8;
+    --gray: #999;
+    --drk-gray: #333333;
+    --lt-green: #90EE90;
+    --drk-green: #006400;
+    --lt-blue: #ADD8E6;
+    --drk-blue: #00008B;
+    --red: #FF0000;
+    --yellow: #FFFF00;
+    --orange: #FFA500;
+    --purple: #800080;
+    --pink: #FF69B4;
+    --teal: #008080;
+    --lime: #00FF00;
+    --cyan: #00FFFF;
+    --magenta: #FF00FF;
+    --lt-brown: #D2B48C;
+    --drk-brown: #5C4033;
+    --black: #222222;
+    --primary-font: Arial, sans-serif;
+    --secondary-font: Helvetica, sans-serif;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+select, button {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  background-color: #0af;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #09c;
+}
+
+
+
+
+.chart-container {
+  position: relative;
+  width: 969px;
+  height: 864px;
+}
+
+.chart-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.3; /* adjust transparency */
+}
+
+#myCanvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
