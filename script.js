@@ -1,1 +1,287 @@
-'use strict';const _0xe7aeff=_0x4fd2;(function(_0x3d53d,_0x52645f){const _0x5075f8=_0x4fd2,_0x29c2b3=_0x3d53d();while(!![]){try{const _0x58bac8=parseInt(_0x5075f8(0x173))/0x1+-parseInt(_0x5075f8(0x188))/0x2+parseInt(_0x5075f8(0x1a1))/0x3*(parseInt(_0x5075f8(0x1b9))/0x4)+parseInt(_0x5075f8(0x1c6))/0x5*(parseInt(_0x5075f8(0x1a8))/0x6)+-parseInt(_0x5075f8(0x1c5))/0x7+parseInt(_0x5075f8(0x1b6))/0x8*(parseInt(_0x5075f8(0x17f))/0x9)+parseInt(_0x5075f8(0x1bf))/0xa*(parseInt(_0x5075f8(0x183))/0xb);if(_0x58bac8===_0x52645f)break;else _0x29c2b3['push'](_0x29c2b3['shift']());}catch(_0xd8e951){_0x29c2b3['push'](_0x29c2b3['shift']());}}}(_0x3636,0x33263));let machineData={},characterData={},colorIndex=0x0,machinesLoaded=![],charactersLoaded=![];const rainbowColors=[_0xe7aeff(0x1b3),_0xe7aeff(0x175),'hsl(60,\x20100%,\x2050%)',_0xe7aeff(0x1a6),_0xe7aeff(0x177),_0xe7aeff(0x182),_0xe7aeff(0x18c)];function _0x3636(){const _0x196c22=['<option\x20value=\x22','stroke','#machine2','grip',',\x200.2)','getContext','boost','find','maxHP','image','html','\x22\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20alt=\x22','topSpeed','#machineDropdown','193737VXwxji','moveTo','hsl(30,\x20100%,\x2050%)','Pick\x20both!','hsl(240,\x20100%,\x2050%)','click','forEach','beginPath','removeItem','#loadCombo','cos','\x22\x20class=\x22combo-img\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-color-box\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','10737hpEuJj','css','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Machine\x20icons/','hsl(275,\x20100%,\x2050%)','11qqfEtY','#clearCanvas','turn','stringify','toFixed','818742gCmjpa','#comboList','DiffPercent','background','hsl(300,\x20100%,\x2050%)','charge','\x22\x20alt=\x22\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','closePath','Diff','getElementById','append','lift','strokeStyle','character','length','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','clearRect','machine2','ready','sin','hsl','</option>','val','#machine1','width','41901nORbLs','#characterDropdown','name','lastCombo','machine','hsl(120,\x20100%,\x2040%)','myCanvas','1788kJSrOy','change','rider2','flightSpeed','Lift','machine1','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Character\x20icons/','map','lineTo','#gridCompareBtn','#comboGallery','hsl(0,\x20100%,\x2050%)','getJSON','#rider2','1712DLEATq','fillStyle','lineWidth','4LaZnvs','weight','setItem','colorIndex','innerHTML','offense','353270FgGkAp','text','replace','parse','height','rider1','380667qJYNMS','2935vATwCH'];_0x3636=function(){return _0x196c22;};return _0x3636();}$(document)[_0xe7aeff(0x19a)](function(){const _0x155b3d=_0xe7aeff;$[_0x155b3d(0x1b4)]('machines.json',function(_0x2f0bf4){const _0x548a39=_0x155b3d;machineData=_0x2f0bf4;for(const _0x3d3f96 in _0x2f0bf4){const _0x3397b2=_0x2f0bf4[_0x3d3f96];$(_0x548a39(0x172))[_0x548a39(0x192)](_0x548a39(0x1c7)+_0x3d3f96+'\x22>'+_0x3397b2[_0x548a39(0x1a3)]+_0x548a39(0x19d));}machinesLoaded=!![],tryRestoreLastCombo();}),$['getJSON']('characters.json',function(_0x49bbe9){const _0x3a7fcb=_0x155b3d;characterData=_0x49bbe9;for(const _0x1937e4 in _0x49bbe9){const _0x2c63d5=_0x49bbe9[_0x1937e4];$('#characterDropdown')[_0x3a7fcb(0x192)]('<option\x20value=\x22'+_0x1937e4+'\x22>'+_0x2c63d5[_0x3a7fcb(0x1a3)]+_0x3a7fcb(0x19d));}charactersLoaded=!![],tryRestoreLastCombo(),populateGridDropdowns();}),$(_0x155b3d(0x17c))['on'](_0x155b3d(0x178),function(){const _0x5cc260=_0x155b3d,_0x55a1f6=$(_0x5cc260(0x172))[_0x5cc260(0x19e)](),_0x468e35=$(_0x5cc260(0x1a2))['val']();if(!_0x55a1f6||!_0x468e35){alert(_0x5cc260(0x176));return;}const _0x36dd57=combineStats(machineData[_0x55a1f6],characterData[_0x468e35]),_0x323c0f=rainbowColors[colorIndex%rainbowColors[_0x5cc260(0x196)]];colorIndex++,DrawChart(_0x36dd57,_0x323c0f),displayComboBlock(_0x468e35,_0x55a1f6,_0x323c0f),localStorage[_0x5cc260(0x1bb)](_0x5cc260(0x1a4),JSON[_0x5cc260(0x186)]({'character':_0x468e35,'machine':_0x55a1f6,'colorIndex':colorIndex}));}),$(_0x155b3d(0x184))['on'](_0x155b3d(0x178),function(){const _0x2243c2=_0x155b3d,_0x3666c2=document['getElementById']('myCanvas'),_0x2724eb=_0x3666c2[_0x2243c2(0x16a)]('2d');_0x2724eb[_0x2243c2(0x198)](0x0,0x0,_0x3666c2[_0x2243c2(0x1a0)],_0x3666c2[_0x2243c2(0x1c3)]),$(_0x2243c2(0x189))['empty'](),colorIndex=0x0,localStorage[_0x2243c2(0x17b)]('lastCombo'),$(_0x2243c2(0x1b2))[_0x2243c2(0x16f)]('');});});function displayComboBlock(_0x208f45,_0x41b9b6,_0x30e653){const _0x1fa4b1=_0xe7aeff,_0x27f3b2=characterData[_0x208f45],_0x12ed82=machineData[_0x41b9b6],_0x5b5764=$('\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-block\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-images\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Character\x20Renders/'+_0x27f3b2[_0x1fa4b1(0x16e)]+'\x22\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20alt=\x22'+_0x27f3b2[_0x1fa4b1(0x1a3)]+'\x22\x20class=\x22combo-img\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Machine\x20Renders/'+_0x12ed82[_0x1fa4b1(0x16e)]+_0x1fa4b1(0x170)+_0x12ed82['name']+_0x1fa4b1(0x17e));_0x5b5764[_0x1fa4b1(0x16c)]('.combo-color-box')[_0x1fa4b1(0x180)](_0x1fa4b1(0x18b),_0x30e653),$(_0x1fa4b1(0x1b2))[_0x1fa4b1(0x192)](_0x5b5764);}function combineStats(_0x31539c,_0x2ba93d){const _0xdc35fa=_0xe7aeff,_0x18067b=[_0xdc35fa(0x171),_0xdc35fa(0x16b),_0xdc35fa(0x18d),_0xdc35fa(0x185),'grip','Lift',_0xdc35fa(0x1ab),_0xdc35fa(0x1be),_0xdc35fa(0x16d),_0xdc35fa(0x1ba)],_0x22a562={};return _0x18067b[_0xdc35fa(0x179)](_0x259e14=>{_0x22a562[_0x259e14]=_0x31539c[_0x259e14]*(_0x2ba93d[_0x259e14]||0x1)*0x2;}),_0x22a562;}function tryRestoreLastCombo(){const _0x1047d3=_0xe7aeff;if(!(machinesLoaded&&charactersLoaded))return;const _0x5bc4b6=localStorage['getItem'](_0x1047d3(0x1a4));if(!_0x5bc4b6)return;const _0x2f9832=JSON[_0x1047d3(0x1c2)](_0x5bc4b6);$(_0x1047d3(0x1a2))[_0x1047d3(0x19e)](_0x2f9832[_0x1047d3(0x195)]),$(_0x1047d3(0x172))[_0x1047d3(0x19e)](_0x2f9832[_0x1047d3(0x1a5)]),colorIndex=_0x2f9832[_0x1047d3(0x1bc)]||0x0;const _0x5bd5b2=combineStats(machineData[_0x2f9832[_0x1047d3(0x1a5)]],characterData[_0x2f9832[_0x1047d3(0x195)]]),_0x14be6c=rainbowColors[colorIndex%rainbowColors[_0x1047d3(0x196)]];DrawChart(_0x5bd5b2,_0x14be6c),displayComboBlock(_0x2f9832['character'],_0x2f9832[_0x1047d3(0x1a5)],_0x14be6c),colorIndex+=0x1;}function DrawChart(_0x5e6efb,_0x4a9c3e='blue'){const _0x51e583=_0xe7aeff,_0x5bda05=document[_0x51e583(0x191)](_0x51e583(0x1a7)),_0x17b527=_0x5bda05[_0x51e583(0x16a)]('2d'),_0x4b57e4=_0x5bda05[_0x51e583(0x1a0)]/0x2,_0x2cfc42=_0x5bda05[_0x51e583(0x1c3)]/0x2,_0x2afa8d=['topSpeed',_0x51e583(0x16b),_0x51e583(0x18d),_0x51e583(0x185),_0x51e583(0x168),_0x51e583(0x1ac),_0x51e583(0x1ab),_0x51e583(0x1be),_0x51e583(0x16d),'weight'],_0x5e2d97=_0x2afa8d['map'](_0x2d0faf=>_0x5e6efb[_0x2d0faf]),_0x3a404d=_0x5e2d97[_0x51e583(0x196)],_0x47c6cb=0x2*Math['PI']/_0x3a404d;_0x17b527[_0x51e583(0x17a)]();for(let _0x2c53fe=0x0;_0x2c53fe<_0x3a404d;_0x2c53fe++){const _0x51ec29=_0x2c53fe*_0x47c6cb,_0x5e059e=_0x4b57e4+Math[_0x51e583(0x19b)](_0x51ec29)*_0x5e2d97[_0x2c53fe],_0x3003c9=_0x2cfc42-Math[_0x51e583(0x17d)](_0x51ec29)*_0x5e2d97[_0x2c53fe];_0x2c53fe===0x0?_0x17b527[_0x51e583(0x174)](_0x5e059e,_0x3003c9):_0x17b527[_0x51e583(0x1b0)](_0x5e059e,_0x3003c9);}_0x17b527[_0x51e583(0x18f)](),_0x17b527[_0x51e583(0x194)]=_0x4a9c3e,_0x17b527[_0x51e583(0x1b8)]=0x2,_0x17b527[_0x51e583(0x1b7)]=_0x4a9c3e[_0x51e583(0x1c1)](')',_0x51e583(0x169))[_0x51e583(0x1c1)](_0x51e583(0x19c),'hsla'),_0x17b527[_0x51e583(0x1c8)](),_0x17b527['fill']();}function _0x4fd2(_0x368bfd,_0x5a1f21){const _0x363644=_0x3636();return _0x4fd2=function(_0x4fd202,_0x2b7d60){_0x4fd202=_0x4fd202-0x168;let _0x4a3ff3=_0x363644[_0x4fd202];return _0x4a3ff3;},_0x4fd2(_0x368bfd,_0x5a1f21);}function populateGridDropdowns(){const _0x12a4fa=_0xe7aeff,_0x59e479=[_0x12a4fa(0x1c4),'rider2'][_0x12a4fa(0x1af)](_0x54521a=>document[_0x12a4fa(0x191)](_0x54521a)),_0x2b350c=['machine1',_0x12a4fa(0x199)][_0x12a4fa(0x1af)](_0x22598b=>document['getElementById'](_0x22598b));for(const _0xaa93a7 in characterData){const _0x241ba4=characterData[_0xaa93a7];_0x59e479[_0x12a4fa(0x179)](_0x3c77b9=>{const _0x185964=_0x12a4fa;_0x3c77b9[_0x185964(0x1bd)]+=_0x185964(0x1c7)+_0xaa93a7+'\x22>'+_0x241ba4['name']+_0x185964(0x19d);});}for(const _0x3fdc22 in machineData){const _0x59bd87=machineData[_0x3fdc22];_0x2b350c[_0x12a4fa(0x179)](_0x2d3755=>{const _0x128720=_0x12a4fa;_0x2d3755[_0x128720(0x1bd)]+='<option\x20value=\x22'+_0x3fdc22+'\x22>'+_0x59bd87[_0x128720(0x1a3)]+'</option>';});}}function getDirectStats(_0x169d00,_0xe0ec0c){const _0x35fbfc=_0xe7aeff,_0x1bcdce=$('#'+_0x169d00)[_0x35fbfc(0x19e)](),_0x18a7ae=$('#'+_0xe0ec0c)['val'](),_0x261ecd=_0x1bcdce?characterData[_0x1bcdce]:null,_0x22683e=_0x18a7ae?machineData[_0x18a7ae]:null;if(_0x261ecd&&_0x22683e){const _0x359221={},_0x16d586=[_0x35fbfc(0x171),_0x35fbfc(0x16b),_0x35fbfc(0x18d),'turn','grip',_0x35fbfc(0x193),'flightSpeed',_0x35fbfc(0x1be),_0x35fbfc(0x16d),_0x35fbfc(0x1ba)];return _0x16d586['forEach'](_0x1d5c0e=>{_0x359221[_0x1d5c0e]=(_0x261ecd[_0x1d5c0e]||0x1)*(_0x22683e[_0x1d5c0e]||0x1);}),_0x359221;}else{if(_0x261ecd)return _0x261ecd;else return _0x22683e?_0x22683e:{};}}$('#rider1,\x20#rider2,\x20#machine1,\x20#machine2')['on'](_0xe7aeff(0x1a9),function(){getDirectStats();}),$(_0xe7aeff(0x1b1))['on'](_0xe7aeff(0x178),function(){const _0x110180=_0xe7aeff,_0x4cb3b5=getDirectStats('rider1',_0x110180(0x1ad)),_0x182b05=getDirectStats(_0x110180(0x1aa),_0x110180(0x199)),_0x3ffc9e=$('#rider1')[_0x110180(0x19e)](),_0x4d24eb=$(_0x110180(0x19f))['val']();$('#firstChoice')[_0x110180(0x16f)](_0x110180(0x1ae)+characterData[_0x3ffc9e][_0x110180(0x16e)]+_0x110180(0x18e)+characterData[_0x3ffc9e][_0x110180(0x1a3)]+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Machine\x20icons/'+machineData[_0x4d24eb]['image']+_0x110180(0x18e)+machineData[_0x4d24eb][_0x110180(0x1a3)]+_0x110180(0x197));const _0x16f4c3=$(_0x110180(0x1b5))[_0x110180(0x19e)](),_0x232f0e=$(_0x110180(0x1c9))[_0x110180(0x19e)]();$('#secondChoice')[_0x110180(0x16f)]('\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Character\x20icons/'+characterData[_0x16f4c3][_0x110180(0x16e)]+'\x22\x20alt=\x22\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'+characterData[_0x16f4c3][_0x110180(0x1a3)]+_0x110180(0x181)+machineData[_0x232f0e][_0x110180(0x16e)]+_0x110180(0x18e)+machineData[_0x232f0e][_0x110180(0x1a3)]+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20');const _0x238642=['topSpeed',_0x110180(0x16b),_0x110180(0x18d),_0x110180(0x185),_0x110180(0x168),_0x110180(0x193),_0x110180(0x1ab),'offense',_0x110180(0x16d),_0x110180(0x1ba)];let _0x4fc4cf=[0.2,0.2,0x1,0x1,0x1,0x1,0.2,0.3,0.5,0.3],_0x3489e8=0x0;_0x238642[_0x110180(0x179)](_0x472cbf=>{const _0x36b775=_0x110180,_0x591773=_0x4cb3b5[_0x472cbf]!==undefined?_0x4cb3b5[_0x472cbf]*_0x4fc4cf[_0x3489e8]:undefined,_0x4c790f=_0x182b05[_0x472cbf]!==undefined?_0x182b05[_0x472cbf]*_0x4fc4cf[_0x3489e8]:undefined;$('#'+_0x472cbf+'1')[_0x36b775(0x1c0)](_0x591773!==undefined?_0x591773[_0x36b775(0x187)](0x2):'—'),$('#'+_0x472cbf+'2')['text'](_0x4c790f!==undefined?_0x4c790f[_0x36b775(0x187)](0x2):'—'),$('#'+_0x472cbf+_0x36b775(0x190))[_0x36b775(0x1c0)](_0x591773!==undefined&&_0x4c790f!==undefined?(_0x591773-_0x4c790f)[_0x36b775(0x187)](0x2):'—'),_0x591773!=0x0&&_0x4c790f!=0x0?$('#'+_0x472cbf+_0x36b775(0x18a))[_0x36b775(0x1c0)]((_0x591773/_0x4c790f*0x64)['toFixed'](0x1)+'%'):$('#'+_0x472cbf+_0x36b775(0x18a))[_0x36b775(0x1c0)]('NA');});});
+ "use strict";
+
+let machineData = {};
+let characterData = {};
+let colorIndex = 0;
+let machinesLoaded = false;
+let charactersLoaded = false;
+
+// Smooth HSL rainbow colors
+const rainbowColors = [
+  "hsl(0, 100%, 50%)",    // red
+  "hsl(30, 100%, 50%)",   // orange
+  "hsl(60, 100%, 50%)",   // yellow
+  "hsl(120, 100%, 40%)",  // green
+  "hsl(240, 100%, 50%)",  // blue
+  "hsl(275, 100%, 50%)",  // indigo
+  "hsl(300, 100%, 50%)"   // violet
+];
+
+$(document).ready(function() {
+  // Load machines
+  $.getJSON("machines.json", function(machines) {
+  machineData = machines;
+  for (const key in machines) {
+    const machine = machines[key]
+    $("#machineDropdown").append(`<option value="${key}">${machine.name}</option>`);
+  }
+
+  machinesLoaded = true;
+  tryRestoreLastCombo();
+});
+
+// Load characters
+$.getJSON("characters.json", function(chars) {
+  characterData = chars;
+  for (const key in chars) {
+    const char = chars[key]
+    $("#characterDropdown").append(`<option value="${key}">${char.name}</option>`);
+  }
+
+  charactersLoaded = true;
+  tryRestoreLastCombo();
+  populateGridDropdowns();
+});
+
+  // Load combo button
+  $("#loadCombo").on("click", function() {
+    const selectedMachine = $("#machineDropdown").val();
+    const selectedCharacter = $("#characterDropdown").val();
+    if (!selectedMachine || !selectedCharacter) { alert("Pick both!"); return; }
+
+    const combinedStats = combineStats(machineData[selectedMachine], characterData[selectedCharacter]);
+    const color = rainbowColors[colorIndex % rainbowColors.length];
+    colorIndex++;
+
+    DrawChart(combinedStats, color);
+    displayComboBlock(selectedCharacter, selectedMachine, color);
+
+
+
+    localStorage.setItem("lastCombo", JSON.stringify({
+      character: selectedCharacter,
+      machine: selectedMachine,
+      colorIndex
+    }));
+  });
+
+
+  // Clear button
+  $("#clearCanvas").on("click", function() {
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    $("#comboList").empty();
+    colorIndex = 0;
+    localStorage.removeItem("lastCombo");
+     $("#comboGallery").html("");
+  });
+});
+
+function displayComboBlock(characterKey, machineKey, color) {
+    // Fetch the actual data objects
+    const charData = characterData[characterKey];
+    const machData = machineData[machineKey];
+    const $comboBlock = $(`
+        <div class="combo-block">
+            <div class="combo-images">
+                <img src="images/KARS Resources/Character Renders/${charData.image}" 
+                     alt="${charData.name}" class="combo-img">
+                <img src="images/KARS Resources/Machine Renders/${machData.image}" 
+                     alt="${machData.name}" class="combo-img">
+                <div class="combo-color-box"></div>
+            </div>
+        </div>
+    `);
+
+    $comboBlock.find(".combo-color-box").css("background", color); // Apply the passed color
+    $("#comboGallery").append($comboBlock); // Append to gallery
+}
+
+
+// Combine numeric stats only
+function combineStats(machine, character) {
+  const statKeys = ["topSpeed","boost","charge","turn","grip","Lift","flightSpeed","offense","maxHP","weight"];
+  const result = {};
+  statKeys.forEach(k => { result[k] = machine[k] * (character[k] || 1) *2; });
+  return result;
+}
+
+
+function tryRestoreLastCombo() {
+  if (!(machinesLoaded && charactersLoaded)) return;
+
+  const saved = localStorage.getItem("lastCombo");
+  if (!saved) return;
+
+  const last = JSON.parse(saved);
+
+  $("#characterDropdown").val(last.character);
+  $("#machineDropdown").val(last.machine);
+  colorIndex = last.colorIndex || 0;
+
+  const combinedStats = combineStats(
+    machineData[last.machine],
+    characterData[last.character]
+  );
+
+  const color = rainbowColors[colorIndex % rainbowColors.length];
+  DrawChart(combinedStats, color);
+  displayComboBlock(last.character, last.machine, color);
+  colorIndex+=1
+}
+
+
+// DrawChart safely using fixed numeric stats
+function DrawChart(stats, color="blue") {
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+
+  const middleX = canvas.width / 2;
+  const middleY = canvas.height / 2;
+
+  const statKeys = ["topSpeed","boost","charge","turn","grip","Lift","flightSpeed","offense","maxHP","weight"];
+  const values = statKeys.map(k => stats[k]);
+
+  const total = values.length;
+  const step = (2 * Math.PI) / total;
+
+  ctx.beginPath();
+  for (let i=0;i<total;i++){
+    const angle = i*step;
+    const x = middleX + Math.sin(angle)*values[i];
+    const y = middleY - Math.cos(angle)*values[i];
+    if(i===0){
+        ctx.moveTo(x,y);
+    }else {
+        ctx.lineTo(x,y);
+    }
+  }
+  ctx.closePath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+
+  // HSL transparency works the same as hex + "33"
+  ctx.fillStyle = color.replace(")", ", 0.2)").replace("hsl", "hsla");
+  ctx.stroke();
+  ctx.fill();
+}
+
+
+
+
+
+
+function populateGridDropdowns() {
+  const riderSelects = ['rider1','rider2'].map(id => document.getElementById(id));
+  const machineSelects = ['machine1','machine2'].map(id => document.getElementById(id));
+
+  // Add characters to rider dropdowns
+  for (const key in characterData) {
+    const char = characterData[key];
+    riderSelects.forEach(sel => {
+      sel.innerHTML += `<option value="${key}">${char.name}</option>`;
+    });
+  }
+
+  // Add machines to machine dropdowns
+  for (const key in machineData) {
+    const machine = machineData[key];
+    machineSelects.forEach(sel => {
+      sel.innerHTML += `<option value="${key}">${machine.name}</option>`;
+    });
+  }
+}
+
+
+
+
+
+
+
+// Compute stats for direct comparison grid
+function getDirectStats(riderId, machineId) {
+    const riderKey = $('#' + riderId).val();
+    const machineKey = $('#' + machineId).val();
+
+    const rider = riderKey ? characterData[riderKey] : null;
+    const machine = machineKey ? machineData[machineKey] : null;
+
+    if (rider && machine) {
+        const combined = {};
+        const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
+        statKeys.forEach(stat => {
+            combined[stat] = (rider[stat] || 1) * (machine[stat] || 1);
+        });
+        return combined;
+    } else if (rider) {
+        return rider;
+    } else if (machine) {
+        return machine;
+    } else {
+        return {};
+    }
+}
+
+$('#rider1, #rider2, #machine1, #machine2').on('change', function() {
+    getDirectStats();
+});
+
+
+$("#gridCompareBtn").on("click", function() {
+    // Get combined stats for Choice 1 and Choice 2
+    const choice1 = getDirectStats('rider1', 'machine1');
+    const choice2 = getDirectStats('rider2', 'machine2');
+
+
+    const rider1Key = $('#rider1').val();
+    const machine1Key = $('#machine1').val();
+
+    
+    $("#firstChoice").html(`
+        <div>
+            <img src="images/KARS Resources/Character Icons/${characterData[rider1Key].image}" alt="">
+            ${characterData[rider1Key].name}
+        </div>
+        <div>
+            <img src="images/KARS Resources/Machine Icons/${machineData[machine1Key].image}" alt="">
+            ${machineData[machine1Key].name}
+        </div>
+    `);
+
+    const rider2Key = $('#rider2').val();
+    const machine2Key = $('#machine2').val();
+
+    $("#secondChoice").html(`
+        <div>
+            <img src="images/KARS Resources/Character Icons/${characterData[rider2Key].image}" alt="">
+            ${characterData[rider2Key].name}
+        </div>
+        <div>
+            <img src="images/KARS Resources/Machine Icons/${machineData[machine2Key].image}" alt="">
+            ${machineData[machine2Key].name}
+        </div>
+    `);
+
+    // List of stats to display
+    const statKeys = ["topSpeed", "boost", "charge", "turn", "grip", "lift", "flightSpeed", "offense", "maxHP", "weight"];
+
+    let actualStatValues = [0.2,    0.2,      1,        1,      1,      1,        .2,          .3,        .5,       .3];
+    let i=0;
+    statKeys.forEach(stat => {
+        const val1 = choice1[stat] !== undefined ? choice1[stat] *  actualStatValues[i] : undefined;
+        const val2 = choice2[stat] !== undefined ? choice2[stat] *  actualStatValues[i] : undefined;
+
+        $('#' + stat + '1').text(val1 !== undefined ? val1.toFixed(2) : '—');
+        $('#' + stat + '2').text(val2 !== undefined ? val2.toFixed(2) : '—');
+        $('#' + stat + 'Diff').text((val1 !== undefined && val2 !== undefined)? (val1 - val2).toFixed(2) : '—');
+        if(val1 != 0 && val2 !=0){
+            $('#' + stat + 'DiffPercent').text(((val1/val2)*100).toFixed(1) +"%");
+        }else{
+            $('#' + stat + 'DiffPercent').text("NA");
+        }
+    });
+});
+
+
+
