@@ -63,7 +63,7 @@
     "name": "Rex Wheelie",
     "image": "rexWheelie.webp",
     "description": "A powerful bike with high offense and heavy weight, but low flight capabilities.",
-    "topSpeed": 1,
+    "topSpeed": 145,
     "boost": 10,
     "charge": 20,
     "turn": 50,
