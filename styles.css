@@ -53,16 +53,15 @@ table {
 
 
 :root {  /* setting custom variables for easy uniform colors and fonts, and for easy changing through javascript */
-    --win-lose1:#fffc3a;
-    --win-lose2:#8c8f00;
     --white: #FFFFFF;
-    --lt-gray: #F8F8F8;
-    --gray: #999;
-    --drk-gray: #333333;
-    --lt-green: #90EE90;
-    --drk-green: #006400;
-    --lt-blue: #ADD8E6;
-    --drk-blue: #00008B;
+    --gray1: #F8F8F8;
+    --gray2: #999;
+    --gray3: #333333;
+    --green1: #90EE90;
+    --green2: #006400;
+    --blue1: #ADD8E6;
+    --blue2:#007BFF;
+    --blue3: #00008B;
     --red: #FF0000;
     --yellow: #FFFF00;
     --orange: #FFA500;
@@ -72,8 +71,8 @@ table {
     --lime: #00FF00;
     --cyan: #00FFFF;
     --magenta: #FF00FF;
-    --lt-brown: #D2B48C;
-    --drk-brown: #5C4033;
+    --brown1: #D2B48C;
+    --brown2: #5C4033;
     --black: #222222;
     --primary-font: Arial, sans-serif;
     --secondary-font: Helvetica, sans-serif;
@@ -81,11 +80,104 @@ table {
 
 
 body {
-  display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  width: 1280px;
+  border: 3px solid black;
 }
+
+
+
+
+
+
+
+/* Banner container */
+.banner {
+  margin-top: 40px;
+  width: 100%;
+  height: 100px; /* adjust as needed */
+  background: linear-gradient(to right, 
+                              var(--white) 0%,
+                              var(--white) 10%,
+                              var(--blue2) 10%,   /* blue starts at 0% */
+                              var(--blue1) 50%,  /* transition to lighter blue at 50% */
+                              var(--white) 80%  /* white at 100% */
+                             );
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Inner flex container to hold image and text */
+.banner-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 50px;
+}
+
+
+.banner-image {
+  flex: 0 0 auto;
+  transform: skewX(-20deg); /* skew left */
+  overflow: show;
+}
+
+.banner-image img {
+  display: block;
+  margin-top: 30px;
+  height: 200px; /* adjust image height */
+  transform: skewX(10deg); /* counter skew so image itself is straight */
+}
+
+/* Text container */
+.banner-text {
+  flex: 1;
+  margin-left: 30px;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.banner-text .title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.banner-text .subtitle {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+
+
+
+
+
+
+
+main{
+  margin-top: 50px;
+  margin-left: 20px;
+}
+#selectionArea {
+  align-items: center;
+  margin: auto;
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+}
+#selectionArea h2{
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
 
 .controls {
   display: flex;
@@ -114,10 +206,49 @@ button:hover {
 
 
 
+#comboGallery {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    width: 30%;          /* Fit nicely inside 1280px */
+    max-width: 1200px;   /* Prevent too wide */
+    margin-left: 8%;
+    margin-right: auto;
+}
+
+.combo-images {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;           /* Slightly bigger gap */
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+.combo-img {
+    width: 70px;         /* Smaller for full screen fit */
+    height: auto;
+    border-radius: 6px;  /* Optional: round corners */
+}
+
+.combo-color-box {
+    width: 50px;         /* Slightly bigger square for color */
+    height: 50px;
+    border-radius: 6px;
+    border: 2px solid #0003;
+}
+
+
+
+
+
 .chart-container {
   position: relative;
   width: 969px;
   height: 864px;
+  margin: auto;
 }
 
 .chart-background {
@@ -136,4 +267,93 @@ button:hover {
   left: 0;
   top: 0;
   z-index: 1;
+}
+
+
+
+
+
+
+
+.direct-combo-comparison {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    font-family: sans-serif;
+}
+
+.direct-combo-comparison h3 {
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* 4 columns: stat | choice1 | choice2 | diff */
+    gap: 8px 12px; /* row-gap 8px, column-gap 12px */
+    background: #f5f5f5;
+    padding: 12px;
+    border-radius: 10px;
+    width: 1100px;
+    margin: auto;
+    margin-bottom: 300px;
+}
+
+.choice-header img{
+    height: 20px;
+    margin-right: 3px;
+}
+
+.choice-header div {
+  display: flex;
+  align-items: left;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  align-self: flex-start;
+}
+.choice-header{
+  flex-direction: column;
+}
+
+
+.grid-item {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.stat-header {
+    font-weight: bold;
+    background: #ddd;
+}
+
+.choice-header {
+    font-weight: bold;
+    background: var(--gray3);
+    color:#09c;
+}
+
+.diff-header {
+    font-weight: bold;
+    background: #eee;
+}
+
+.stat-name {
+    justify-content: flex-start;
+    padding-left: 12px;
+    font-weight: 500;
+}
+
+.stat-value {
+    background: #fff;
+    border-radius: 6px;
+}
+
+.stat-diff {
+    background: #f0f0f0;
+    border-radius: 6px;
+    font-weight: 500;
 }
