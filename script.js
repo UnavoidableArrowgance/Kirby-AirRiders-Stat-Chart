@@ -17,53 +17,82 @@ const rainbowColors = [
   "hsl(300, 100%, 50%)"   // violet
 ];
 
-$(document).ready(function() {
-  // Load machines
-  $.getJSON("machines.json", function(machines) {
-  machineData = machines;
-  for (const key in machines) {
-    const machine = machines[key]
-    $("#machineDropdown").append(`<option value="${key}">${machine.name}</option>`);
+$(document).ready(function () {
+
+  async function loadMachines() {
+  try {
+    const response = await fetch("machines.json");
+    const machines = await response.json();
+
+    machineData = machines;
+
+    for (const key in machines) {
+      const machine = machines[key];
+      $("#machineDropdown").append(`<option value="${key}">${machine.name}</option>`);
+    }
+
+    machinesLoaded = true;
+    tryRestoreLastCombo();
+  } catch (e) {
+    console.error("Failed to load machines.json", e);
+  }
+}
+
+  async function loadCharacters() {
+    const response = await fetch("characters.json");
+    const chars = await response.json();
+
+    characterData = chars;
+    for (const key in chars) {
+      const char = chars[key];
+      $("#characterDropdown").append(
+        `<option value="${key}">${char.name}</option>`
+      );
+    }
+
+    charactersLoaded = true;
+    tryRestoreLastCombo();
+    populateGridDropdowns();
   }
 
-  machinesLoaded = true;
-  tryRestoreLastCombo();
-});
-
-// Load characters
-$.getJSON("characters.json", function(chars) {
-  characterData = chars;
-  for (const key in chars) {
-    const char = chars[key]
-    $("#characterDropdown").append(`<option value="${key}">${char.name}</option>`);
+  // Load both JSONs in parallel
+  async function init() {
+    await Promise.all([loadMachines(), loadCharacters()]);
   }
 
-  charactersLoaded = true;
-  tryRestoreLastCombo();
-  populateGridDropdowns();
-});
+  init();
 
   // Load combo button
-  $("#loadCombo").on("click", function() {
+  $("#loadCombo").on("click", function () {
     const selectedMachine = $("#machineDropdown").val();
     const selectedCharacter = $("#characterDropdown").val();
-    if (!selectedMachine || !selectedCharacter) { alert("Pick both!"); return; }
 
-    const combinedStats = combineStats(machineData[selectedMachine], characterData[selectedCharacter]);
+    if (!selectedMachine || !selectedCharacter) {
+      alert("Pick both!");
+      return;
+    }
+
+    const combinedStats = combineStats(
+      machineData[selectedMachine],
+      characterData[selectedCharacter]
+    );
+
     const color = rainbowColors[colorIndex % rainbowColors.length];
     colorIndex++;
 
     DrawChart(combinedStats, color);
     displayComboBlock(selectedCharacter, selectedMachine, color);
 
-
-
-    localStorage.setItem("lastCombo", JSON.stringify({
-      character: selectedCharacter,
-      machine: selectedMachine,
-      colorIndex
-    }));
+    localStorage.setItem(
+      "lastCombo",
+      JSON.stringify({
+        character: selectedCharacter,
+        machine: selectedMachine,
+        colorIndex,
+      })
+    );
   });
+
 
 
   // Clear button
