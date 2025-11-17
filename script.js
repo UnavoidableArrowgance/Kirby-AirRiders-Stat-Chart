@@ -17,30 +17,29 @@ const rainbowColors = [
   "hsl(300, 100%, 50%)"   // violet
 ];
 
-$(document).ready(function () {
+$(document).ready(function () {    //runs when html is loaded and elements can be selected
 
-  async function loadMachines() {
-  try {
-    const response = await fetch("machines.json");
-    const machines = await response.json();
+  async function loadMachines() {  //async to use await for fetching to be done
+  try {                             //error handling try block
+    const response = await fetch("machines.json"); //sends request to machine json file and waits for response
+    const machines = await response.json();        //Parses the response body as json and awaits the resulting promise.
 
-    machineData = machines;
+    machineData = machines;       //stores response into global machines
 
-    for (const key in machines) {
-      const machine = machines[key];
-      $("#machineDropdown").append(`<option value="${key}">${machine.name}</option>`);
+    for (const key in machines) {  //loop through the data
+      const machine = machines[key]; //sets machine to the current machine data on the machines key
+      $("#machineDropdown").append(`<option value="${key}">${machine.name}</option>`); //adds the options to the machine dropdown
     }
 
-    machinesLoaded = true;
-    tryRestoreLastCombo();
-  } catch (e) {
-    console.error("Failed to load machines.json", e);
+    machinesLoaded = true; //sets the value to be true that machines have been loaded
+  } catch (e) { //catches if error happens in previous block
+    console.error("Failed to load machines.json", e);   //reports custom error and error data to console
   }
 }
 
-  async function loadCharacters() {
-    const response = await fetch("characters.json");
-    const chars = await response.json();
+  async function loadCharacters() { // runs async to get json responses for characters
+    const response = await fetch("characters.json"); //sends request and awaits for fetching to be done
+    const chars = await response.json(); //awaits response and parsing the json body
 
     characterData = chars;
     for (const key in chars) {
@@ -51,7 +50,7 @@ $(document).ready(function () {
     }
 
     charactersLoaded = true;
-    tryRestoreLastCombo();
+    tryRestoreLastCombo();   //tries to restore last combination
     populateGridDropdowns();
   }
 
