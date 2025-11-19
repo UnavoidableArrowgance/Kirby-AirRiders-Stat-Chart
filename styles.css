@@ -449,9 +449,8 @@ select, #spiderChart button {
 .combo-selection {
     display: grid;
     grid:
-        "c1 c1 . ." 30px
+        "c1 c2 . ." 30px
         "r1 m1 . ." 40px
-        "c2 c2 . ." 30px
         "r2 m2 btn km" 40px
         / 200px 200px 150px 100px;
     gap: 20px;
