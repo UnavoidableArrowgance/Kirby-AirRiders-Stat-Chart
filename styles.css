@@ -641,13 +641,13 @@ select, #spiderChart button {
     "img description" 40px
     "img title" 30px
     "img stats"  260px
-    /400px 600px;
+    /600px 500px;
   background-color: var(--blue1);
   Max-width: 100%;
   width:95%;
   align-self: center;
   padding:10px;
-  border-radius: 10%;
+  border-radius: 30%;
   justify-self: center; 
   margin: auto;
 }
