@@ -417,7 +417,7 @@ select, #spiderChart button {
   border: 8px double var(--green2);
   padding: 10px 20px;
   border-radius: 15px;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 5px var(--black);
 }
 
 .direct-combo-comparison {
@@ -505,7 +505,7 @@ select, #spiderChart button {
   padding: 6px 10px;
   border-radius: 8px;
   border: 2px solid var(--plum);
-  background-color: var(--pink);
+  background-color: var(--pink3);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -642,7 +642,7 @@ select, #spiderChart button {
     "img description" 40px
     "img title" 30px
     "img stats"  260px
-    /400px 500px;
+    /400px 600px;
   background-color: var(--blue1);
   width: 900px;
   align-self: center;
@@ -662,7 +662,7 @@ select, #spiderChart button {
 }
 #charName { 
   grid-area: name; 
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   font-style: italic;
 }
