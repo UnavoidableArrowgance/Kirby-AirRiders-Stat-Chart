@@ -641,7 +641,7 @@ select, #spiderChart button {
     "img description" 40px
     "img title" 30px
     "img stats"  260px
-    /600px 500px;
+    /50% 50%;
   background-color: var(--blue1);
   Max-width: 100%;
   width:95%;

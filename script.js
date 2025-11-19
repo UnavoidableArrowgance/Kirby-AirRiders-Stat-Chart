@@ -1,1 +1,684 @@
-'use strict';const _0x3fab3f=_0x412c;(function(_0x3ee541,_0x59ddb7){const _0x2c9319=_0x412c,_0x28e23f=_0x3ee541();while(!![]){try{const _0x275d13=-parseInt(_0x2c9319(0x160))/0x1+parseInt(_0x2c9319(0x18a))/0x2+parseInt(_0x2c9319(0x1a7))/0x3*(parseInt(_0x2c9319(0x1a6))/0x4)+parseInt(_0x2c9319(0x16b))/0x5+parseInt(_0x2c9319(0x172))/0x6*(-parseInt(_0x2c9319(0x1a2))/0x7)+-parseInt(_0x2c9319(0x188))/0x8+parseInt(_0x2c9319(0x187))/0x9*(parseInt(_0x2c9319(0x184))/0xa);if(_0x275d13===_0x59ddb7)break;else _0x28e23f['push'](_0x28e23f['shift']());}catch(_0x455c71){_0x28e23f['push'](_0x28e23f['shift']());}}}(_0x19d7,0x378ed));function _0x412c(_0x12a763,_0xbfd68b){const _0x19d74e=_0x19d7();return _0x412c=function(_0x412c25,_0x56b3a8){_0x412c25=_0x412c25-0x138;let _0x83935e=_0x19d74e[_0x412c25];return _0x83935e;},_0x412c(_0x12a763,_0xbfd68b);}let machineData={},characterData={},colorIndex=0x0,machinesLoaded=![],charactersLoaded=![];const statNames={'topSpeed':_0x3fab3f(0x1a0),'boost':'Boost\x20Power','charge':_0x3fab3f(0x1c7),'turn':_0x3fab3f(0x1b6),'grip':_0x3fab3f(0x1b0),'lift':_0x3fab3f(0x1bd),'flightSpeed':'Flight\x20Speed','offense':_0x3fab3f(0x185),'maxHP':_0x3fab3f(0x196),'weight':_0x3fab3f(0x1cf)};let actualStatValues=[0.2,0.2,0x1,0x1,0x1,0x1,0.2,0.3,0.5,0.3];const rainbowColors=[_0x3fab3f(0x1c9),_0x3fab3f(0x139),_0x3fab3f(0x13a),_0x3fab3f(0x17f),_0x3fab3f(0x1bf),_0x3fab3f(0x186),_0x3fab3f(0x1b5),_0x3fab3f(0x166),_0x3fab3f(0x1cd),'hsl(240,\x20100%,\x2045%)',_0x3fab3f(0x15e),_0x3fab3f(0x17a),_0x3fab3f(0x17c),_0x3fab3f(0x1a4)];$(document)['ready'](function(){const _0x4d0f26=_0x3fab3f;async function _0x3ace40(){const _0xd2f482=_0x412c;try{const _0x4b483e=await fetch(_0xd2f482(0x1a5)),_0x3c626a=await _0x4b483e[_0xd2f482(0x174)]();machineData=_0x3c626a;for(const _0x12722e in _0x3c626a){const _0xb97039=_0x3c626a[_0x12722e];$(_0xd2f482(0x1ad))[_0xd2f482(0x1b1)](_0xd2f482(0x165)+_0x12722e+'\x22>'+_0xb97039[_0xd2f482(0x162)]+_0xd2f482(0x142));}machinesLoaded=!![];}catch(_0x58fb30){console[_0xd2f482(0x1d8)](_0xd2f482(0x1c5),_0x58fb30);}}async function _0x2c6668(){const _0x3a27ca=_0x412c;try{const _0x20c734=await fetch(_0x3a27ca(0x167)),_0x43e1c9=await _0x20c734[_0x3a27ca(0x174)]();characterData=_0x43e1c9;for(const _0x5ee563 in _0x43e1c9){const _0x305f81=_0x43e1c9[_0x5ee563];$(_0x3a27ca(0x1d3))[_0x3a27ca(0x1b1)](_0x3a27ca(0x165)+_0x5ee563+'\x22>'+_0x305f81['name']+'</option>');}charactersLoaded=!![];}catch(_0x19574a){console['error'](_0x3a27ca(0x1c5),_0x19574a);}}async function _0x5d1b71(){await Promise['all']([_0x3ace40(),_0x2c6668()]),tryRestoreLastCombo(),populateGridDropdowns(),createCarousel(),initMachinesUI();}_0x5d1b71(),$(_0x4d0f26(0x17b))['on'](_0x4d0f26(0x1df),function(){const _0x13446b=_0x4d0f26,_0x17feb5=$(_0x13446b(0x1ad))[_0x13446b(0x1d6)](),_0x33ebe3=$(_0x13446b(0x1d3))[_0x13446b(0x1d6)]();if(!_0x17feb5||!_0x33ebe3){alert('Pick\x20both!');return;}const _0x2d6ae3=combineStats(machineData[_0x17feb5],characterData[_0x33ebe3]),_0x1d0ded=rainbowColors[colorIndex%rainbowColors['length']];colorIndex++,DrawChart(_0x2d6ae3,_0x1d0ded),displayComboBlock(_0x33ebe3,_0x17feb5,_0x1d0ded),localStorage[_0x13446b(0x154)](_0x13446b(0x16a),JSON['stringify']({'character':_0x33ebe3,'machine':_0x17feb5,'colorIndex':colorIndex}));}),$(_0x4d0f26(0x1de))['on']('click',function(){const _0x46aa16=_0x4d0f26,_0x4eb09f=document[_0x46aa16(0x1ce)](_0x46aa16(0x13c)),_0x29ff1a=_0x4eb09f[_0x46aa16(0x146)]('2d');_0x29ff1a[_0x46aa16(0x1ba)](0x0,0x0,_0x4eb09f[_0x46aa16(0x151)],_0x4eb09f[_0x46aa16(0x141)]),$(_0x46aa16(0x1cc))[_0x46aa16(0x16d)](),colorIndex=0x0,localStorage[_0x46aa16(0x14e)]('lastCombo'),$(_0x46aa16(0x199))['html']('');});});function displayComboBlock(_0xa4081e,_0x5856ca,_0x3a9579){const _0xd4d660=_0x3fab3f,_0x461de8=characterData[_0xa4081e],_0xd29808=machineData[_0x5856ca],_0x1e14fa=$('\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-block\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-images\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Character\x20Renders/'+_0x461de8[_0xd4d660(0x175)]+_0xd4d660(0x163)+_0x461de8['name']+_0xd4d660(0x1d7)+_0xd29808['image']+_0xd4d660(0x163)+_0xd29808[_0xd4d660(0x162)]+'\x22\x20class=\x22combo-img\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-color-box\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20');_0x1e14fa[_0xd4d660(0x1c0)](_0xd4d660(0x140))[_0xd4d660(0x1a3)](_0xd4d660(0x1d1),_0x3a9579),$(_0xd4d660(0x199))['append'](_0x1e14fa);}function combineStats(_0x36d2a9,_0xc82ecb){const _0x5e181e=_0x3fab3f,_0x427b8d=['topSpeed',_0x5e181e(0x1bc),_0x5e181e(0x1cb),_0x5e181e(0x164),_0x5e181e(0x190),_0x5e181e(0x13f),_0x5e181e(0x148),_0x5e181e(0x1b4),'maxHP',_0x5e181e(0x191)],_0x421ef4={};return _0x427b8d['forEach'](_0xe6755d=>{_0x421ef4[_0xe6755d]=_0x36d2a9[_0xe6755d]*_0xc82ecb[_0xe6755d]*0x2;}),_0x421ef4;}function tryRestoreLastCombo(){const _0x5dc4f4=_0x3fab3f;if(!(machinesLoaded&&charactersLoaded))return;const _0xb43910=localStorage[_0x5dc4f4(0x180)](_0x5dc4f4(0x16a));if(!_0xb43910)return;const _0x28b8ef=JSON[_0x5dc4f4(0x1c3)](_0xb43910);$('#characterDropdown')['val'](_0x28b8ef[_0x5dc4f4(0x1e5)]),$('#machineDropdown')[_0x5dc4f4(0x1d6)](_0x28b8ef['machine']),colorIndex=_0x28b8ef[_0x5dc4f4(0x1ab)]||0x0;const _0x2a0fcc=combineStats(machineData[_0x28b8ef[_0x5dc4f4(0x145)]],characterData[_0x28b8ef[_0x5dc4f4(0x1e5)]]),_0x4d2616=rainbowColors[colorIndex%rainbowColors[_0x5dc4f4(0x138)]];DrawChart(_0x2a0fcc,_0x4d2616),displayComboBlock(_0x28b8ef[_0x5dc4f4(0x1e5)],_0x28b8ef[_0x5dc4f4(0x145)],_0x4d2616),colorIndex+=0x1;}function DrawChart(_0x585a00,_0x1b2a50=_0x3fab3f(0x18d)){const _0x29ba3c=_0x3fab3f,_0x459225=document[_0x29ba3c(0x1ce)](_0x29ba3c(0x13c)),_0x3f1388=_0x459225['getContext']('2d'),_0x58f725=_0x459225[_0x29ba3c(0x151)]/0x2,_0x4b88e7=_0x459225[_0x29ba3c(0x141)]/0x2,_0x34e189=[_0x29ba3c(0x195),'boost',_0x29ba3c(0x1cb),_0x29ba3c(0x164),_0x29ba3c(0x190),_0x29ba3c(0x13f),_0x29ba3c(0x148),_0x29ba3c(0x1b4),_0x29ba3c(0x156),'weight'],_0x3e84ca=_0x34e189['map'](_0x56098f=>_0x585a00[_0x56098f]),_0x1f29d0=_0x3e84ca[_0x29ba3c(0x138)],_0x5d61fd=0x2*Math['PI']/_0x1f29d0;_0x3f1388[_0x29ba3c(0x1b9)]();for(let _0x26cba6=0x0;_0x26cba6<_0x1f29d0;_0x26cba6++){const _0x848f6f=_0x26cba6*_0x5d61fd,_0x2eb843=_0x58f725+Math['sin'](_0x848f6f)*_0x3e84ca[_0x26cba6],_0x30ccb8=_0x4b88e7-Math[_0x29ba3c(0x1d4)](_0x848f6f)*_0x3e84ca[_0x26cba6];_0x26cba6===0x0?_0x3f1388['moveTo'](_0x2eb843,_0x30ccb8):_0x3f1388[_0x29ba3c(0x182)](_0x2eb843,_0x30ccb8);}_0x3f1388[_0x29ba3c(0x153)](),_0x3f1388['strokeStyle']=_0x1b2a50,_0x3f1388[_0x29ba3c(0x194)]=0x2,_0x3f1388[_0x29ba3c(0x19b)]=_0x1b2a50[_0x29ba3c(0x1bb)](')',_0x29ba3c(0x179))['replace'](_0x29ba3c(0x192),_0x29ba3c(0x1e2)),_0x3f1388[_0x29ba3c(0x15f)](),_0x3f1388[_0x29ba3c(0x161)]();}function populateGridDropdowns(){const _0x550b46=_0x3fab3f,_0x131443=[_0x550b46(0x189),_0x550b46(0x177)]['map'](_0x460798=>document['getElementById'](_0x460798)),_0x2a04ed=['machine1',_0x550b46(0x17d)][_0x550b46(0x150)](_0x102bf9=>document[_0x550b46(0x1ce)](_0x102bf9));for(const _0x4ae05c in characterData){const _0x50e76e=characterData[_0x4ae05c];_0x131443[_0x550b46(0x1c6)](_0x2fa780=>{const _0x4c31a6=_0x550b46;_0x2fa780[_0x4c31a6(0x159)]+=_0x4c31a6(0x165)+_0x4ae05c+'\x22>'+_0x50e76e[_0x4c31a6(0x162)]+_0x4c31a6(0x142);});}for(const _0x3d73a2 in machineData){const _0x359f7b=machineData[_0x3d73a2];_0x2a04ed[_0x550b46(0x1c6)](_0x64f35c=>{const _0x5ab64b=_0x550b46;_0x64f35c[_0x5ab64b(0x159)]+=_0x5ab64b(0x165)+_0x3d73a2+'\x22>'+_0x359f7b[_0x5ab64b(0x162)]+'</option>';});}for(const _0x106128 in characterData){const _0x1dc601=characterData[_0x106128];_0x131443[_0x550b46(0x1c6)](_0x1fa1dd=>{const _0x80c173=_0x550b46;_0x1fa1dd[_0x80c173(0x159)]+='<option\x20value=\x22'+_0x106128+'\x22>'+_0x1dc601['name']+_0x80c173(0x142);});}}function getDirectStats(_0x2d3e1a,_0x3602a3){const _0x36452b=_0x3fab3f,_0x2da38b=$('#'+_0x2d3e1a)[_0x36452b(0x1d6)](),_0x5a6b39=$('#'+_0x3602a3)['val'](),_0x1ba3ac=_0x2da38b?characterData[_0x2da38b]:null,_0x16dd9f=_0x5a6b39?machineData[_0x5a6b39]:null;if(_0x1ba3ac&&_0x16dd9f){const _0x31c869={},_0x42a750=[_0x36452b(0x195),_0x36452b(0x1bc),'charge',_0x36452b(0x164),_0x36452b(0x190),_0x36452b(0x13f),_0x36452b(0x148),_0x36452b(0x1b4),_0x36452b(0x156),_0x36452b(0x191)];return _0x42a750['forEach'](_0x3ef508=>{_0x31c869[_0x3ef508]=_0x1ba3ac[_0x3ef508]*_0x16dd9f[_0x3ef508];}),_0x31c869;}else return![];}$(_0x3fab3f(0x157))['on']('change',function(){getDirectStats();}),$(_0x3fab3f(0x1ae))['on'](_0x3fab3f(0x1df),function(){const _0x4652f5=_0x3fab3f,_0x45b9dc=getDirectStats(_0x4652f5(0x189),_0x4652f5(0x1c1)),_0x5d9c96=getDirectStats('rider2',_0x4652f5(0x17d));if(!(_0x45b9dc&&_0x5d9c96)){alert('Pick\x20all\x20four');return;}const _0x2a528d=$(_0x4652f5(0x19d))[_0x4652f5(0x1d6)](),_0x5ba7ee=$('#machine1')[_0x4652f5(0x1d6)]();$(_0x4652f5(0x168))['html'](_0x4652f5(0x1ac)+characterData[_0x2a528d][_0x4652f5(0x175)]+_0x4652f5(0x1ca)+characterData[_0x2a528d][_0x4652f5(0x162)]+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Machine\x20Icons/'+machineData[_0x5ba7ee][_0x4652f5(0x175)]+_0x4652f5(0x1ca)+machineData[_0x5ba7ee]['name']+_0x4652f5(0x1a1));const _0x510474=$('#rider2')[_0x4652f5(0x1d6)](),_0x3839bc=$(_0x4652f5(0x1a9))[_0x4652f5(0x1d6)]();$(_0x4652f5(0x1dc))['html']('\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Character\x20Icons/'+characterData[_0x510474][_0x4652f5(0x175)]+_0x4652f5(0x1ca)+characterData[_0x510474]['name']+_0x4652f5(0x197)+machineData[_0x3839bc]['image']+_0x4652f5(0x1ca)+machineData[_0x3839bc][_0x4652f5(0x162)]+_0x4652f5(0x1a1));const _0x57db78=[_0x4652f5(0x195),_0x4652f5(0x1bc),_0x4652f5(0x1cb),_0x4652f5(0x164),_0x4652f5(0x190),'lift',_0x4652f5(0x148),'offense',_0x4652f5(0x156),_0x4652f5(0x191)];let _0x323e3c=0x0,_0x127258=$(_0x4652f5(0x19c))['val']()=='mi'?0.6213711922:0x1;_0x57db78[_0x4652f5(0x1c6)](_0x25ef64=>{const _0x46d733=_0x4652f5;let _0x13d851=_0x25ef64=='topSpeed'?_0x127258:0x1;const _0x418f3e=_0x45b9dc[_0x25ef64]!==undefined?_0x45b9dc[_0x25ef64]*actualStatValues[_0x323e3c]*_0x13d851:undefined,_0x4798b9=_0x5d9c96[_0x25ef64]!==undefined?_0x5d9c96[_0x25ef64]*actualStatValues[_0x323e3c]*_0x13d851:undefined;$('#'+_0x25ef64+'1')[_0x46d733(0x1da)](_0x418f3e!==undefined?_0x418f3e[_0x46d733(0x149)](0x2):'—'),$('#'+_0x25ef64+'2')[_0x46d733(0x1da)](_0x4798b9!==undefined?_0x4798b9[_0x46d733(0x149)](0x2):'—'),$('#'+_0x25ef64+_0x46d733(0x1aa))[_0x46d733(0x1da)](_0x418f3e!==undefined&&_0x4798b9!==undefined?(_0x418f3e-_0x4798b9)[_0x46d733(0x149)](0x2):'—'),_0x418f3e>0x1&&_0x4798b9>0x1?$('#'+_0x25ef64+'DiffPercent')[_0x46d733(0x1da)]((_0x418f3e/_0x4798b9*0x64)[_0x46d733(0x149)](0x1)+'%'):$('#'+_0x25ef64+_0x46d733(0x1dd))[_0x46d733(0x1da)]('NA');});});let carouselAutoPlay=!![];function createCarousel(){const _0x3a77a4=_0x3fab3f,_0x1587ef=Object[_0x3a77a4(0x19a)](characterData);_0x1587ef[_0x3a77a4(0x1c6)](_0x415531=>{const _0xde0e1b=_0x3a77a4,_0xaf98e1=characterData[_0x415531];$('.characterCarousel')[_0xde0e1b(0x1b1)](_0xde0e1b(0x14c)+_0xaf98e1[_0xde0e1b(0x175)]+_0xde0e1b(0x183)+_0xaf98e1[_0xde0e1b(0x162)]+_0xde0e1b(0x17e));}),$(_0x3a77a4(0x1c4))[_0x3a77a4(0x19f)]({'slidesToShow':0x5,'centerMode':!![],'focusOnSelect':!![],'slidesToScroll':0x1,'autoplay':carouselAutoPlay,'autoplaySpeed':0x1388}),$(_0x3a77a4(0x1af))[_0x3a77a4(0x1da)]('←'),$(_0x3a77a4(0x1be))['text']('→'),$(_0x3a77a4(0x1c4))['on'](_0x3a77a4(0x18f),function(_0x56aa03,_0x1bd4c9,_0x177d4a){const _0x215771=_0x1587ef[_0x177d4a%_0x1587ef['length']];updateCharacterInfo(characterData[_0x215771]);}),updateCharacterInfo(characterData[_0x1587ef[0x0]]);}function updateCharacterInfo(_0x37c862){const _0x241e38=_0x3fab3f;if(!_0x37c862)return;$(_0x241e38(0x158))[_0x241e38(0x14d)](_0x241e38(0x143),_0x241e38(0x14b)+_0x37c862[_0x241e38(0x175)]),$('#charName')[_0x241e38(0x1da)](_0x37c862[_0x241e38(0x162)]),$(_0x241e38(0x152))[_0x241e38(0x1da)](_0x37c862[_0x241e38(0x15d)]);const _0x1e7575=[_0x241e38(0x195),_0x241e38(0x1bc),_0x241e38(0x1cb),'turn','grip',_0x241e38(0x13f),_0x241e38(0x148),_0x241e38(0x1b4),_0x241e38(0x156),_0x241e38(0x191)];let _0x22140c=_0x241e38(0x173);_0x1e7575['forEach'](_0x5d4c01=>{const _0x2b5bef=_0x241e38;_0x22140c+='<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22charStatName\x22>'+statNames[_0x5d4c01]+_0x2b5bef(0x1e0)+_0x37c862[_0x5d4c01]+_0x2b5bef(0x13b);}),_0x22140c+=_0x241e38(0x170),$(_0x241e38(0x147))['html'](_0x22140c);}$(_0x3fab3f(0x1b2))['on'](_0x3fab3f(0x1df),function(){const _0x774339=_0x3fab3f,_0x472a57=$(this)[_0x774339(0x1da)]()['includes']('ON');_0x472a57?($(_0x774339(0x1c4))[_0x774339(0x19f)](_0x774339(0x1d5)),$(this)[_0x774339(0x1da)](_0x774339(0x155))['addClass'](_0x774339(0x1d2))):($(_0x774339(0x1c4))[_0x774339(0x19f)]('slickPlay'),$(this)[_0x774339(0x1da)](_0x774339(0x19e))[_0x774339(0x1d9)](_0x774339(0x1d2)));});function _0x19d7(){const _0x15f4dc=['blue','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tbody>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</table>\x0a\x20\x20\x20\x20\x20\x20','afterChange','grip','weight','hsl','<div></div>','lineWidth','topSpeed','Max\x20HP','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Machine\x20Icons/','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','#comboGallery','keys','fillStyle','#kmOrMi','#rider1','Autoplay:\x20ON','slick','Top\x20Speed','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','2654099vJtPVz','css','hsl(300,\x20100%,\x2045%)','machines.json','4RDcISl','505893riSwnA','\x20(km\x20/\x20hr)','#machine2','Diff','colorIndex','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Character\x20Icons/','#machineDropdown','#gridCompareBtn','.slick-prev','Grip','append','#carouselAutoplayBtn','machineSortDir','offense','hsl(120,\x20100%,\x2065%)','Turning','#sortAsc,\x20#sortDesc','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','beginPath','clearRect','replace','boost','Lift','.slick-next','hsl(60,\x20100%,\x2070%)','find','machine1','alphaRev','parse','.characterCarousel','Failed\x20to\x20load\x20machines.json','forEach','Charge\x20Rate','</h4>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','hsl(0,\x20100%,\x2070%)','\x22\x20alt=\x22\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','charge','#comboList','hsl(240,\x20100%,\x2070%)','getElementById','Weight','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h4>Stat\x20Values</h4>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<table\x20class=\x22machine-stats-table\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<thead>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</thead>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tbody>\x0a\x20\x20\x20\x20\x20\x20','background','off','#characterDropdown','cos','slickPause','val','\x22\x20class=\x22combo-img\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Machine\x20Renders/','error','removeClass','text','sort','#secondChoice','DiffPercent','#clearCanvas','click','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22charStatValue\x22>','#machineSortControls','hsla','localeCompare','active','character','length','hsl(0,\x20100%,\x2045%)','hsl(30,\x20100%,\x2070%)','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>','myCanvas','</p>','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','lift','.combo-color-box','height','</option>','src','#accordion','machine','getContext','#charStats','flightSpeed','toFixed','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','images/KARS\x20Resources/Character\x20Renders/','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Character\x20Renders/','attr','removeItem','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Machine\x20Renders/','map','width','#charDescription','closePath','setItem','Autoplay:\x20OFF','maxHP','#rider1,\x20#rider2,\x20#machine1,\x20#machine2','#charImage','innerHTML','machineSortProp','accordion','alpha','description','hsl(275,\x20100%,\x2070%)','stroke','336824GyeWht','fill','name','\x22\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20alt=\x22','turn','<option\x20value=\x22','hsl(120,\x20100%,\x2030%)','characters.json','#firstChoice','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS\x20Resources/Machine\x20Icons/','lastCombo','1535050jqnYPt','addClass','empty','ui-accordion','#sortAsc','</table>','content','6fakqCE','<table\x20class=\x22char-stats\x22>','json','image','includes','rider2','#machineSortSelect',',\x200.2)','hsl(275,\x20100%,\x2040%)','#loadCombo','hsl(300,\x20100%,\x2070%)','machine2','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','hsl(30,\x20100%,\x2035%)','getItem','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','lineTo','\x22\x20alt=\x22','5265880OAvsZv','Offense','hsl(60,\x20100%,\x2035%)','9yfrJNR','702128sklfCG','rider1','58166uAcIWi','#sortDesc','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'];_0x19d7=function(){return _0x15f4dc;};return _0x19d7();}let currentSortProp=null,currentSortDir=0x1;function saveSortSettings(){const _0x35d2ac=_0x3fab3f;localStorage[_0x35d2ac(0x154)](_0x35d2ac(0x15a),currentSortProp),localStorage[_0x35d2ac(0x154)](_0x35d2ac(0x1b3),currentSortDir);}function loadSortSettings(){const _0x3d5e8d=_0x3fab3f;currentSortProp=localStorage[_0x3d5e8d(0x180)](_0x3d5e8d(0x15a))||'',currentSortDir=Number(localStorage[_0x3d5e8d(0x180)](_0x3d5e8d(0x1b3))||0x1);}function buildMachineSortControls(){const _0x1feef8=_0x3fab3f,_0x4add78=$(_0x1feef8(0x1e1));_0x4add78[_0x1feef8(0x16d)]();if(Object[_0x1feef8(0x19a)](machineData)[_0x1feef8(0x138)]===0x0)return;let _0x3d3116='\x0a\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22machineSortSelect\x22>Sort\x20by:</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<select\x20id=\x22machineSortSelect\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22\x22>--\x20Select\x20a\x20sort\x20--</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22alpha\x22>Alphabetical\x20(A\x20→\x20Z)</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22alphaRev\x22>Alphabetical\x20(Z\x20→\x20A)</option>\x0a\x20\x20\x20\x20';Object[_0x1feef8(0x19a)](statNames)[_0x1feef8(0x1c6)](_0x45865e=>{const _0xbca017=_0x1feef8;_0x3d3116+=_0xbca017(0x165)+_0x45865e+'\x22>'+statNames[_0x45865e]+'</option>';}),_0x3d3116+='</select>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20id=\x22sortAsc\x22>Asc</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20id=\x22sortDesc\x22>Desc</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',_0x4add78['append'](_0x3d3116),$(_0x1feef8(0x178))['on']('change',()=>{const _0x8d8831=_0x1feef8;currentSortProp=$(_0x8d8831(0x178))[_0x8d8831(0x1d6)](),updateMachineSort();}),$(_0x1feef8(0x16f))['on']('click',()=>{const _0x531b84=_0x1feef8;currentSortDir=0x1,$(_0x531b84(0x1b7))['removeClass'](_0x531b84(0x1e4)),$(_0x531b84(0x16f))[_0x531b84(0x16c)](_0x531b84(0x1e4)),updateMachineSort();}),$(_0x1feef8(0x18b))['on']('click',()=>{const _0x21f385=_0x1feef8;currentSortDir=-0x1,$('#sortAsc,\x20#sortDesc')['removeClass'](_0x21f385(0x1e4)),$(_0x21f385(0x18b))[_0x21f385(0x16c)](_0x21f385(0x1e4)),updateMachineSort();}),$(_0x1feef8(0x178))[_0x1feef8(0x1d6)](currentSortProp),currentSortDir===0x1?$(_0x1feef8(0x16f))[_0x1feef8(0x16c)]('active'):$(_0x1feef8(0x18b))[_0x1feef8(0x16c)]('active');}function updateMachineSort(){const _0x295160=_0x3fab3f;saveSortSettings();const _0x3dddfd=Object[_0x295160(0x19a)](machineData);if(!currentSortProp){buildMachineAccordion(_0x3dddfd);return;}let _0x530d7f;if(currentSortProp===_0x295160(0x15c))_0x530d7f=_0x3dddfd[_0x295160(0x1db)]((_0x433e95,_0x15a53f)=>machineData[_0x433e95]['name'][_0x295160(0x1e3)](machineData[_0x15a53f][_0x295160(0x162)]));else currentSortProp===_0x295160(0x1c2)?_0x530d7f=_0x3dddfd[_0x295160(0x1db)]((_0x38bbde,_0x540b29)=>machineData[_0x540b29][_0x295160(0x162)][_0x295160(0x1e3)](machineData[_0x38bbde][_0x295160(0x162)])):_0x530d7f=_0x3dddfd['sort']((_0x5ab777,_0x5c7565)=>{const _0x2b22b2=machineData[_0x5ab777][currentSortProp],_0x55e573=machineData[_0x5c7565][currentSortProp];return(_0x2b22b2>_0x55e573?0x1:_0x2b22b2<_0x55e573?-0x1:0x0)*currentSortDir;});buildMachineAccordion(_0x530d7f);}function buildMachineAccordion(_0x510bba=null){const _0x34920f=_0x3fab3f,_0xa5003a=$(_0x34920f(0x144));_0xa5003a['hasClass'](_0x34920f(0x16e))&&_0xa5003a[_0x34920f(0x15b)]('destroy');_0xa5003a['empty']();if(Object[_0x34920f(0x19a)](machineData)[_0x34920f(0x138)]===0x0)return;const _0x9334c5=_0x510bba||Object['keys'](machineData);_0x9334c5[_0x34920f(0x1c6)](_0x5b00ed=>{const _0xc5be49=_0x34920f,_0x888983=machineData[_0x5b00ed],_0x227757=$(_0xc5be49(0x169)+_0x888983[_0xc5be49(0x175)]+_0xc5be49(0x18c)+_0x888983[_0xc5be49(0x162)]+_0xc5be49(0x14a)),_0x22e75e=$(_0xc5be49(0x193)),_0x997237=$('\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h4>'+_0x888983[_0xc5be49(0x162)]+_0xc5be49(0x1c8)),_0x1af389=$(_0xc5be49(0x14f)+_0x888983[_0xc5be49(0x175)]+_0xc5be49(0x198)),_0x19b2e7=$('<p>'+_0x888983[_0xc5be49(0x15d)]+_0xc5be49(0x13d));let _0x5ea04a=_0xc5be49(0x1d0),_0x36f41c=0x0;Object[_0xc5be49(0x19a)](_0x888983)['forEach'](_0x3190a2=>{const _0x205883=_0xc5be49;if([_0x205883(0x162),'image','description'][_0x205883(0x176)](_0x3190a2))return;let _0x337da6='';_0x3190a2==_0x205883(0x195)&&(_0x337da6=_0x205883(0x1a8)),_0x5ea04a+=_0x205883(0x1b8)+(statNames[_0x3190a2]+_0x337da6)+_0x205883(0x13e)+Number((_0x888983[_0x3190a2]*actualStatValues[_0x36f41c])[_0x205883(0x149)](0x2))+_0x205883(0x181),_0x36f41c++;}),_0x5ea04a+=_0xc5be49(0x18e);const _0x2034d4=$(_0x5ea04a);_0x22e75e[_0xc5be49(0x1b1)](_0x997237,_0x1af389,_0x19b2e7,_0x2034d4),_0xa5003a[_0xc5be49(0x1b1)](_0x227757,_0x22e75e);}),$(_0x34920f(0x144))[_0x34920f(0x15b)]({'heightStyle':_0x34920f(0x171),'collapsible':!![],'animate':0xc8});}function initMachinesUI(){loadSortSettings(),buildMachineSortControls(),buildMachineAccordion();}
+ "use strict";
+
+let machineData = {};
+let characterData = {};
+let colorIndex = 0;
+let machinesLoaded = false;
+let charactersLoaded = false;
+const statNames = {
+        topSpeed: "Top Speed",
+        boost: "Boost Power",
+        charge: "Charge Rate",
+        turn: "Turning",
+        grip: "Grip",
+        lift: "Lift",
+        flightSpeed: "Flight Speed",
+        offense: "Offense",
+        maxHP: "Max HP",
+        weight: "Weight"
+    };
+ let actualStatValues = [0.2,    0.2,      1,        1,      1,      1,        .2,          .3,        .5,       .3];
+
+// Smooth HSL rainbow colors
+const rainbowColors = [
+  "hsl(0, 100%, 70%)",   // red bright
+  "hsl(0, 100%, 45%)",   // red dark
+
+  "hsl(30, 100%, 70%)",  // orange bright
+  "hsl(30, 100%, 35%)",  // orange dark
+
+  "hsl(60, 100%, 70%)",  // yellow bright
+  "hsl(60, 100%, 35%)",  // yellow dark
+
+  "hsl(120, 100%, 65%)", // green bright
+  "hsl(120, 100%, 30%)", // green dark
+
+  "hsl(240, 100%, 70%)", // blue bright
+  "hsl(240, 100%, 45%)", // blue dark
+
+  "hsl(275, 100%, 70%)", // indigo bright
+  "hsl(275, 100%, 40%)", // indigo dark
+
+  "hsl(300, 100%, 70%)", // violet bright
+  "hsl(300, 100%, 45%)"  // violet dark
+];
+
+$(document).ready(function () {    //runs when html is loaded and elements can be selected
+
+  async function loadMachines() {  //async to use await for fetching to be done
+  try {                             //error handling try block
+    const response = await fetch("machines.json"); //sends request to machine json file and waits for response
+    const machines = await response.json();        //Parses the response body as json and awaits the resulting promise.
+
+    machineData = machines;       //stores response into global machines
+
+    for (const key in machines) {  //loop through the data
+      const machine = machines[key]; //sets machine to the current machine data on the machines key
+      $("#machineDropdown").append(`<option value="${key}">${machine.name}</option>`); //adds the options to the machine dropdown
+    }
+
+    machinesLoaded = true; //sets the value to be true that machines have been loaded
+  } catch (e) { //catches if error happens in previous block
+    console.error("Failed to load machines.json", e);   //reports custom error and error data to console
+  }
+}
+
+  async function loadCharacters() { // runs async to get json responses for characters
+  try {                             //error handling try block  
+    const response = await fetch("characters.json"); //sends request and awaits for fetching to be done
+    const chars = await response.json(); //awaits response and parsing the json body
+
+    characterData = chars;
+
+    for (const key in chars) {
+      const char = chars[key];
+      $("#characterDropdown").append(
+        `<option value="${key}">${char.name}</option>`
+      );
+    }
+
+    charactersLoaded = true;
+    } catch (e) { //catches if error happens in previous block
+      console.error("Failed to load machines.json", e);   //reports custom error and error data to console
+    }
+  }
+
+  // Load both JSONs in parallel
+  async function init() {
+    await Promise.all([loadMachines(), loadCharacters()]);
+    tryRestoreLastCombo();   //tries to restore last combination
+    populateGridDropdowns();
+    createCarousel()
+    initMachinesUI();
+  }
+
+  init();
+
+  // Load combo button
+  $("#loadCombo").on("click", function () {
+    const selectedMachine = $("#machineDropdown").val();
+    const selectedCharacter = $("#characterDropdown").val();
+
+    if (!selectedMachine || !selectedCharacter) {
+      alert("Pick both!");
+      return;
+    }
+
+    const combinedStats = combineStats(
+      machineData[selectedMachine],
+      characterData[selectedCharacter]
+    );
+
+    const color = rainbowColors[colorIndex % rainbowColors.length];
+    colorIndex++;
+
+    DrawChart(combinedStats, color);
+    displayComboBlock(selectedCharacter, selectedMachine, color);
+
+    localStorage.setItem(
+      "lastCombo",
+      JSON.stringify({
+        character: selectedCharacter,
+        machine: selectedMachine,
+        colorIndex,
+      })
+    );
+  });
+
+
+
+  // Clear button
+  $("#clearCanvas").on("click", function() {
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    $("#comboList").empty();
+    colorIndex = 0;
+    localStorage.removeItem("lastCombo");
+     $("#comboGallery").html("");
+  });
+});
+
+function displayComboBlock(characterKey, machineKey, color) {
+    // Fetch the actual data objects
+    const charData = characterData[characterKey];
+    const machData = machineData[machineKey];
+    const $comboBlock = $(`
+        <div class="combo-block">
+            <div class="combo-images">
+                <img src="images/KARS Resources/Character Renders/${charData.image}" 
+                     alt="${charData.name}" class="combo-img">
+                <img src="images/KARS Resources/Machine Renders/${machData.image}" 
+                     alt="${machData.name}" class="combo-img">
+                <div class="combo-color-box"></div>
+            </div>
+        </div>
+    `);
+
+    $comboBlock.find(".combo-color-box").css("background", color); // Apply the passed color
+    $("#comboGallery").append($comboBlock); // Append to gallery
+}
+
+
+// Combine numeric stats only
+function combineStats(machine, character) {
+  const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
+  const result = {};
+  statKeys.forEach(k => { result[k] = machine[k] * (character[k]) *2; });
+  return result;
+}
+
+
+function tryRestoreLastCombo() {
+  if (!(machinesLoaded && charactersLoaded)) return;
+
+  const saved = localStorage.getItem("lastCombo");
+  if (!saved) return;
+
+  const last = JSON.parse(saved);
+
+  $("#characterDropdown").val(last.character);
+  $("#machineDropdown").val(last.machine);
+  colorIndex = last.colorIndex || 0;
+
+  const combinedStats = combineStats(
+    machineData[last.machine],
+    characterData[last.character]
+  );
+
+  const color = rainbowColors[colorIndex % rainbowColors.length];
+  DrawChart(combinedStats, color);
+  displayComboBlock(last.character, last.machine, color);
+  colorIndex+=1
+}
+
+
+// DrawChart safely using fixed numeric stats
+function DrawChart(stats, color="blue") {
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+
+  const middleX = canvas.width / 2;
+  const middleY = canvas.height / 2;
+
+  const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
+  const values = statKeys.map(k => stats[k]);
+
+  const total = values.length;
+  const step = (2 * Math.PI) / total;
+
+  ctx.beginPath();
+  for (let i=0;i<total;i++){
+    const angle = i*step;
+    const x = middleX + Math.sin(angle)*values[i];
+    const y = middleY - Math.cos(angle)*values[i];
+    if(i===0){
+        ctx.moveTo(x,y);
+    }else {
+        ctx.lineTo(x,y);
+    }
+  }
+  ctx.closePath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+
+  // HSL transparency works the same as hex + "33"
+  ctx.fillStyle = color.replace(")", ", 0.2)").replace("hsl", "hsla");
+  ctx.stroke();
+  ctx.fill();
+}
+
+
+
+
+
+
+function populateGridDropdowns() {
+  const riderSelects = ['rider1','rider2'].map(id => document.getElementById(id));
+  const machineSelects = ['machine1','machine2'].map(id => document.getElementById(id));
+
+  // Add characters to rider dropdowns
+  for (const key in characterData) {
+    const char = characterData[key];
+    riderSelects.forEach(sel => {
+      sel.innerHTML += `<option value="${key}">${char.name}</option>`;
+    });
+  }
+
+  // Add machines to machine dropdowns
+  for (const key in machineData) {
+    const machine = machineData[key];
+    machineSelects.forEach(sel => {
+      sel.innerHTML += `<option value="${key}">${machine.name}</option>`;
+    });
+  }
+
+
+  for (const key in characterData) {
+    const char = characterData[key];
+    riderSelects.forEach(sel => {
+      sel.innerHTML += `<option value="${key}">${char.name}</option>`;
+    });
+  }
+}
+
+
+
+
+
+
+
+// Compute stats for direct comparison grid
+function getDirectStats(riderId, machineId) {
+    const riderKey = $('#' + riderId).val();
+    const machineKey = $('#' + machineId).val();
+
+    const rider = riderKey ? characterData[riderKey] : null;
+    const machine = machineKey ? machineData[machineKey] : null;
+
+    if (rider && machine) {
+        const combined = {};
+        const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
+        statKeys.forEach(stat => {
+            combined[stat] = (rider[stat]) * (machine[stat]);
+        });
+        return combined;
+    } else {
+        return false;
+    }
+}
+
+$('#rider1, #rider2, #machine1, #machine2').on('change', function() {
+    getDirectStats();
+});
+
+
+$("#gridCompareBtn").on("click", function() {
+    // Get combined stats for Choice 1 and Choice 2
+    const choice1 = getDirectStats('rider1', 'machine1');
+    const choice2 = getDirectStats('rider2', 'machine2');
+    if (!(choice1 && choice2)){
+      alert("Pick all four");
+      return;
+    }
+
+    const rider1Key = $('#rider1').val();
+    const machine1Key = $('#machine1').val();
+
+    
+    $("#firstChoice").html(`
+        <div>
+            <img src="images/KARS Resources/Character Icons/${characterData[rider1Key].image}" alt="">
+            ${characterData[rider1Key].name}
+        </div>
+        <div>
+            <img src="images/KARS Resources/Machine Icons/${machineData[machine1Key].image}" alt="">
+            ${machineData[machine1Key].name}
+        </div>
+    `);
+
+    const rider2Key = $('#rider2').val();
+    const machine2Key = $('#machine2').val();
+
+    $("#secondChoice").html(`
+        <div>
+            <img src="images/KARS Resources/Character Icons/${characterData[rider2Key].image}" alt="">
+            ${characterData[rider2Key].name}
+        </div>
+        <div>
+            <img src="images/KARS Resources/Machine Icons/${machineData[machine2Key].image}" alt="">
+            ${machineData[machine2Key].name}
+        </div>
+    `);
+
+    // List of stats to display
+    const statKeys = ["topSpeed", "boost", "charge", "turn", "grip", "lift", "flightSpeed", "offense", "maxHP", "weight"];
+
+    let i=0;
+    let speedUnits = $("#kmOrMi").val() == "mi"? 0.6213711922:1;
+    statKeys.forEach(stat => {
+        let speedStat = stat=="topSpeed"? speedUnits:1
+        const val1 = choice1[stat] !== undefined ? choice1[stat] *  actualStatValues[i] * speedStat : undefined;
+        const val2 = choice2[stat] !== undefined ? choice2[stat] *  actualStatValues[i] * speedStat : undefined;
+        $('#' + stat + '1').text(val1 !== undefined ? val1.toFixed(2) : '—');
+        $('#' + stat + '2').text(val2 !== undefined ? val2.toFixed(2) : '—');
+        $('#' + stat + 'Diff').text((val1 !== undefined && val2 !== undefined)? (val1 - val2).toFixed(2) : '—');
+        if(val1 > 1 && val2 >1){
+            $('#' + stat + 'DiffPercent').text(((val1/val2)*100).toFixed(1) +"%");
+        }else{
+            $('#' + stat + 'DiffPercent').text("NA");
+        }
+    });
+});
+
+
+let carouselAutoPlay = true
+
+function createCarousel() {
+    const keys = Object.keys(characterData);
+
+    // Build the thumbnail carousel
+    keys.forEach(key => {
+        const char = characterData[key];
+
+        $(".characterCarousel").append(`
+            <div>
+                <img src="images/KARS Resources/Character Renders/${char.image}" alt="${char.name}">
+            </div>
+        `);
+    });
+
+    // Initialize thumbnail carousel
+    $('.characterCarousel').slick({
+        slidesToShow: 5,
+        centerMode: true,
+        focusOnSelect: true,
+        slidesToScroll: 1,
+        autoplay: carouselAutoPlay,
+        autoplaySpeed: 5000,
+    });
+    
+    $(".slick-prev").text("\u2190")
+    $(".slick-next").text("\u2192")
+    // Update main display when a thumbnail is clicked / slide changes
+    $('.characterCarousel').on('afterChange', function(event, slick, currentSlide) {
+        const charKey = keys[currentSlide % keys.length]; // wrap safely
+        updateCharacterInfo(characterData[charKey]);
+    });
+
+    // Optional: update info on initial load
+    updateCharacterInfo(characterData[keys[0]]);
+}
+
+// Function to update main display (#characterDisplay)
+function updateCharacterInfo(char) {
+    if (!char) return; // safety check
+
+    $("#charImage").attr("src", `images/KARS Resources/Character Renders/${char.image}`);
+    $("#charName").text(char.name);
+    $("#charDescription").text(char.description);
+
+    // Stats table
+    const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
+    
+
+    let statsHTML = '<table class="char-stats">';
+    statKeys.forEach(stat => {
+        statsHTML += `<tr>
+                        <td class="charStatName">${statNames[stat]}</td>
+                        <td class="charStatValue">${char[stat]}</td>
+                      </tr>`;
+    });
+    statsHTML += '</table>';
+
+    $("#charStats").html(statsHTML);
+}
+
+
+$("#carouselAutoplayBtn").on("click", function () {
+    const isOn = $(this).text().includes("ON");
+
+    if (isOn) {
+        $('.characterCarousel').slick('slickPause');
+        $(this).text("Autoplay: OFF").addClass("off");
+    } else {
+        $('.characterCarousel').slick('slickPlay');
+        $(this).text("Autoplay: ON").removeClass("off");
+    }
+});
+
+
+
+
+
+
+// --- GLOBAL ---
+let currentSortProp = null;
+let currentSortDir = 1; // 1 = ascending, -1 = descending
+
+function saveSortSettings() {
+    localStorage.setItem("machineSortProp", currentSortProp);
+    localStorage.setItem("machineSortDir", currentSortDir);
+}
+
+function loadSortSettings() {
+    currentSortProp = localStorage.getItem("machineSortProp") || "";
+    currentSortDir = Number(localStorage.getItem("machineSortDir") || 1);
+}
+
+function buildMachineSortControls() {
+    const $controls = $("#machineSortControls");
+    $controls.empty();
+
+    if (Object.keys(machineData).length === 0) return;
+
+    let html = `
+        <label for="machineSortSelect">Sort by:</label>
+        <select id="machineSortSelect">
+            <option value="">-- Select a sort --</option>
+            <option value="alpha">Alphabetical (A → Z)</option>
+            <option value="alphaRev">Alphabetical (Z → A)</option>
+    `;
+
+    // Add all stats
+    Object.keys(statNames).forEach(stat => {
+        html += `<option value="${stat}">${statNames[stat]}</option>`;
+    });
+
+    html += `</select>
+
+             <button id="sortAsc">Asc</button>
+             <button id="sortDesc">Desc</button>
+            `;
+
+    $controls.append(html);
+
+    // Events
+    $("#machineSortSelect").on("change", () => {
+        currentSortProp = $("#machineSortSelect").val();
+        updateMachineSort();
+    });
+
+    $("#sortAsc").on("click", () => {
+        currentSortDir = 1;
+        $("#sortAsc, #sortDesc").removeClass("active"); // remove active from both
+        $("#sortAsc").addClass("active");              // set active on this one
+        updateMachineSort();
+    });
+
+    $("#sortDesc").on("click", () => {
+
+    currentSortDir = -1;
+        $("#sortAsc, #sortDesc").removeClass("active"); // remove active from both
+        $("#sortDesc").addClass("active");             // set active on this one
+        updateMachineSort();
+    });
+
+
+    // Load saved selection into UI
+    $("#machineSortSelect").val(currentSortProp);
+    if (currentSortDir === 1) {
+        $("#sortAsc").addClass("active");
+    } else {
+        $("#sortDesc").addClass("active");
+    }
+
+}
+
+
+
+function updateMachineSort() {
+
+    // Save current settings
+    saveSortSettings();
+
+    const keys = Object.keys(machineData);
+
+    if (!currentSortProp) {
+        buildMachineAccordion(keys);
+        return;
+    }
+
+    let sortedKeys;
+
+    if (currentSortProp === "alpha") {
+        sortedKeys = keys.sort((a, b) =>
+            machineData[a].name.localeCompare(machineData[b].name)
+        );
+    }
+    else if (currentSortProp === "alphaRev") {
+        sortedKeys = keys.sort((a, b) =>
+            machineData[b].name.localeCompare(machineData[a].name)
+        );
+    }
+    else {
+        sortedKeys = keys.sort((a, b) => {
+            const A = machineData[a][currentSortProp];
+            const B = machineData[b][currentSortProp];
+            return (A > B ? 1 : A < B ? -1 : 0) * currentSortDir;
+        });
+    }
+
+    buildMachineAccordion(sortedKeys);
+}
+
+
+
+
+function buildMachineAccordion(keysOverride = null) {
+    const $acc = $("#accordion");
+    
+    if ($acc.hasClass("ui-accordion")) {
+        $acc.accordion("destroy");
+    }
+
+    $acc.empty();
+
+    if (Object.keys(machineData).length === 0) return;
+
+    const keys = keysOverride || Object.keys(machineData);
+
+    keys.forEach(id => {
+        const m = machineData[id];
+
+        // HEADER
+        const $header = $(`
+            <h3>
+                <img src="images/KARS Resources/Machine Icons/${m.image}">
+                ${m.name}
+            </h3>
+        `);
+
+        // CONTENT
+        const $content = $("<div></div>");
+
+        
+
+        // Main image
+        const $insideHeader = $(`
+            <h4>${m.name}</h4>
+        `);
+
+        // Main image
+        const $img = $(`
+            <img src="images/KARS Resources/Machine Renders/${m.image}">
+        `);
+
+        // Description
+        const $desc = $(`<p>${m.description}</p>`);
+
+
+      let statsHTML = `
+          <h4>Stat Values</h4>
+          <table class="machine-stats-table">
+              <thead>
+                  <tr>
+                  </tr>
+              </thead>
+              <tbody>
+      `;
+      let i=0
+      Object.keys(m).forEach(prop => {
+          if (["name", "image", "description"].includes(prop)) return;
+          let units = "";
+          if (prop=="topSpeed"){
+            units = " (km / hr)"
+          }
+          statsHTML += `
+              <tr>
+                  <td>${statNames[prop] + units}</td>
+                  <td>${Number((m[prop] *  actualStatValues[i]).toFixed(2)) }</td>
+              </tr>
+          `;
+          i++
+      });
+
+      statsHTML += `
+              </tbody>
+          </table>
+      `;
+
+      const $stats = $(statsHTML);
+
+      $content.append($insideHeader, $img, $desc, $stats);
+
+      $acc.append($header, $content);
+    });
+
+    //ACCORDION
+    $("#accordion").accordion({
+          heightStyle: "content",  // panel height = content height
+          collapsible: true,       // allows panels to be closed
+          animate: 200             // optional animation in ms
+      });
+}
+
+
+
+function initMachinesUI() {
+    loadSortSettings();
+    buildMachineSortControls();
+    buildMachineAccordion();
+}
+
+
+
+
+
+
+
+
+
+/** 
+function buildMachineAccordion() {
+    const $accordion = $("#accordion");
+    $accordion.empty();   // remove example skeleton
+
+    Object.keys(machineData).forEach(key => {
+        const m = machineData[key];
+        let section = ""
+        section += `<h3><img src = "images/KARS Resources/Machine Icons/${m.image}">  ${m.name} </h3>
+                    <div>
+                    <img src = "images/KARS Resources/Machine Renders/${m.image}">
+                    <p> ${m.name} </p>
+                    <p> ${m.description}</p>
+                    `;
+        Object.keys(statNames).forEach(key => {
+          section += `<tr>
+                        <td class="charStatName">${statNames[key]}</td>
+                        <td class="charStatValue">${m[key]}</td>
+                      </tr>
+                      `;
+      })
+      section += "</div>"
+      $accordion.append(section);
+    })
+
+
+    // Reinitialize jQuery UI accordion
+    $( "#accordion" ).accordion();
+
+  }
+
+
+*/
