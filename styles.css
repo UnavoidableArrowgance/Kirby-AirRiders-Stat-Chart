@@ -450,8 +450,8 @@ select, #spiderChart button {
     display: grid;
     grid:
         "c1 c2 . ." 30px
-        "r1 m1 . ." 40px
-        "r2 m2 btn km" 40px
+        "r1 r2 . ." 40px
+        "m1 m2 btn km" 40px
         / 200px 200px 150px 100px;
     gap: 20px;
     align-items: center;
@@ -561,7 +561,7 @@ select, #spiderChart button {
 
 .choice-header {
     font-weight: bold;
-    background: var(--gray3);
+    background: var(--black);
     color:#09c;
 }
 
@@ -886,16 +886,16 @@ select, #spiderChart button {
 }
 
 #machineSortControls button:hover {
-  background-color: var(--blue1, #ADD8E6);
-  color: var(--white, #fff);
-  border-color: var(--blue2, #007BFF);
+  background-color: var(--blue1);
+  color: var(--white);
+  border-color: var(--blue2);
 }
 
 /* Active sort button */
 #machineSortControls button.active {
-  background-color: var(--blue2, #007BFF);
-  color: var(--white, #fff);
-  border-color: var(--blue2, #007BFF);
+  background-color: var(--blue2);
+  color: var(--white);
+  border-color: var(--blue2);
 }
 
 
@@ -915,8 +915,8 @@ select, #spiderChart button {
 #accordion > div {
     display: grid;
     grid:
-        "img name" 30px
-        "img description" 30px
+        "img name" 50px
+        "img description" 40px
         "img title" 30px
         "img stats" 350px
         / 500px 500px; /* columns: 400px for image, 500px for content */
@@ -926,7 +926,6 @@ select, #spiderChart button {
     margin: auto;
     margin: 0 auto;        /* auto left/right margins */
 }
-
 /* Assign each element to the proper grid area */
 #accordion > div img:first-of-type {
     grid-area: img;
@@ -939,16 +938,22 @@ select, #spiderChart button {
 #accordion > div h4:first-of-type {
     grid-area: name;
     margin: 0;
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: italic;
 }
 
 #accordion > div p {
     grid-area: description;
     margin: 0;
+    align-self: center;
 }
 
 #accordion > div h4:nth-of-type(2) { /* The "Stat Values" header */
     grid-area: title;
     margin: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
 #accordion > div table.machine-stats-table {
