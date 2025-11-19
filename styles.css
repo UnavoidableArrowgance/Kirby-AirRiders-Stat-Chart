@@ -665,6 +665,7 @@ select, #spiderChart button {
   font-size: 2.5rem;
   font-weight: bold;
   font-style: italic;
+  padding-top:10px;
 }
 #charDescription { 
   grid-area: description; 
@@ -1006,7 +1007,9 @@ footer{
 footer p{
   border-radius: 50%;
   background-color: var(--apricot);
-  width: 150px;
+  width: 200px;
   padding: 30px 10px;
   margin: auto;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
