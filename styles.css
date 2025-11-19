@@ -927,7 +927,7 @@ select, #spiderChart button {
     margin: 0 auto;        /* auto left/right margins */
 }
 /* Assign each element to the proper grid area */
-#accordion > div img:first-of-type {
+#accordion div img:first-of-type {
     grid-area: img;
     height: 300px;
     object-fit: contain;
@@ -935,7 +935,7 @@ select, #spiderChart button {
     justify-self: end;
 }
 
-#accordion > div h4:first-of-type {
+#accordion div h4:first-of-type {
     grid-area: name;
     margin: 0;
   font-size: 3rem;
@@ -943,20 +943,20 @@ select, #spiderChart button {
   font-style: italic;
 }
 
-#accordion > div p {
+#accordion div p {
     grid-area: description;
     margin: 0;
     align-self: center;
 }
 
-#accordion > div h4:nth-of-type(2) { /* The "Stat Values" header */
+#accordion div h4:nth-of-type(2) { /* The "Stat Values" header */
     grid-area: title;
     margin: 0;
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-#accordion > div table.machine-stats-table {
+#accordion div table.machine-stats-table {
     grid-area: stats;
     width: 100%;
     border-collapse: collapse;
