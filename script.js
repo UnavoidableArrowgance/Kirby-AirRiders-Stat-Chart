@@ -5,6 +5,19 @@ let characterData = {};
 let colorIndex = 0;
 let machinesLoaded = false;
 let charactersLoaded = false;
+const statNames = {
+        topSpeed: "Top Speed",
+        boost: "Boost Power",
+        charge: "Charge Rate",
+        turn: "Turning",
+        grip: "Grip",
+        lift: "Lift",
+        flightSpeed: "Flight Speed",
+        offense: "Offense",
+        maxHP: "Max HP",
+        weight: "Weight"
+    };
+ let actualStatValues = [0.2,    0.2,      1,        1,      1,      1,        .2,          .3,        .5,       .3];
 
 // Smooth HSL rainbow colors
 const rainbowColors = [
@@ -38,10 +51,12 @@ $(document).ready(function () {    //runs when html is loaded and elements can b
 }
 
   async function loadCharacters() { // runs async to get json responses for characters
+  try {                             //error handling try block  
     const response = await fetch("characters.json"); //sends request and awaits for fetching to be done
     const chars = await response.json(); //awaits response and parsing the json body
 
     characterData = chars;
+
     for (const key in chars) {
       const char = chars[key];
       $("#characterDropdown").append(
@@ -50,13 +65,18 @@ $(document).ready(function () {    //runs when html is loaded and elements can b
     }
 
     charactersLoaded = true;
-    tryRestoreLastCombo();   //tries to restore last combination
-    populateGridDropdowns();
+    } catch (e) { //catches if error happens in previous block
+      console.error("Failed to load machines.json", e);   //reports custom error and error data to console
+    }
   }
 
   // Load both JSONs in parallel
   async function init() {
     await Promise.all([loadMachines(), loadCharacters()]);
+    tryRestoreLastCombo();   //tries to restore last combination
+    populateGridDropdowns();
+    createCarousel()
+    initMachinesUI();
   }
 
   init();
@@ -131,7 +151,7 @@ function displayComboBlock(characterKey, machineKey, color) {
 function combineStats(machine, character) {
   const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
   const result = {};
-  statKeys.forEach(k => { result[k] = machine[k] * (character[k] || 1) *2; });
+  statKeys.forEach(k => { result[k] = machine[k] * (character[k]) *2; });
   return result;
 }
 
@@ -219,6 +239,14 @@ function populateGridDropdowns() {
       sel.innerHTML += `<option value="${key}">${machine.name}</option>`;
     });
   }
+
+
+  for (const key in characterData) {
+    const char = characterData[key];
+    riderSelects.forEach(sel => {
+      sel.innerHTML += `<option value="${key}">${char.name}</option>`;
+    });
+  }
 }
 
 
@@ -239,15 +267,11 @@ function getDirectStats(riderId, machineId) {
         const combined = {};
         const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
         statKeys.forEach(stat => {
-            combined[stat] = (rider[stat] || 1) * (machine[stat] || 1);
+            combined[stat] = (rider[stat]) * (machine[stat]);
         });
         return combined;
-    } else if (rider) {
-        return rider;
-    } else if (machine) {
-        return machine;
     } else {
-        return {};
+        return false;
     }
 }
 
@@ -260,7 +284,10 @@ $("#gridCompareBtn").on("click", function() {
     // Get combined stats for Choice 1 and Choice 2
     const choice1 = getDirectStats('rider1', 'machine1');
     const choice2 = getDirectStats('rider2', 'machine2');
-
+    if (!(choice1 && choice2)){
+      alert("Pick all four");
+      return;
+    }
 
     const rider1Key = $('#rider1').val();
     const machine1Key = $('#machine1').val();
@@ -294,16 +321,16 @@ $("#gridCompareBtn").on("click", function() {
     // List of stats to display
     const statKeys = ["topSpeed", "boost", "charge", "turn", "grip", "lift", "flightSpeed", "offense", "maxHP", "weight"];
 
-    let actualStatValues = [0.2,    0.2,      1,        1,      1,      1,        .2,          .3,        .5,       .3];
     let i=0;
+    let speedUnits = $("#kmOrMi").val() == "mi"? 0.6213711922:1;
     statKeys.forEach(stat => {
-        const val1 = choice1[stat] !== undefined ? choice1[stat] *  actualStatValues[i] : undefined;
-        const val2 = choice2[stat] !== undefined ? choice2[stat] *  actualStatValues[i] : undefined;
-
+        let speedStat = stat=="topSpeed"? speedUnits:1
+        const val1 = choice1[stat] !== undefined ? choice1[stat] *  actualStatValues[i] * speedStat : undefined;
+        const val2 = choice2[stat] !== undefined ? choice2[stat] *  actualStatValues[i] * speedStat : undefined;
         $('#' + stat + '1').text(val1 !== undefined ? val1.toFixed(2) : '—');
         $('#' + stat + '2').text(val2 !== undefined ? val2.toFixed(2) : '—');
         $('#' + stat + 'Diff').text((val1 !== undefined && val2 !== undefined)? (val1 - val2).toFixed(2) : '—');
-        if(val1 != 0 && val2 !=0){
+        if(val1 > 1 && val2 >1){
             $('#' + stat + 'DiffPercent').text(((val1/val2)*100).toFixed(1) +"%");
         }else{
             $('#' + stat + 'DiffPercent').text("NA");
@@ -312,4 +339,330 @@ $("#gridCompareBtn").on("click", function() {
 });
 
 
+let carouselAutoPlay = true
 
+function createCarousel() {
+    const keys = Object.keys(characterData);
+
+    // Build the thumbnail carousel
+    keys.forEach(key => {
+        const char = characterData[key];
+
+        $(".characterCarousel").append(`
+            <div>
+                <img src="images/KARS Resources/Character Renders/${char.image}" alt="${char.name}">
+            </div>
+        `);
+    });
+
+    // Initialize thumbnail carousel
+    $('.characterCarousel').slick({
+        slidesToShow: 5,
+        centerMode: true,
+        focusOnSelect: true,
+        slidesToScroll: 1,
+        autoplay: carouselAutoPlay,
+        autoplaySpeed: 5000,
+    });
+    
+    $(".slick-prev").text("\u2190")
+    $(".slick-next").text("\u2192")
+    // Update main display when a thumbnail is clicked / slide changes
+    $('.characterCarousel').on('afterChange', function(event, slick, currentSlide) {
+        const charKey = keys[currentSlide % keys.length]; // wrap safely
+        updateCharacterInfo(characterData[charKey]);
+    });
+
+    // Optional: update info on initial load
+    updateCharacterInfo(characterData[keys[0]]);
+}
+
+// Function to update main display (#characterDisplay)
+function updateCharacterInfo(char) {
+    if (!char) return; // safety check
+
+    $("#charImage").attr("src", `images/KARS Resources/Character Renders/${char.image}`);
+    $("#charName").text(char.name);
+    $("#charDescription").text(char.description);
+
+    // Stats table
+    const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
+    
+
+    let statsHTML = '<table class="char-stats">';
+    statKeys.forEach(stat => {
+        statsHTML += `<tr>
+                        <td class="charStatName">${statNames[stat]}</td>
+                        <td class="charStatValue">${char[stat]}</td>
+                      </tr>`;
+    });
+    statsHTML += '</table>';
+
+    $("#charStats").html(statsHTML);
+}
+
+
+$("#carouselAutoplayBtn").on("click", function () {
+    const isOn = $(this).text().includes("ON");
+
+    if (isOn) {
+        $('.characterCarousel').slick('slickPause');
+        $(this).text("Autoplay: OFF").addClass("off");
+    } else {
+        $('.characterCarousel').slick('slickPlay');
+        $(this).text("Autoplay: ON").removeClass("off");
+    }
+});
+
+
+
+
+
+
+// --- GLOBAL ---
+let currentSortProp = null;
+let currentSortDir = 1; // 1 = ascending, -1 = descending
+
+function saveSortSettings() {
+    localStorage.setItem("machineSortProp", currentSortProp);
+    localStorage.setItem("machineSortDir", currentSortDir);
+}
+
+function loadSortSettings() {
+    currentSortProp = localStorage.getItem("machineSortProp") || "";
+    currentSortDir = Number(localStorage.getItem("machineSortDir") || 1);
+}
+
+function buildMachineSortControls() {
+    const $controls = $("#machineSortControls");
+    $controls.empty();
+
+    if (Object.keys(machineData).length === 0) return;
+
+    let html = `
+        <label for="machineSortSelect">Sort by:</label>
+        <select id="machineSortSelect">
+            <option value="">-- Select a sort --</option>
+            <option value="alpha">Alphabetical (A → Z)</option>
+            <option value="alphaRev">Alphabetical (Z → A)</option>
+    `;
+
+    // Add all stats
+    Object.keys(statNames).forEach(stat => {
+        html += `<option value="${stat}">${statNames[stat]}</option>`;
+    });
+
+    html += `</select>
+
+             <button id="sortAsc">Asc</button>
+             <button id="sortDesc">Desc</button>
+            `;
+
+    $controls.append(html);
+
+    // Events
+    $("#machineSortSelect").on("change", () => {
+        currentSortProp = $("#machineSortSelect").val();
+        updateMachineSort();
+    });
+
+    $("#sortAsc").on("click", () => {
+        currentSortDir = 1;
+        $("#sortAsc, #sortDesc").removeClass("active"); // remove active from both
+        $("#sortAsc").addClass("active");              // set active on this one
+        updateMachineSort();
+    });
+
+    $("#sortDesc").on("click", () => {
+
+    currentSortDir = -1;
+        $("#sortAsc, #sortDesc").removeClass("active"); // remove active from both
+        $("#sortDesc").addClass("active");             // set active on this one
+        updateMachineSort();
+    });
+
+
+    // Load saved selection into UI
+    $("#machineSortSelect").val(currentSortProp);
+    if (currentSortDir === 1) {
+        $("#sortAsc").addClass("active");
+    } else {
+        $("#sortDesc").addClass("active");
+    }
+
+}
+
+
+
+function updateMachineSort() {
+
+    // Save current settings
+    saveSortSettings();
+
+    const keys = Object.keys(machineData);
+
+    if (!currentSortProp) {
+        buildMachineAccordion(keys);
+        return;
+    }
+
+    let sortedKeys;
+
+    if (currentSortProp === "alpha") {
+        sortedKeys = keys.sort((a, b) =>
+            machineData[a].name.localeCompare(machineData[b].name)
+        );
+    }
+    else if (currentSortProp === "alphaRev") {
+        sortedKeys = keys.sort((a, b) =>
+            machineData[b].name.localeCompare(machineData[a].name)
+        );
+    }
+    else {
+        sortedKeys = keys.sort((a, b) => {
+            const A = machineData[a][currentSortProp];
+            const B = machineData[b][currentSortProp];
+            return (A > B ? 1 : A < B ? -1 : 0) * currentSortDir;
+        });
+    }
+
+    buildMachineAccordion(sortedKeys);
+}
+
+
+
+
+function buildMachineAccordion(keysOverride = null) {
+    const $acc = $("#accordion");
+    
+    if ($acc.hasClass("ui-accordion")) {
+        $acc.accordion("destroy");
+    }
+
+    $acc.empty();
+
+    if (Object.keys(machineData).length === 0) return;
+
+    const keys = keysOverride || Object.keys(machineData);
+
+    keys.forEach(id => {
+        const m = machineData[id];
+
+        // HEADER
+        const $header = $(`
+            <h3>
+                <img src="images/KARS Resources/Machine Icons/${m.image}">
+                ${m.name}
+            </h3>
+        `);
+
+        // CONTENT
+        const $content = $("<div></div>");
+
+        
+
+        // Main image
+        const $insideHeader = $(`
+            <h4>${m.name}</h4>
+        `);
+
+        // Main image
+        const $img = $(`
+            <img src="images/KARS Resources/Machine Renders/${m.image}">
+        `);
+
+        // Description
+        const $desc = $(`<p>${m.description}</p>`);
+
+
+      let statsHTML = `
+          <h4>Stat Values</h4>
+          <table class="machine-stats-table">
+              <thead>
+                  <tr>
+                  </tr>
+              </thead>
+              <tbody>
+      `;
+      let i=0
+      Object.keys(m).forEach(prop => {
+          if (["name", "image", "description"].includes(prop)) return;
+
+          statsHTML += `
+              <tr>
+                  <td>${statNames[prop]}</td>
+                  <td>${Number((m[prop] *  actualStatValues[i]).toFixed(2)) }</td>
+              </tr>
+          `;
+          i++
+      });
+
+      statsHTML += `
+              </tbody>
+          </table>
+      `;
+
+      const $stats = $(statsHTML);
+
+      $content.append($insideHeader, $img, $desc, $stats);
+
+      $acc.append($header, $content);
+    });
+
+    //ACCORDION
+    $("#accordion").accordion({
+          heightStyle: "content",  // panel height = content height
+          collapsible: true,       // allows panels to be closed
+          animate: 200             // optional animation in ms
+      });
+}
+
+
+
+function initMachinesUI() {
+    loadSortSettings();
+    buildMachineSortControls();
+    buildMachineAccordion();
+}
+
+
+
+
+
+
+
+
+
+/** 
+function buildMachineAccordion() {
+    const $accordion = $("#accordion");
+    $accordion.empty();   // remove example skeleton
+
+    Object.keys(machineData).forEach(key => {
+        const m = machineData[key];
+        let section = ""
+        section += `<h3><img src = "images/KARS Resources/Machine Icons/${m.image}">  ${m.name} </h3>
+                    <div>
+                    <img src = "images/KARS Resources/Machine Renders/${m.image}">
+                    <p> ${m.name} </p>
+                    <p> ${m.description}</p>
+                    `;
+        Object.keys(statNames).forEach(key => {
+          section += `<tr>
+                        <td class="charStatName">${statNames[key]}</td>
+                        <td class="charStatValue">${m[key]}</td>
+                      </tr>
+                      `;
+      })
+      section += "</div>"
+      $accordion.append(section);
+    })
+
+
+    // Reinitialize jQuery UI accordion
+    $( "#accordion" ).accordion();
+
+  }
+
+
+*/

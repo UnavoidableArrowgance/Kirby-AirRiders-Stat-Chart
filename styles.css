@@ -54,26 +54,75 @@ table {
 
 :root {  /* setting custom variables for easy uniform colors and fonts, and for easy changing through javascript */
     --white: #FFFFFF;
+    --black: #000000;
     --gray1: #F8F8F8;
-    --gray2: #999;
-    --gray3: #333333;
+    --gray2: #E0E0E0;
+    --gray3: #C0C0C0;
+    --gray4: #999999;
+    --gray5: #666666;
+    --gray6: #333333;
+    --gray7: #111111;
+
+    --red1: #FF0000;
+    --red2: #FF6347;
+    --red3: #B22222;
+    --red4: #8B0000;
+
+    --orange1: #FFA500;
+    --orange2: #FF8C00;
+    --orange3: #FF7F50;
+
+    --yellow1: #FFFF00;
+    --yellow2: #FFD700;
+    --yellow3: #F0E68C;
+
     --green1: #90EE90;
-    --green2: #006400;
-    --blue1: #ADD8E6;
-    --blue2:#007BFF;
-    --blue3: #00008B;
-    --red: #FF0000;
-    --yellow: #FFFF00;
-    --orange: #FFA500;
-    --purple: #800080;
-    --pink: #FF69B4;
-    --teal: #008080;
+    --green2: #32CD32;
+    --green3: #008000;
+    --green4: #006400;
     --lime: #00FF00;
+    --olive: #808000;
+
+    --blue1: #ADD8E6;
+    --blue2: #87CEEB;
+    --blue3: #1E90FF;
+    --blue4: #007BFF;
+    --blue5: #00008B;
     --cyan: #00FFFF;
-    --magenta: #FF00FF;
+    --teal: #008080;
+
+    --purple1: #800080;
+    --purple2: #8A2BE2;
+    --purple3: #9370DB;
+    --violet: #EE82EE;
+
+    --pink1: #FF69B4;
+    --pink2: #FF1493;
+    --pink3: #FFC0CB;
+
     --brown1: #D2B48C;
-    --brown2: #5C4033;
-    --black: #222222;
+    --brown2: #A0522D;
+    --brown3: #5C4033;
+    --beige: #F5F5DC;
+
+    --magenta: #FF00FF;
+    --indigo: #4B0082;
+    --navy: #000080;
+    --maroon: #800000;
+    --coral: #FF7F50;
+    --salmon: #FA8072;
+    --khaki: #F0E68C;
+    --mint: #98FF98;
+    --turquoise: #40E0D0;
+    --gold: #FFD700;
+    --silver: #C0C0C0;
+    --bronze: #CD7F32;
+    --rust: #B7410E;
+    --cream: #FFFDD0;
+    --apricot: #FBCEB1;
+    --lavender: #E6E6FA;
+    --plum: #DDA0DD;
+    --orchid: #DA70D6;
     --primary-font: Arial, sans-serif;
     --secondary-font: Helvetica, sans-serif;
 }
@@ -83,14 +132,23 @@ body {
   justify-content: center;
   align-items: center;
   width: 1280px;
-  border: 3px solid black;
+  margin: auto;
+  
+
+
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 
 
 
 
-
+header {
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  align-items: center; /* optional, centers content */
+}
 
 /* Banner container */
 .banner {
@@ -100,8 +158,8 @@ body {
   background: linear-gradient(to right, 
                               var(--white) 0%,
                               var(--white) 10%,
-                              var(--blue2) 10%,   /* blue starts at 0% */
-                              var(--blue1) 50%,  /* transition to lighter blue at 50% */
+                              var(--blue4) 10%,   /* blue starts at 0% */
+                              var(--blue2) 50%,  /* transition to lighter blue at 50% */
                               var(--white) 80%  /* white at 100% */
                              );
   display: flex;
@@ -137,7 +195,7 @@ body {
   flex: 1;
   margin-left: 30px;
   color: #fff;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 5px var(--black);
 }
 
 .banner-text .title {
@@ -156,14 +214,86 @@ body {
 
 
 
+/* NAV BAR STYLING */
+nav {
+    background-color: var(--green2); /* dark green background for contrast */
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 12px;
+    margin: 0 auto;
+    max-width: 1200px;
+    width:1200px;
+    height: 100px;
+    clear: both; /* forces nav below any floated content */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* space between buttons */
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 12px;
+    background-color: var(--green1); /* lighter green for buttons */
+    color: var(--black, #000);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+nav ul li a:hover {
+    background-color: var(--green2); /* darkens on hover */
+    color: var(--white, #fff);
+    transform: translateY(-2px); /* subtle lift effect */
+    box-shadow: 0 5px 10px var(--black);
+}
+
+nav ul li a:active {
+    transform: translateY(1px); /* pressed effect */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+
 
 
 
 
 main{
-  margin-top: 50px;
+  margin-top: 80px;
   margin-left: 20px;
 }
+
+#spiderChart h2{
+  font-display: block;
+  font-weight: bolder;
+  color: var(--lime);
+  font-size: 4rem;
+  background-color: var(--indigo);
+  background: linear-gradient(to right, 
+                              var(--white) 0%,
+                              var(--indigo) 50%,  /* transition to lighter blue at 50% */
+                              var(--white) 100% /* white at 100% */
+                             );
+  text-align: center;
+  display: block;
+  width: 1000px;
+  margin: auto;
+  border: 10px outset var(--plum);
+}
+
 #selectionArea {
   align-items: center;
   margin: auto;
@@ -171,7 +301,7 @@ main{
   justify-content: center;
   text-align: center;
 }
-#selectionArea h2{
+#selectionArea h3{
   font-size: 1.5rem;
   margin-top: 10px;
   font-weight: 600;
@@ -185,21 +315,21 @@ main{
   gap: 10px;
 }
 
-select, button {
+select, #spiderChart button {
   padding: 8px 12px;
   font-size: 16px;
   border-radius: 6px;
   border: none;
 }
 
-button {
+#spiderChart button {
   background-color: #0af;
   color: white;
   cursor: pointer;
   transition: 0.2s;
 }
 
-button:hover {
+#spiderChart button:hover {
   background-color: #09c;
 }
 
@@ -228,8 +358,7 @@ button:hover {
 }
 
 .combo-img {
-    width: 70px;         /* Smaller for full screen fit */
-    height: auto;
+    height: 70px;         /* Smaller for full screen fit */
     border-radius: 6px;  /* Optional: round corners */
 }
 
@@ -273,7 +402,23 @@ button:hover {
 
 
 
-
+/* #region chart Design */
+#direct-combo-comparison h3 {
+  font-weight: bolder;
+  font-size: 3.5rem;
+  text-align: center;
+  color: var(--yellow);
+  background: linear-gradient(
+                  135deg, 
+                  var(--blue2) 0%, 
+                  var(--gold) 50%, 
+                  var(--blue2) 100%
+                  );
+  border: 8px double var(--green2);
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
 
 .direct-combo-comparison {
     width: 90%;
@@ -286,6 +431,91 @@ button:hover {
     margin-bottom: 16px;
     text-align: center;
 }
+
+.direct-combo-comparison h4{
+  margin: auto;
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: bold;
+  background-color: var(--beige);
+  padding: 7px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 4px outset var(--pink2);
+}
+
+
+.combo-selection {
+    display: grid;
+    grid:
+        "c1 c1 . ." 30px
+        "r1 m1 . ." 40px
+        "c2 c2 . ." 30px
+        "r2 m2 btn km" 40px
+        / 200px 200px 150px 100px;
+    gap: 20px;
+    align-items: center;
+    margin-left: 250px;
+}
+
+
+.combo-selection h4:nth-of-type(1) { 
+  grid-area: c1; 
+}
+#rider1 { 
+  grid-area: r1; 
+}
+#machine1 { 
+  grid-area: m1; 
+}
+
+.combo-selection h4:nth-of-type(2) { 
+  grid-area: c2; 
+}
+#rider2 { 
+  grid-area: r2; 
+}
+#machine2 { 
+  grid-area: m2; 
+}
+
+#gridCompareBtn {
+    grid-area: btn; 
+    background: linear-gradient(145deg, var(--pink1), var(--pink2));
+    border: 3px outset var(--pink3);
+    border-radius: 12px;
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Hover effect */
+#gridCompareBtn:hover {
+    background: linear-gradient(145deg, var(--pink2), var(--pink1));
+}#gridCompareBtn:active {
+    border: 3px inset var(--pink3);
+}
+#kmOrMi {
+  grid-area: km;
+  justify-self: start;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid var(--plum);
+  background-color: var(--pink);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#kmOrMi:hover {
+  background-color: var(--pink1);
+}
+
+
 
 .comparison-grid {
     display: grid;
@@ -356,4 +586,422 @@ button:hover {
     background: #f0f0f0;
     border-radius: 6px;
     font-weight: 500;
+}
+
+/* #endregion */
+
+
+
+
+
+
+
+/* #region Carousel*/
+#characterShowcase h2 {
+  font-weight: bolder;
+  font-size: 3rem;
+  text-align: center;
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 10px;
+
+  /* Gradient text animation */
+  background: linear-gradient(
+    270deg,
+    var(--magenta),
+    var(--cyan),
+    var(--violet),
+    var(--cyan),
+    var(--magenta)
+  );
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: neonGradient 20s ease infinite;
+
+  /* Border + spacing */
+  padding: 15px 20px;
+  border: 4px solid var(--plum);
+  border-radius: 15px;
+}
+
+/* Gradient animation keyframes */
+@keyframes neonGradient {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+
+
+#characterDisplay{
+  display: grid;
+  grid:
+    "img name" 50px
+    "img description" 40px
+    "img title" 30px
+    "img stats"  260px
+    /400px 500px;
+  background-color: var(--blue1);
+  width: 900px;
+  align-self: center;
+  padding:10px;
+  border-radius: 10%;
+  justify-self: center; 
+  margin: auto;
+}
+
+#charImage { 
+  grid-area: img; 
+  max-height: 300px;
+  align-self: self-end;
+  max-width: 400px;
+  justify-self: end; 
+  align-self: center;
+}
+#charName { 
+  grid-area: name; 
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: italic;
+}
+#charDescription { 
+  grid-area: description; 
+  align-self: center;
+}
+#characterDisplay h4{ 
+  grid-area: title; 
+  font-weight: bold;
+  font-size: 1.5rem;
+
+}
+#charStats { 
+  grid-area: stats; 
+  background-color: var(--gray1);
+  border-radius: 5% 10% 10% 5%;
+  padding:5px 0;
+  width:250px;
+}
+#charStats tr td{
+  border-bottom: 1px solid var(--black);
+}
+.charStatName{
+  font-size: 1.2rem;
+  font-weight: 900;
+  width: 130px;
+  padding:2px;
+  padding-left: 5px;
+}
+.charStatValue{
+  border-left: 1px dotted var(--black);
+  padding-left: 5px;
+  width:100px;
+}
+
+
+#charStats tr:nth-child(even) {
+    background: var(--gray2);
+}
+
+.characterCarousel img{
+  height:100px;
+  justify-self: center;
+}
+
+.characterCarousel .slick-slide {
+    opacity: 0.4;
+    transition: all 0.5s ease;
+}
+
+.characterCarousel .slick-current {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.slick-slide img {
+  display: block;
+  margin: 0 auto;
+}
+.characterCarousel .slick-arrow {
+    position: static !important;  /* remove absolute positioning */
+    display: inline-block;
+}
+
+.characterCarousel {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+.characterCarousel .slick-arrow {
+    width: 100px;               /* clickable size */
+    height: 70px;
+    background-color: var(--magenta); /* semi-transparent dark */
+    color: white;              /* arrow color */
+    border-radius: 50%;        /* circle */
+    font-size: 3rem;           /* arrow icon size */
+    line-height: 50px;         /* center text vertically */
+    text-align: center;        /* center text horizontally */
+    cursor: pointer;
+    margin: 15px;
+    transition: background-color 0.3s, transform 0.2s;
+    
+}
+.slick-prev{
+  display:  block !important;
+  margin-left: 450px !important;
+}
+
+.slick-next{
+  display:  block !important;
+  margin-left: 700px !important;
+}
+
+.characterCarousel .slick-arrow:hover {
+    background-color: var(--pink2);
+    transform: scale(1.1);    /* subtle zoom on hover */
+}
+.slick-slide,
+.slick-track,
+.slick-list {
+  z-index: 1 !important;
+}
+
+
+
+
+
+#carouselAutoplayBtn {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--indigo);
+  color: var(--beige);
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  margin-top: -130px;
+  margin-bottom: 110px;
+  
+  position: relative;  /* becomes clickable in carousel */
+}
+#carouselAutoplayBtn.off {
+  background-color: #999;
+}
+
+
+/* #endregion */
+
+
+
+
+
+
+
+
+
+
+#machineShowcase h2 {
+  font-weight: bolder;
+  font-size: 3rem;
+  text-align: center;
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 10px;
+
+  /* Gradient text animation */
+  background: linear-gradient(
+    270deg,
+    var(--blue1),
+    var(--green1),
+    var(--gold),
+    var(--green1),
+    var(--blue1)
+  );
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: machineGradient 20s ease infinite;
+
+  /* Border + spacing */
+  padding: 15px 20px;
+  border: 4px solid var(--blue2);
+  border-radius: 15px;
+}
+
+/* Gradient animation keyframes */
+@keyframes machineGradient {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+
+
+/* Container for machine sorting */
+#machineSortControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+}
+
+/* Label styling */
+#machineSortControls label {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-right: 5px;
+}
+
+/* Dropdown styling */
+#machineSortControls select {
+  padding: 6px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 2px solid var(--gray3, #333);
+  background-color: var(--gray1, #f8f8f8);
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#machineSortControls select:hover {
+  border-color: var(--blue2, #007BFF);
+  box-shadow: 0 0 5px var(--blue2, #007BFF);
+}
+
+/* Asc/Desc buttons */
+#machineSortControls button {
+  padding: 6px 14px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 2px solid var(--gray3, #333);
+  background-color: var(--white, #fff);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+#machineSortControls button:hover {
+  background-color: var(--blue1, #ADD8E6);
+  color: var(--white, #fff);
+  border-color: var(--blue2, #007BFF);
+}
+
+/* Active sort button */
+#machineSortControls button.active {
+  background-color: var(--blue2, #007BFF);
+  color: var(--white, #fff);
+  border-color: var(--blue2, #007BFF);
+}
+
+
+
+
+
+
+
+
+#accordion img{
+  height:40px;
+  margin-right:10px;
+  vertical-align:middle;
+}
+
+
+#accordion > div {
+    display: grid;
+    grid:
+        "img name" 30px
+        "img description" 30px
+        "img title" 30px
+        "img stats" 350px
+        / 500px 500px; /* columns: 400px for image, 500px for content */
+    gap: 5px 5px;
+    align-items: start;
+    padding: 10px 0;
+    margin: auto;
+    margin: 0 auto;        /* auto left/right margins */
+}
+
+/* Assign each element to the proper grid area */
+#accordion > div img:first-of-type {
+    grid-area: img;
+    height: 300px;
+    object-fit: contain;
+    align-self: center;
+    justify-self: end;
+}
+
+#accordion > div h4:first-of-type {
+    grid-area: name;
+    margin: 0;
+}
+
+#accordion > div p {
+    grid-area: description;
+    margin: 0;
+}
+
+#accordion > div h4:nth-of-type(2) { /* The "Stat Values" header */
+    grid-area: title;
+    margin: 0;
+}
+
+#accordion > div table.machine-stats-table {
+    grid-area: stats;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table styling */
+.machine-stats-table th,
+.machine-stats-table td {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    text-align: left;
+}
+
+
+.machine-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+.machine-stats-table th,
+.machine-stats-table td {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+}
+
+.machine-stats-table th {
+    background: #f0f0f0;
+    font-weight: bold;
+}
+
+.machine-stats-table tr:nth-child(even) {
+    background: #fafafa;
+}
+
+
+
+
+footer{
+  margin: auto;
+  margin-top: 50px;
+  padding: 30px;
+  text-align: center;
+  background-color: var(--green2);
+}
+footer p{
+  border-radius: 50%;
+  background-color: var(--apricot);
+  width: 150px;
+  padding: 30px 10px;
+  margin: auto;
 }

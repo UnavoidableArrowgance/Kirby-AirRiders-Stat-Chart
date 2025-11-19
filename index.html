@@ -7,18 +7,20 @@
 	<meta name="author" content="Bradley Larkin"><!-- Gives credit to the author -->
 	<link rel="author" href="https://github.com/UnavoidableArrowgance?tab=repositories">
 	<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> <!-- https://www.walmart.com/ip/Callaway-Strata-Boom-Golf-Balls-Multi-Color-24-Pack/733938494 -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon"><!-- linking the favicon that appears for the tab  -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css"> <!-- linking the style sheet -->
-    <script src="script.js" async></script> <!--linking the javascript-->
+    <script src="script.js" defer></script> <!--linking the javascript-->
 
     <!-- jQuery core -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <!-- jQuery UI -->
+    <!-- jQuery UI (correct version) -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 
+    <!-- Slick carousel -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
 </head>
 
@@ -30,16 +32,24 @@
             </div>
             <div class="banner-text">
             <h1 class="title">Air Riders</h1>
-            <h2 class="subtitle">Stat mix</h2>
+            <p class="subtitle">Stat mix</p>
             </div>
         </div>
+        <nav>
+            <ul>
+                <li><a href = "#spiderChart">Spider Chart</a></li>
+                <li><a href = "#direct-combo-comparison">Direct Comparison</a></li>
+                <li><a href = "#characterShowcase">Character Showcase</a></li>
+                <li><a href = "#machineShowcase">Machine Showcase</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <div id="container">
-
+        <section id="spiderChart">
+            <h2>Chart The Pairs</h2>
             <section id="selectionArea">
-                <h2>Choose Your Combo</h2>
+                <h3>Choose Your Combo</h3>
 
                 <label for="characterDropdown">Character:</label>
                 <select id="characterDropdown">
@@ -68,35 +78,35 @@
                 <canvas id="myCanvas" width="985" height="880"></canvas>
             </div>
 
-        </div>
+        </section>
 
 
      <section id="direct-combo-comparison" class="direct-combo-comparison">
             <h3>Combo Comparison</h3>
 
             <div class="combo-selection">
-            <h4>Choice 1</h4>
-            <select id="rider1">
-                <option value="">--Select Rider--</option>
-            </select>
-            <select id="machine1">
-                <option value="">--Select Machine--</option>
-            </select>
+                <h4>Choice 1</h4>
+                <select id="rider1">
+                    <option value="">--Select Rider--</option>
+                </select>
+                <select id="machine1">
+                    <option value="">--Select Machine--</option>
+                </select>
 
-            <h4>Choice 2</h4>
-            <select id="rider2">
-                <option value="">--Select Rider--</option>
-            </select>
-            <select id="machine2">
-                <option value="">--Select Machine--</option>
-            </select>
-            
-            <select id="kmOrMi">
-                <option value="km">km / hr</option>
-                <option value="mi">mi / hr</option>
-            </select>
+                <h4>Choice 2</h4>
+                <select id="rider2">
+                    <option value="">--Select Rider--</option>
+                </select>
+                <select id="machine2">
+                    <option value="">--Select Machine--</option>
+                </select>
+                
+                <select id="kmOrMi">
+                    <option value="km">km / hr</option>
+                    <option value="mi">mi / hr</option>
+                </select>
 
-            <button id="gridCompareBtn">Compare</button>
+                <button id="gridCompareBtn">Compare</button>
             
             </div>
 
@@ -179,7 +189,44 @@
             </div>
     </section>
 
+    <section id = "characterShowcase">
+        <h2 id="characterModShowcase">Character Display and Modifier Showcase</h2>
 
-   
+        <div id="characterDisplay">
+            <img id="charImage" src="" alt="Character Image">
+            <h3 id="charName">_</h3>
+            <p id="charDescription"></p>
+            <h4>Stat modifiers</h4>
+            <div id="charStats"></div>
+        </div>
+
+        <div class="characterCarousel"></div> <!-- Thumbnails under -->
+        <button id="carouselAutoplayBtn">Autoplay: ON</button>
+    </section>
+
+
+    <section id = "machineShowcase">
+        <h2 id="machinestatShowcase">Machine Display and Stats Showcase</h2>
+        
+        <div id="machineSortControls">
+        </div>
+        
+        <div id="accordion">
+            
+        </div>
+
+
+    </section>
+        
+
     </main>
+
+
+    <footer>
+        <p>Bradley Larkin, copyright 2025</p>
+    </footer>
+
+    <!-- insturcted to add this right before body closing -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 </body>
