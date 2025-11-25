@@ -1,7 +1,7 @@
 {
   "Kirby": {
     "name": "Kirby",
-    "image": "kirby.webp",
+    "image": "kirby",
     "description": "A well-rounded rider with balanced stats and forgiving handling.",
     "topSpeed": 0.972,
     "boost": 1.023,
@@ -16,7 +16,7 @@
   },
   "KingDedede": {
     "name": "King Dedede",
-    "image": "kingDedede.webp",
+    "image": "kingDedede",
     "description": "A heavyweight bruiser with strong offense and great durability, but sluggish control.",
     "topSpeed": 1.044,
     "boost": 0.883,
@@ -31,7 +31,7 @@
   },
   "MetaKnight": {
     "name": "Meta Knight",
-    "image": "metaKnight.webp",
+    "image": "metaKnight",
     "description": "A fast aerial specialist with sharp mobility and excellent flight performance.",
     "topSpeed": 0.958,
     "boost": 0.992,
@@ -46,7 +46,7 @@
   },
   "BandanaWaddleDee": {
     "name": "Bandana Waddle Dee",
-    "image": "bandanaWaddleDee.webp",
+    "image": "bandanaWaddleDee",
     "description": "A nimble rider with high handling and acceleration, but very fragile.",
     "topSpeed": 0.811,
     "boost": 1.300,
@@ -61,7 +61,7 @@
   },
   "WaddleDoo": {
     "name": "Waddle Doo",
-    "image": "waddleDoo.webp",
+    "image": "waddleDoo",
     "description": "A spark-wielding rider with strong energy output but low speed and durability.",
     "topSpeed": 0.778,
     "boost": 1.300,
@@ -76,7 +76,7 @@
   },
   "ChefKawasaki": {
     "name": "Chef Kawasaki",
-    "image": "chefKawasaki.webp",
+    "image": "chefKawasaki",
     "description": "A bulky rider with strong HP and offense, but poor control and acceleration.",
     "topSpeed": 1.122,
     "boost": 0.806,
@@ -91,7 +91,7 @@
   },
   "KnuckleJoe": {
     "name": "Knuckle Joe",
-    "image": "knuckleJoe.webp",
+    "image": "knuckleJoe",
     "description": "A balanced fighter with excellent offense and solid handling.",
     "topSpeed": 0.994,
     "boost": 1.073,
@@ -106,7 +106,7 @@
   },
   "Rick": {
     "name": "Rick",
-    "image": "rick.webp",
+    "image": "rick",
     "description": "A powerhouse with massive strength and HP, but very low aerial mobility.",
     "topSpeed": 1.122,
     "boost": 0.806,
@@ -121,7 +121,7 @@
   },
   "Gooey": {
     "name": "Gooey",
-    "image": "gooey.webp",
+    "image": "gooey",
     "description": "A flexible rider with great handling but low durability and speed.",
     "topSpeed": 0.861,
     "boost": 1.238,
@@ -136,7 +136,7 @@
   },
   "Cappy": {
     "name": "Cappy",
-    "image": "cappy.webp",
+    "image": "cappy",
     "description": "A super-light rider with excellent control and boost, but extremely low weight.",
     "topSpeed": 0.933,
     "boost": 1.300,
@@ -151,7 +151,7 @@
   },
   "Scarfy": {
     "name": "Scarfy",
-    "image": "scarfy.webp",
+    "image": "scarfy",
     "description": "An unpredictable rider with great handling but extremely poor speed and HP.",
     "topSpeed": 0.722,
     "boost": 1.300,
@@ -166,7 +166,7 @@
   },
   "Starman": {
     "name": "Starman",
-    "image": "starman.webp",
+    "image": "starman",
     "description": "A gliding specialist with great grip and flight, but almost no durability.",
     "topSpeed": 0.750,
     "boost": 1.238,
@@ -181,7 +181,7 @@
   },
   "Magolor": {
     "name": "Magolor",
-    "image": "magolor.webp",
+    "image": "magolor",
     "description": "A tricky magic-user with strong offense and flight ability, but modest handling.",
     "topSpeed": 1.044,
     "boost": 0.806,
@@ -196,7 +196,7 @@
   },
   "Susie": {
     "name": "Susie",
-    "image": "susie.webp",
+    "image": "susie",
     "description": "A corporate combatant with high speed and offense but poor handling.",
     "topSpeed": 1.122,
     "boost": 0.806,
@@ -208,5 +208,95 @@
     "offense": 1.100,
     "maxHP": 1.250,
     "weight": 1.156
+  },
+  "Daroach": {
+    "name": "Daroach",
+    "image": "daroach",
+    "description": "A cunning thief with balanced stats and tricky maneuvers.",
+    "topSpeed": 1.103,
+    "boost": 0.912,
+    "charge": 1.038,
+    "turn": 1.221,
+    "grip": 0.981,
+    "lift": 1.087,
+    "flightSpeed": 1.045,
+    "offense": 1.120,
+    "maxHP": 0.945,
+    "weight": 0.985
+  },
+  "Marx": {
+    "name": "Marx",
+    "image": "marx",
+    "description": "A mischievous character with unpredictable stats, excelling in offense.",
+    "topSpeed": 1.212,
+    "boost": 0.876,
+    "charge": 1.134,
+    "turn": 1.015,
+    "grip": 0.942,
+    "lift": 1.110,
+    "flightSpeed": 1.098,
+    "offense": 1.245,
+    "maxHP": 0.812,
+    "weight": 1.034
+  },
+  "Rocky": {
+    "name": "Rocky",
+    "image": "rocky",
+    "description": "A sturdy character with strong defense and decent speed.",
+    "topSpeed": 0.915,
+    "boost": 1.142,
+    "charge": 0.875,
+    "turn": 1.058,
+    "grip": 1.200,
+    "lift": 0.972,
+    "flightSpeed": 1.012,
+    "offense": 0.899,
+    "maxHP": 1.121,
+    "weight": 1.050
+  },
+  "Taranza": {
+    "name": "Taranza",
+    "image": "taranza",
+    "description": "A flight-focused character with strong lift and aerial control.",
+    "topSpeed": 1.024,
+    "boost": 0.993,
+    "charge": 1.100,
+    "turn": 1.120,
+    "grip": 0.860,
+    "lift": 1.200,
+    "flightSpeed": 1.180,
+    "offense": 0.950,
+    "maxHP": 0.910,
+    "weight": 0.890
+  },
+  "lololo&Lalala": {
+    "name": "Lololo & Lalala",
+    "image": "lololo&lalala",
+    "description": "A dual-character team with unique synergy and decent handling.",
+    "topSpeed": 0.875,
+    "boost": 1.215,
+    "charge": 0.950,
+    "turn": 1.102,
+    "grip": 1.010,
+    "lift": 1.030,
+    "flightSpeed": 1.145,
+    "offense": 0.965,
+    "maxHP": 0.980,
+    "weight": 1.005
+  },
+  "Waddle Dee": {
+    "name": "Waddle Dee",
+    "image": "waddleDee",
+    "description": "A standard rider with balanced stats, ideal for beginners.",
+    "topSpeed": 0.998,
+    "boost": 1.050,
+    "charge": 0.987,
+    "turn": 1.075,
+    "grip": 1.020,
+    "lift": 0.950,
+    "flightSpeed": 1.008,
+    "offense": 0.970,
+    "maxHP": 0.945,
+    "weight": 1.010
   }
 }

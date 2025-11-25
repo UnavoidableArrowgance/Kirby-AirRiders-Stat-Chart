@@ -26,9 +26,10 @@
 
 <body>
     <header class="banner">
+        <!-- writing a banner with an image for the header, looking like a star traveling on grass -->
         <div class="banner-inner"> 
             <div class="banner-image">
-            <img src="images/KARS Resources/Machine Renders/warpStar.webp" alt="Machine">
+            <img src="images/KARS_Resources/Machine_Renders/warpStar.webp" alt="Machine">
             </div>
             <div class="banner-text">
             <h1 class="title">Air Riders</h1>
@@ -46,6 +47,7 @@
     </header>
 
     <main>
+        <!-- choosing the pair to chart and buttons to set and clear -->
         <section id="spiderChart">
             <h2>Chart The Pairs</h2>
             <section id="selectionArea">
@@ -65,168 +67,178 @@
                 <button id="clearCanvas">Clear</button>
             </section>
 
-            <section id="comboGallery">
+            <div id="comboGallery">
 
 
-            </section>
+            </div>
 
             <div class="chart-container">
-                <!-- Background image -->
-                <img src="images/empty chart.png" alt="Background" class="chart-background">
+                <!-- Background image of the chart-->
+                <img src="images/empty_chart.png" alt="Background" class="chart-background">
 
-                <!-- Radar chart canvas -->
+                <!-- Radar chart canvas, height and width set manually to find middle -->
                 <canvas id="myCanvas" width="985" height="880"></canvas>
             </div>
 
         </section>
 
 
-     <section id="direct-combo-comparison" class="direct-combo-comparison">
-            <h3>Combo Comparison</h3>
+        <section id="direct-combo-comparison" class="direct-combo-comparison">
+                <h3>Combo Comparison</h3>
 
-            <div class="combo-selection">
-                <h4>Choice 1</h4>
-                <select id="rider1">
-                    <option value="">--Select Rider--</option>
-                </select>
-                <select id="machine1">
-                    <option value="">--Select Machine--</option>
-                </select>
+                <!-- for selection of combos to directly compare -->
+                <div class="combo-selection">
+                    <h4>Choice 1</h4>
+                    <select id="rider1">
+                        <option value="">--Select Rider--</option>
+                    </select>
+                    <select id="machine1">
+                        <option value="">--Select Machine--</option>
+                    </select>
 
-                <h4>Choice 2</h4>
-                <select id="rider2">
-                    <option value="">--Select Rider--</option>
-                </select>
-                <select id="machine2">
-                    <option value="">--Select Machine--</option>
-                </select>
+                    <h4>Choice 2</h4>
+                    <select id="rider2">
+                        <option value="">--Select Rider--</option>
+                    </select>
+                    <select id="machine2">
+                        <option value="">--Select Machine--</option>
+                    </select>
+                    <!-- choosing speed units -->
+                    <select id="kmOrMi">
+                        <option value="km">km / hr</option>
+                        <option value="mi">mi / hr</option>
+                    </select>
+
+                    <button id="gridCompareBtn">Compare</button>
                 
-                <select id="kmOrMi">
-                    <option value="km">km / hr</option>
-                    <option value="mi">mi / hr</option>
-                </select>
+                </div>
 
-                <button id="gridCompareBtn">Compare</button>
-            
+                <!-- grid section with classes that can be looped through after value selections -->
+                <div class="comparison-grid">
+                    <!-- Chart Headers -->
+                    <div class="grid-item stat-header">Stat</div>
+                    <div class="grid-item choice-header" id="firstChoice">Choice 1</div>
+                    <div class="grid-item choice-header" id="secondChoice">Choice 2</div>
+                    <div class="grid-item diff-header">Difference</div>
+                    <div class="grid-item diff-header-percent">Difference(%)</div>
+
+                    <!-- for all stats, names, values, and differences(# %) -->
+                    <div class="grid-item stat-name">Top Speed</div>
+                    <div class="grid-item stat-value" id="topSpeed1">—</div>
+                    <div class="grid-item stat-value" id="topSpeed2">—</div>
+                    <div class="grid-item stat-diff" id="topSpeedDiff">—</div>
+                    <div class="grid-item stat-diff" id="topSpeedDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Boost</div>
+                    <div class="grid-item stat-value" id="boost1">—</div>
+                    <div class="grid-item stat-value" id="boost2">—</div>
+                    <div class="grid-item stat-diff" id="boostDiff">—</div>
+                    <div class="grid-item stat-diff" id="boostDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Charge</div>
+                    <div class="grid-item stat-value" id="charge1">—</div>
+                    <div class="grid-item stat-value" id="charge2">—</div>
+                    <div class="grid-item stat-diff" id="chargeDiff">—</div>
+                    <div class="grid-item stat-diff" id="chargeDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Turn</div>
+                    <div class="grid-item stat-value" id="turn1">—</div>
+                    <div class="grid-item stat-value" id="turn2">—</div>
+                    <div class="grid-item stat-diff" id="turnDiff">—</div>
+                    <div class="grid-item stat-diff" id="turnDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Grip</div>
+                    <div class="grid-item stat-value" id="grip1">—</div>
+                    <div class="grid-item stat-value" id="grip2">—</div>
+                    <div class="grid-item stat-diff" id="gripDiff">—</div>
+                    <div class="grid-item stat-diff" id="gripDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Lift</div>
+                    <div class="grid-item stat-value" id="lift1">—</div>
+                    <div class="grid-item stat-value" id="lift2">—</div>
+                    <div class="grid-item stat-diff" id="liftDiff">—</div>
+                    <div class="grid-item stat-diff" id="liftDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Flight Speed</div>
+                    <div class="grid-item stat-value" id="flightSpeed1">—</div>
+                    <div class="grid-item stat-value" id="flightSpeed2">—</div>
+                    <div class="grid-item stat-diff" id="flightSpeedDiff">—</div>
+                    <div class="grid-item stat-diff" id="flightSpeedDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Offense</div>
+                    <div class="grid-item stat-value" id="offense1">—</div>
+                    <div class="grid-item stat-value" id="offense2">—</div>
+                    <div class="grid-item stat-diff" id="offenseDiff">—</div>
+                    <div class="grid-item stat-diff" id="offenseDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Max HP</div>
+                    <div class="grid-item stat-value" id="maxHP1">—</div>
+                    <div class="grid-item stat-value" id="maxHP2">—</div>
+                    <div class="grid-item stat-diff" id="maxHPDiff">—</div>
+                    <div class="grid-item stat-diff" id="maxHPDiffPercent">—</div>
+
+
+                    <div class="grid-item stat-name">Weight</div>
+                    <div class="grid-item stat-value" id="weight1">—</div>
+                    <div class="grid-item stat-value" id="weight2">—</div>
+                    <div class="grid-item stat-diff" id="weightDiff">—</div>
+                    <div class="grid-item stat-diff" id="weightDiffPercent">—</div>
+                </div>
+        </section>
+        <!-- Carousel section with boxes for javascript -->
+        <section id = "characterShowcase">
+            <!-- Carousel title -->
+            <h2 id="characterModShowcase">Character Display and Modifier Showcase</h2>
+
+            <!-- Current selected element display -->
+            <div id="characterDisplay">
+                <img id="charImage" src="images/KARS_Resources/Character_Renders/kirbyAlt6.webp" alt="Character Image">
+                <h3 id="charName">_</h3>
+                <p id="charDescription"></p>
+                <h4>Stat modifiers</h4>
+                <div id="charStats"></div> 
             </div>
 
-            <div class="comparison-grid">
-                <div class="grid-item stat-header">Stat</div>
-                <div class="grid-item choice-header" id="firstChoice">Choice 1</div>
-                <div class="grid-item choice-header" id="secondChoice">Choice 2</div>
-                <div class="grid-item diff-header">Difference</div>
-                <div class="grid-item diff-header-percent">Difference(%)</div>
+            <div class="characterCarousel"></div> <!-- carousel under selected display-->
+            <button id="carouselAutoplayBtn">Autoplay: ON</button>  <!-- carousel auto cycling starts on-->
+        </section>
 
-
-                <div class="grid-item stat-name">Top Speed</div>
-                <div class="grid-item stat-value" id="topSpeed1">—</div>
-                <div class="grid-item stat-value" id="topSpeed2">—</div>
-                <div class="grid-item stat-diff" id="topSpeedDiff">—</div>
-                <div class="grid-item stat-diff" id="topSpeedDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Boost</div>
-                <div class="grid-item stat-value" id="boost1">—</div>
-                <div class="grid-item stat-value" id="boost2">—</div>
-                <div class="grid-item stat-diff" id="boostDiff">—</div>
-                <div class="grid-item stat-diff" id="boostDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Charge</div>
-                <div class="grid-item stat-value" id="charge1">—</div>
-                <div class="grid-item stat-value" id="charge2">—</div>
-                <div class="grid-item stat-diff" id="chargeDiff">—</div>
-                <div class="grid-item stat-diff" id="chargeDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Turn</div>
-                <div class="grid-item stat-value" id="turn1">—</div>
-                <div class="grid-item stat-value" id="turn2">—</div>
-                <div class="grid-item stat-diff" id="turnDiff">—</div>
-                <div class="grid-item stat-diff" id="turnDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Grip</div>
-                <div class="grid-item stat-value" id="grip1">—</div>
-                <div class="grid-item stat-value" id="grip2">—</div>
-                <div class="grid-item stat-diff" id="gripDiff">—</div>
-                <div class="grid-item stat-diff" id="gripDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Lift</div>
-                <div class="grid-item stat-value" id="lift1">—</div>
-                <div class="grid-item stat-value" id="lift2">—</div>
-                <div class="grid-item stat-diff" id="liftDiff">—</div>
-                <div class="grid-item stat-diff" id="liftDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Flight Speed</div>
-                <div class="grid-item stat-value" id="flightSpeed1">—</div>
-                <div class="grid-item stat-value" id="flightSpeed2">—</div>
-                <div class="grid-item stat-diff" id="flightSpeedDiff">—</div>
-                <div class="grid-item stat-diff" id="flightSpeedDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Offense</div>
-                <div class="grid-item stat-value" id="offense1">—</div>
-                <div class="grid-item stat-value" id="offense2">—</div>
-                <div class="grid-item stat-diff" id="offenseDiff">—</div>
-                <div class="grid-item stat-diff" id="offenseDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Max HP</div>
-                <div class="grid-item stat-value" id="maxHP1">—</div>
-                <div class="grid-item stat-value" id="maxHP2">—</div>
-                <div class="grid-item stat-diff" id="maxHPDiff">—</div>
-                <div class="grid-item stat-diff" id="maxHPDiffPercent">—</div>
-
-
-                <div class="grid-item stat-name">Weight</div>
-                <div class="grid-item stat-value" id="weight1">—</div>
-                <div class="grid-item stat-value" id="weight2">—</div>
-                <div class="grid-item stat-diff" id="weightDiff">—</div>
-                <div class="grid-item stat-diff" id="weightDiffPercent">—</div>
+        <!-- Accordion outline sections for machine displays-->
+        <section id = "machineShowcase">
+            <!-- Section title-->
+            <h2 id="machinestatShowcase">Machine Display and Stats Showcase</h2>
+            <!-- Empty Sorting controls-->
+            <div id="machineSortControls">
             </div>
-    </section>
+            <!-- empty accordion-->
+            <div id="accordion">
+                
+            </div>
 
-    <section id = "characterShowcase">
-        <h2 id="characterModShowcase">Character Display and Modifier Showcase</h2>
-
-        <div id="characterDisplay">
-            <img id="charImage" src="" alt="Character Image">
-            <h3 id="charName">_</h3>
-            <p id="charDescription"></p>
-            <h4>Stat modifiers</h4>
-            <div id="charStats"></div>
-        </div>
-
-        <div class="characterCarousel"></div> <!-- Thumbnails under -->
-        <button id="carouselAutoplayBtn">Autoplay: ON</button>
-    </section>
-
-
-    <section id = "machineShowcase">
-        <h2 id="machinestatShowcase">Machine Display and Stats Showcase</h2>
-        
-        <div id="machineSortControls">
-        </div>
-        
-        <div id="accordion">
+ 
+        </section>
             
-        </div>
-
-
-    </section>
-        
 
     </main>
 
 
     <footer>
-        <p>Bradley Larkin, copyright 2025&copy</p>
+        <!-- legal -->
+        <p>Bradley Larkin, copyright 2025&copy;</p>
+        <!-- secret button to change alt colors for renders-->
+         <!-- not styled for curiosity and only if you scroll past legal as a reward of sorts-->
+        <button id="secret">alt?</button>
     </footer>
 
-    <!-- insturcted to add this right before body closing -->
+    <!-- instructed to add this right before body closing -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 </body>

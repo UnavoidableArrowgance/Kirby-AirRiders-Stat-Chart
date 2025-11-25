@@ -136,8 +136,9 @@ body {
   
 
 
-  font-smooth: antialiased;
-  -webkit-font-smoothing: antialiased;
+
+  -webkit-font-smoothing: antialiased; /* Chrome, Safari, Edge */
+  -moz-osx-font-smoothing: grayscale;  /* Firefox on macOS */
 }
 
 
@@ -180,7 +181,7 @@ header {
 .banner-image {
   flex: 0 0 auto;
   transform: skewX(-20deg); /* skew left */
-  overflow: show;
+  overflow: visible;
 }
 
 .banner-image img {
@@ -277,7 +278,7 @@ main{
 }
 
 #spiderChart h2{
-  font-display: block;
+  display: block;
   font-weight: bolder;
   color: var(--lime);
   font-size: 4rem;
@@ -535,7 +536,7 @@ select, #spiderChart button {
 
 .choice-header div {
   display: flex;
-  align-items: left;
+  align-items: flex-start;
   margin-bottom: 4px;
   margin-left: 5px;
   align-self: flex-start;
