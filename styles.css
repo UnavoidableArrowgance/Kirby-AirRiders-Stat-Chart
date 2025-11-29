@@ -128,7 +128,7 @@ table {
 }
 
 
-body {
+body { 
   justify-content: center;
   align-items: center;
   width: 1280px;
@@ -143,7 +143,7 @@ body {
 
 
 
-
+/* #region header */
 
 header {
   display: flex;
@@ -152,7 +152,7 @@ header {
 }
 
 /* Banner container */
-.banner {
+.banner { /* tries to give blue to white from machine as travel effects like in game, starting at machine */
   margin-top: 40px;
   width: 100%;
   height: 100px; /* adjust as needed */
@@ -169,7 +169,7 @@ header {
 }
 
 /* Inner flex container to hold image and text */
-.banner-inner {
+.banner-inner { 
   display: flex;
   align-items: center;
   width: 100%;
@@ -178,13 +178,13 @@ header {
 }
 
 
-.banner-image {
+.banner-image {/* give image some movement distortion */
   flex: 0 0 auto;
   transform: skewX(-20deg); /* skew left */
   overflow: visible;
 }
 
-.banner-image img {
+.banner-image img { /* slight adjustments to size and placement */
   display: block;
   margin-top: 30px;
   height: 200px; /* adjust image height */
@@ -192,13 +192,13 @@ header {
 }
 
 /* Text container */
-.banner-text {
+.banner-text {/* gives text a bold pop out effect*/
   flex: 1;
   margin-left: 30px;
   color: #fff;
   text-shadow: 2px 2px 5px var(--black);
 }
-
+/* title and subtitle adjustments */
 .banner-text .title {
   font-size: 3rem;
   font-weight: 900;
@@ -266,7 +266,7 @@ nav ul li a:active {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-
+/* #endregion */
 
 
 
@@ -277,6 +277,8 @@ main{
   margin-left: 20px;
 }
 
+/* #region spider Chart */
+/* makes the spider chart title big, bold, colorful, centered, with a gradient background and a prominent plum border */
 #spiderChart h2{
   display: block;
   font-weight: bolder;
@@ -295,6 +297,7 @@ main{
   border: 10px outset var(--plum);
 }
 
+/* centers all selection items in the selection area horizontally and vertically */
 #selectionArea {
   align-items: center;
   margin: auto;
@@ -302,6 +305,8 @@ main{
   justify-content: center;
   text-align: center;
 }
+
+/* makes selection area titles larger and gives vertical spacing for visual separation */
 #selectionArea h3{
   font-size: 1.5rem;
   margin-top: 10px;
@@ -309,13 +314,14 @@ main{
   margin-bottom: 20px;
 }
 
-
+/* lays out control elements in a row with spacing between them, and vertically centers them */
 .controls {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* gives select inputs and buttons padding, font sizing, and rounded corners for easier interaction */
 select, #spiderChart button {
   padding: 8px 12px;
   font-size: 16px;
@@ -323,6 +329,7 @@ select, #spiderChart button {
   border: none;
 }
 
+/* makes buttons visually pop with bright blue background, white text, pointer cursor, and smooth transition */
 #spiderChart button {
   background-color: #0af;
   color: white;
@@ -330,13 +337,12 @@ select, #spiderChart button {
   transition: 0.2s;
 }
 
+/* slightly darkens button on hover for interactive feedback */
 #spiderChart button:hover {
   background-color: #09c;
 }
 
-
-
-
+/* arranges combo gallery in a grid with spacing, fits nicely in screen, prevents it from getting too wide */
 #comboGallery {
     margin-top: 20px;
     display: grid;
@@ -348,6 +354,7 @@ select, #spiderChart button {
     margin-right: auto;
 }
 
+/* wraps images in combo gallery in a row with padding, rounded corners, and subtle background for separation */
 .combo-images {
     display: flex;
     flex-direction: row;
@@ -358,11 +365,13 @@ select, #spiderChart button {
     border-radius: 10px;
 }
 
+/* sets consistent image height for gallery and slightly rounds corners for a cleaner look */
 .combo-img {
     height: 70px;         /* Smaller for full screen fit */
     border-radius: 6px;  /* Optional: round corners */
 }
 
+/* creates color boxes with consistent size, rounded corners, and subtle border for contrast */
 .combo-color-box {
     width: 50px;         /* Slightly bigger square for color */
     height: 50px;
@@ -370,10 +379,7 @@ select, #spiderChart button {
     border: 2px solid #0003;
 }
 
-
-
-
-
+/* centers chart container on page and gives it fixed size for consistent layout */
 .chart-container {
   position: relative;
   width: 969px;
@@ -381,6 +387,7 @@ select, #spiderChart button {
   margin: auto;
 }
 
+/* positions chart background absolutely, covers container, gives transparency for visual layering */
 .chart-background {
   position: absolute;
   left: 0;
@@ -392,6 +399,7 @@ select, #spiderChart button {
   opacity: 0.3; /* adjust transparency */
 }
 
+/* positions canvas above background for drawing charts */
 #myCanvas {
   position: absolute;
   left: 0;
@@ -399,12 +407,11 @@ select, #spiderChart button {
   z-index: 1;
 }
 
+/* #endregion spider Chart */
 
-
-
-
-/* #region chart Design */
-#direct-combo-comparison h3 {
+/* #region Direct Comparison */
+/* styles the direct comparison header with large bold text, gradient background, double border, rounded corners, padding, and subtle shadow for a standout effect */
+#direct-combo-comparison h3 { 
   font-weight: bolder;
   font-size: 3.5rem;
   text-align: center;
@@ -421,18 +428,21 @@ select, #spiderChart button {
   text-shadow: 2px 2px 5px var(--black);
 }
 
-.direct-combo-comparison {
+/* centers content, limits width, and uses sans-serif for clean readable text */
+.direct-combo-comparison { 
     width: 90%;
     max-width: 1200px;
     margin: 30px auto;
     font-family: sans-serif;
 }
 
+/* adds spacing below secondary headers and centers text */
 .direct-combo-comparison h3 {
     margin-bottom: 16px;
     text-align: center;
 }
 
+/* styles subheaders as small circular badges with background color, padding, bold italic text, border, and spacing */
 .direct-combo-comparison h4{
   margin: auto;
   text-align: center;
@@ -446,7 +456,7 @@ select, #spiderChart button {
   border: 4px outset var(--pink2);
 }
 
-
+/* lays out combo selection in a grid with named areas, spacing, and alignment for consistent layout */
 .combo-selection {
     display: grid;
     grid:
@@ -459,7 +469,7 @@ select, #spiderChart button {
     margin-left: 250px;
 }
 
-
+/* assigns first combo title to grid area */
 .combo-selection h4:nth-of-type(1) { 
   grid-area: c1; 
 }
@@ -470,6 +480,7 @@ select, #spiderChart button {
   grid-area: m1; 
 }
 
+/* assigns second combo title and inputs to grid areas */
 .combo-selection h4:nth-of-type(2) { 
   grid-area: c2; 
 }
@@ -480,6 +491,7 @@ select, #spiderChart button {
   grid-area: m2; 
 }
 
+/* styles compare button with gradient, border, rounded corners, bold uppercase text, padding, and pointer cursor for interactivity */
 #gridCompareBtn {
     grid-area: btn; 
     background: linear-gradient(145deg, var(--pink1), var(--pink2));
@@ -493,12 +505,17 @@ select, #spiderChart button {
     text-transform: uppercase;
 }
 
-/* Hover effect */
+/* hover effect for compare button: reverses gradient for visual feedback */
 #gridCompareBtn:hover {
     background: linear-gradient(145deg, var(--pink2), var(--pink1));
-}#gridCompareBtn:active {
+}
+
+/* pressed effect for compare button: inset border to simulate button press */
+#gridCompareBtn:active {
     border: 3px inset var(--pink3);
 }
+
+/* styles km/mi toggle button with padding, border, background color, bold text, rounded corners, pointer cursor, and smooth transition */
 #kmOrMi {
   grid-area: km;
   justify-self: start;
@@ -511,12 +528,12 @@ select, #spiderChart button {
   transition: all 0.2s ease;
 }
 
+/* hover effect for km/mi button: slightly changes background for interactivity feedback */
 #kmOrMi:hover {
   background-color: var(--pink1);
 }
 
-
-
+/* lays out comparison data in a grid with columns for stats and choices, adds spacing, padding, rounded corners, and light background for readability */
 .comparison-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* 4 columns: stat | choice1 | choice2 | diff */
@@ -529,11 +546,13 @@ select, #spiderChart button {
     margin-bottom: 300px;
 }
 
+/* sets small images in headers with slight margin for spacing */
 .choice-header img{
     height: 20px;
     margin-right: 3px;
 }
 
+/* aligns elements in choice headers for neat vertical stacking */
 .choice-header div {
   display: flex;
   align-items: flex-start;
@@ -541,11 +560,13 @@ select, #spiderChart button {
   margin-left: 5px;
   align-self: flex-start;
 }
+
+/* ensures choice header text stacks vertically */
 .choice-header{
   flex-direction: column;
 }
 
-
+/* styles each grid item with padding, centers content, adds bottom border, and sets font size */
 .grid-item {
     padding: 8px;
     display: flex;
@@ -555,40 +576,47 @@ select, #spiderChart button {
     font-size: 16px;
 }
 
+/* styles stat headers with bold text and light gray background for differentiation */
 .stat-header {
     font-weight: bold;
     background: #ddd;
 }
 
+/* styles choice headers with bold text, dark background, and blue text for contrast */
 .choice-header {
     font-weight: bold;
     background: var(--black);
     color:#09c;
 }
 
+/* styles difference headers with bold text and light background for clarity */
 .diff-header {
     font-weight: bold;
     background: #eee;
 }
 
+/* aligns stat names to the left and adds padding for readability */
 .stat-name {
     justify-content: flex-start;
     padding-left: 12px;
     font-weight: 500;
 }
 
+/* styles stat values with white background and rounded corners for emphasis */
 .stat-value {
     background: #fff;
     border-radius: 6px;
 }
 
+/* styles stat differences with light gray background, rounded corners, and semi-bold text */
 .stat-diff {
     background: #f0f0f0;
     border-radius: 6px;
     font-weight: 500;
 }
 
-/* #endregion */
+/* #endregion Direct Comparison*/
+
 
 
 
@@ -597,6 +625,7 @@ select, #spiderChart button {
 
 
 /* #region Carousel*/
+/* styles the character showcase header with bold, large text, centered alignment, gradient neon animation, border, padding, and rounded corners for a vibrant title */
 #characterShowcase h2 {
   font-weight: bolder;
   font-size: 3rem;
@@ -605,7 +634,7 @@ select, #spiderChart button {
   margin: auto;
   margin-bottom: 10px;
 
-  /* Gradient text animation */
+  /* Gradient text animation for neon effect */
   background: linear-gradient(
     270deg,
     var(--magenta),
@@ -620,21 +649,20 @@ select, #spiderChart button {
 
   animation: neonGradient 20s ease infinite;
 
-  /* Border + spacing */
+  /* adds padding, border, and rounded corners for visual emphasis */
   padding: 15px 20px;
   border: 4px solid var(--plum);
   border-radius: 15px;
 }
 
-/* Gradient animation keyframes */
+/* animates gradient background for neon glow effect */
 @keyframes neonGradient {
   0%   { background-position: 0%   50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0%   50%; }
 }
 
-
-
+/* lays out character display in a grid with image, name, description, title, and stats, centers content, adds padding and rounded corners */
 #characterDisplay{
   display: grid;
   grid:
@@ -653,6 +681,7 @@ select, #spiderChart button {
   margin: auto;
 }
 
+/* positions character image in grid, sets max size, centers image in cell */
 #charImage { 
   grid-area: img; 
   max-height: 300px;
@@ -661,6 +690,8 @@ select, #spiderChart button {
   justify-self: end; 
   align-self: center;
 }
+
+/* styles character name with large, bold, italic text and spacing */
 #charName { 
   grid-area: name; 
   font-size: 2.5rem;
@@ -668,16 +699,21 @@ select, #spiderChart button {
   font-style: italic;
   padding-top:10px;
 }
+
+/* centers character description vertically in its grid cell */
 #charDescription { 
   grid-area: description; 
   align-self: center;
 }
+
+/* styles character title with bold text and medium size */
 #characterDisplay h4{ 
   grid-area: title; 
   font-weight: bold;
   font-size: 1.5rem;
-
 }
+
+/* styles character stats area with background, rounded corners, padding, and fixed width */
 #charStats { 
   grid-area: stats; 
   background-color: var(--gray1);
@@ -685,9 +721,13 @@ select, #spiderChart button {
   padding:5px 0;
   width:250px;
 }
+
+/* adds horizontal borders between table rows in stats for readability */
 #charStats tr td{
   border-bottom: 1px solid var(--black);
 }
+
+/* styles stat names in table: bold, bigger font, and padding for alignment */
 .charStatName{
   font-size: 1.2rem;
   font-weight: 900;
@@ -695,84 +735,97 @@ select, #spiderChart button {
   padding:2px;
   padding-left: 5px;
 }
+
+/* styles stat values with dotted left border and padding for separation */
 .charStatValue{
   border-left: 1px dotted var(--black);
   padding-left: 5px;
   width:100px;
 }
 
-
+/* alternates row backgrounds in stats for easier readability */
 #charStats tr:nth-child(even) {
     background: var(--gray2);
 }
 
+/* sets carousel images to fixed height and centers them */
 .characterCarousel img{
   height:100px;
   justify-self: center;
 }
 
+/* reduces opacity of non-active slides and smooth transition for visual focus */
 .characterCarousel .slick-slide {
     opacity: 0.4;
     transition: all 0.5s ease;
 }
 
+/* highlights currently active slide with full opacity and scale */
 .characterCarousel .slick-current {
     opacity: 1;
     transform: scale(1);
 }
 
+/* ensures carousel images are centered within slides */
 .slick-slide img {
   display: block;
   margin: 0 auto;
 }
+
+/* positions carousel arrows inline for custom layout */
 .characterCarousel .slick-arrow {
-    position: static !important;  /* remove absolute positioning */
+    position: static !important;  
     display: inline-block;
 }
 
+/* centers carousel content and adds bottom spacing */
 .characterCarousel {
     text-align: center;
     padding-bottom: 20px;
     margin-bottom: 10px;
 }
+
+/* styles carousel arrows as clickable circles with color, size, font size, and subtle margin */
 .characterCarousel .slick-arrow {
-    width: 100px;               /* clickable size */
+    width: 100px;               
     height: 70px;
-    background-color: var(--magenta); /* semi-transparent dark */
-    color: white;              /* arrow color */
-    border-radius: 50%;        /* circle */
-    font-size: 3rem;           /* arrow icon size */
-    line-height: 50px;         /* center text vertically */
-    text-align: center;        /* center text horizontally */
+    background-color: var(--magenta); 
+    color: white;              
+    border-radius: 50%;        
+    font-size: 3rem;           
+    line-height: 50px;         
+    text-align: center;        
     cursor: pointer;
     margin: 15px;
     transition: background-color 0.3s, transform 0.2s;
-    
 }
+
+/* positions previous arrow at a fixed location */
 .slick-prev{
   display:  block !important;
   margin-left: 450px !important;
 }
 
+/* positions next arrow at a fixed location */
 .slick-next{
   display:  block !important;
   margin-left: 700px !important;
 }
 
+/* hover effect on arrows: changes background color and slightly enlarges for feedback */
 .characterCarousel .slick-arrow:hover {
     background-color: var(--pink2);
-    transform: scale(1.1);    /* subtle zoom on hover */
+    transform: scale(1.1);    
 }
+
+/* ensures slides, track, and list stack correctly with proper z-index */
 .slick-slide,
 .slick-track,
 .slick-list {
   z-index: 1 !important;
 }
 
-
-
-
-
+/* styles autoplay button: padding, rounded corners, color, centered, positioned above carousel for interaction */
 #carouselAutoplayBtn {
   padding: 10px 14px;
   border-radius: 6px;
@@ -785,15 +838,15 @@ select, #spiderChart button {
   margin-top: -130px;
   margin-bottom: 110px;
   
-  position: relative;  /* becomes clickable in carousel */
+  position: relative;  
 }
+
+/* styles autoplay button when turned off with gray background to indicate inactive state */
 #carouselAutoplayBtn.off {
   background-color: #999;
 }
 
-
-/* #endregion */
-
+/* #endregion Carousel*/
 
 
 
@@ -803,6 +856,9 @@ select, #spiderChart button {
 
 
 
+
+/* #region Machine Showcase */
+/* styles the machine showcase header with bold, large text, centered alignment, gradient neon animation, border, padding, and rounded corners for a vibrant title */
 #machineShowcase h2 {
   font-weight: bolder;
   font-size: 3rem;
@@ -811,7 +867,7 @@ select, #spiderChart button {
   margin: auto;
   margin-bottom: 10px;
 
-  /* Gradient text animation */
+  /* Gradient text animation for neon effect */
   background: linear-gradient(
     270deg,
     var(--blue1),
@@ -826,22 +882,20 @@ select, #spiderChart button {
 
   animation: machineGradient 20s ease infinite;
 
-  /* Border + spacing */
+  /* adds padding, border, and rounded corners for visual emphasis */
   padding: 15px 20px;
   border: 4px solid var(--blue2);
   border-radius: 15px;
 }
 
-/* Gradient animation keyframes */
+/* animates gradient background for neon glow effect */
 @keyframes machineGradient {
   0%   { background-position: 0%   50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 0%   50%; }
 }
 
-
-
-/* Container for machine sorting */
+/* lays out machine sort controls in a row, wraps if needed, centers content, and adds spacing */
 #machineSortControls {
   display: flex;
   flex-wrap: wrap;
@@ -852,14 +906,14 @@ select, #spiderChart button {
   font-family: sans-serif;
 }
 
-/* Label styling */
+/* styles labels with bold text and spacing from controls */
 #machineSortControls label {
   font-weight: bold;
   font-size: 1rem;
   margin-right: 5px;
 }
 
-/* Dropdown styling */
+/* styles dropdowns with padding, border, background, cursor pointer, and smooth hover transition */
 #machineSortControls select {
   padding: 6px 12px;
   font-size: 1rem;
@@ -870,12 +924,13 @@ select, #spiderChart button {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* hover effect for dropdowns: changes border color and adds subtle glow */
 #machineSortControls select:hover {
   border-color: var(--blue2, #007BFF);
   box-shadow: 0 0 5px var(--blue2, #007BFF);
 }
 
-/* Asc/Desc buttons */
+/* styles sort buttons with padding, rounded corners, border, bold text, and smooth hover transition */
 #machineSortControls button {
   padding: 6px 14px;
   font-size: 1rem;
@@ -887,33 +942,28 @@ select, #spiderChart button {
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
+/* hover effect for buttons: changes background, text, and border colors for interactivity */
 #machineSortControls button:hover {
   background-color: var(--blue1);
   color: var(--white);
   border-color: var(--blue2);
 }
 
-/* Active sort button */
+/* active sort button: highlights selection with blue background and white text */
 #machineSortControls button.active {
   background-color: var(--blue2);
   color: var(--white);
   border-color: var(--blue2);
 }
 
-
-
-
-
-
-
-
+/* sets small machine images in accordion with spacing and vertical alignment */
 #accordion img{
   height:40px;
   margin-right:10px;
   vertical-align:middle;
 }
 
-
+/* lays out accordion content in a grid with image, name, description, title, and stats; sets column sizes, spacing, and centering */
 #accordion > div {
     display: grid;
     grid:
@@ -921,14 +971,15 @@ select, #spiderChart button {
         "img description" 40px
         "img title" 30px
         "img stats" 350px
-        / 500px 500px; /* columns: 400px for image, 500px for content */
+        / 500px 500px; /* columns: 500px each */
     gap: 5px 5px;
     align-items: start;
     padding: 10px 0;
     margin: auto;
-    margin: 0 auto;        /* auto left/right margins */
+    margin: 0 auto;        
 }
-/* Assign each element to the proper grid area */
+
+/* positions first image in grid, sets height, contains image, centers in cell */
 #accordion div img:first-of-type {
     grid-area: img;
     height: 300px;
@@ -937,34 +988,38 @@ select, #spiderChart button {
     justify-self: end;
 }
 
+/* positions machine name in grid, sets large bold italic font */
 #accordion div h4:first-of-type {
     grid-area: name;
     margin: 0;
-  font-size: 3rem;
-  font-weight: bold;
-  font-style: italic;
+    font-size: 3rem;
+    font-weight: bold;
+    font-style: italic;
 }
 
+/* positions description in grid and centers vertically */
 #accordion div p {
     grid-area: description;
     margin: 0;
     align-self: center;
 }
 
-#accordion div h4:nth-of-type(2) { /* The "Stat Values" header */
+/* positions second h4 as stats title, bold with medium font size */
+#accordion div h4:nth-of-type(2) {
     grid-area: title;
     margin: 0;
     font-weight: bold;
     font-size: 1.5rem;
 }
 
+/* positions machine stats table in grid, full width, collapse borders */
 #accordion div table.machine-stats-table {
     grid-area: stats;
     width: 100%;
     border-collapse: collapse;
 }
 
-/* Table styling */
+/* adds borders and padding to table cells for readability */
 .machine-stats-table th,
 .machine-stats-table td {
     border: 1px solid #ccc;
@@ -972,7 +1027,7 @@ select, #spiderChart button {
     text-align: left;
 }
 
-
+/* sets full width for table, margin-top spacing, slightly smaller font */
 .machine-stats-table {
     width: 100%;
     border-collapse: collapse;
@@ -980,24 +1035,29 @@ select, #spiderChart button {
     font-size: 0.95rem;
 }
 
+/* repeats border and padding to ensure consistency */
 .machine-stats-table th,
 .machine-stats-table td {
     border: 1px solid #ccc;
     padding: 6px 10px;
 }
 
+/* styles table header with light background and bold text */
 .machine-stats-table th {
     background: #f0f0f0;
     font-weight: bold;
 }
 
+/* alternates row backgrounds for readability */
 .machine-stats-table tr:nth-child(even) {
     background: #fafafa;
 }
 
+/* #endregion machine Showcase */
 
 
 
+/* centers the footer horizontally, adds top spacing, padding, and a green background for visual separation */
 footer{
   margin: auto;
   margin-top: 50px;
@@ -1005,6 +1065,8 @@ footer{
   text-align: center;
   background-color: var(--green2);
 }
+
+/* makes paragraph inside footer a circular badge, centers it, adds bold text and larger font for emphasis, and gives apricot background for contrast */
 footer p{
   border-radius: 50%;
   background-color: var(--apricot);
