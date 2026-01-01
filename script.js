@@ -1,1 +1,766 @@
-'use strict';const _0x5ad5ab=_0x521c;(function(_0x36b119,_0x10fe71){const _0x474b0f=_0x521c,_0x1f9f04=_0x36b119();while(!![]){try{const _0x8468e7=parseInt(_0x474b0f(0x223))/0x1*(-parseInt(_0x474b0f(0x225))/0x2)+parseInt(_0x474b0f(0x210))/0x3*(-parseInt(_0x474b0f(0x21d))/0x4)+parseInt(_0x474b0f(0x1e5))/0x5*(parseInt(_0x474b0f(0x280))/0x6)+-parseInt(_0x474b0f(0x211))/0x7*(-parseInt(_0x474b0f(0x275))/0x8)+-parseInt(_0x474b0f(0x272))/0x9*(parseInt(_0x474b0f(0x25b))/0xa)+-parseInt(_0x474b0f(0x269))/0xb+-parseInt(_0x474b0f(0x22d))/0xc*(-parseInt(_0x474b0f(0x1e1))/0xd);if(_0x8468e7===_0x10fe71)break;else _0x1f9f04['push'](_0x1f9f04['shift']());}catch(_0x18be31){_0x1f9f04['push'](_0x1f9f04['shift']());}}}(_0x3faf,0xb19ca));let machineData={},characterData={},machinesLoaded=![],charactersLoaded=![];const statNames={'topSpeed':_0x5ad5ab(0x217),'boost':_0x5ad5ab(0x220),'charge':_0x5ad5ab(0x28a),'turn':_0x5ad5ab(0x1f8),'grip':'Grip','lift':_0x5ad5ab(0x247),'flightSpeed':_0x5ad5ab(0x243),'offense':'Offense','maxHP':_0x5ad5ab(0x277),'weight':_0x5ad5ab(0x23c)};let actualStatValues=[0.45,0.2,0x1,0x1,0x1,0x1,0.2,0.3,0.5,0.3],colorIndex=0x0;const rainbowColors=[_0x5ad5ab(0x1f0),'hsl(0,\x20100%,\x2045%)',_0x5ad5ab(0x287),'hsl(30,\x20100%,\x2035%)',_0x5ad5ab(0x208),'hsl(60,\x20100%,\x2035%)',_0x5ad5ab(0x230),_0x5ad5ab(0x227),_0x5ad5ab(0x265),'hsl(240,\x20100%,\x2045%)','hsl(275,\x20100%,\x2070%)',_0x5ad5ab(0x1eb),_0x5ad5ab(0x20b),_0x5ad5ab(0x252)];let characterAltBool=localStorage[_0x5ad5ab(0x249)](_0x5ad5ab(0x231))===_0x5ad5ab(0x245),characterAlt=characterAltBool?_0x5ad5ab(0x228):'.webp';$(document)['ready'](function(){const _0x36d413=_0x5ad5ab;async function _0xcf78d3(){const _0x446806=_0x521c;try{const _0x3c8651=await fetch('machines.json'),_0x34a595=await _0x3c8651[_0x446806(0x25d)]();machineData=_0x34a595;for(const _0x3b3460 in _0x34a595){const _0x29b8a4=_0x34a595[_0x3b3460];$(_0x446806(0x201))[_0x446806(0x20c)](_0x446806(0x238)+_0x3b3460+'\x22>'+_0x29b8a4[_0x446806(0x286)]+'</option>');}machinesLoaded=!![];}catch(_0x401fba){console[_0x446806(0x25e)]('Failed\x20to\x20load\x20machines.json',_0x401fba);}}async function _0x40ad5c(){const _0x121efe=_0x521c;try{const _0x57739f=await fetch('characters.json'),_0x5a2369=await _0x57739f[_0x121efe(0x25d)]();characterData=_0x5a2369;for(const _0xea8743 in _0x5a2369){const _0x5acf04=_0x5a2369[_0xea8743];$('#characterDropdown')[_0x121efe(0x20c)](_0x121efe(0x238)+_0xea8743+'\x22>'+_0x5acf04[_0x121efe(0x286)]+'</option>');}charactersLoaded=!![];}catch(_0x39d7ca){console['error'](_0x121efe(0x254),_0x39d7ca);}}async function _0x22615f(){const _0x2bd97e=_0x521c;await Promise[_0x2bd97e(0x213)]([_0xcf78d3(),_0x40ad5c()]),tryRestoreLastCombo(),populateGridDropdowns(),createCarousel(),initMachinesUI();}_0x22615f(),$(_0x36d413(0x251))['on'](_0x36d413(0x241),function(){const _0x19905b=_0x36d413,_0xe71bbb=$(_0x19905b(0x201))[_0x19905b(0x215)](),_0x1d01fc=$(_0x19905b(0x1f5))[_0x19905b(0x215)]();if(!_0xe71bbb||!_0x1d01fc){alert(_0x19905b(0x27d));return;}const _0x53da31=combineStats(machineData[_0xe71bbb],characterData[_0x1d01fc]),_0xe26a61=rainbowColors[colorIndex%rainbowColors[_0x19905b(0x240)]];DrawChart(_0x53da31,_0xe26a61),displayComboBlock(_0x1d01fc,_0xe71bbb,_0xe26a61),localStorage[_0x19905b(0x253)](_0x19905b(0x279),JSON[_0x19905b(0x261)]({'character':_0x1d01fc,'machine':_0xe71bbb,'colorIndex':colorIndex})),colorIndex++;}),$(_0x36d413(0x20a))['on']('click',function(){const _0x22a189=_0x36d413,_0x15425c=document['getElementById'](_0x22a189(0x250)),_0x2f9e89=_0x15425c[_0x22a189(0x274)]('2d');_0x2f9e89['clearRect'](0x0,0x0,_0x15425c[_0x22a189(0x1ed)],_0x15425c[_0x22a189(0x285)]),$(_0x22a189(0x20e))[_0x22a189(0x1fd)](),colorIndex=0x0,localStorage['removeItem'](_0x22a189(0x279)),$(_0x22a189(0x1e0))[_0x22a189(0x21c)]('');});});function _0x521c(_0x34713b,_0x105d57){const _0x3faf34=_0x3faf();return _0x521c=function(_0x521c3f,_0x527a8f){_0x521c3f=_0x521c3f-0x1df;let _0x44ea92=_0x3faf34[_0x521c3f];return _0x44ea92;},_0x521c(_0x34713b,_0x105d57);}function _0x3faf(){const _0x281158=['error','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h4>','src','stringify','\x22\x20alt=\x22\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','\x22\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20alt=\x22','grip','hsl(240,\x20100%,\x2070%)','DiffPercent','destroy','.webp\x22\x20alt=\x22\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','12835086dqXSeB','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tbody>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</table>\x0a\x20\x20\x20\x20\x20\x20','text','maxHP','#machineSortControls','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','off','#rider1','image','316782YbfiAs','topSpeed','getContext','8oQRvGT','#charStats','Max\x20HP','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','lastCombo','machineSortDir','map','#firstChoice','Pick\x20both!','attr','localeCompare','516zKtIIz','replace','\x22\x20class=\x22combo-img\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-color-box\x22></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20','sort','weight','height','name','hsl(30,\x20100%,\x2070%)','#accordion','blue','Charge\x20Rate','#sortAsc','find','#comboGallery','18499gZpTDm','\x22\x20class=\x22combo-img\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS_Resources/Machine_Renders/','.slick-prev','machine1','15475SQEyUT','rider2','innerHTML','afterChange','</p>','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS_Resources/Machine_Icons/','hsl(275,\x20100%,\x2040%)','machineSortProp','width','background','.combo-color-box','hsl(0,\x20100%,\x2070%)','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS_Resources/Character_Renders/','fillStyle','</table>','.characterCarousel','#characterDropdown','#secret','flightSpeed','Turning','removeClass','getElementById','alpha','images/KARS_Resources/Character_Renders/','empty','#charDescription','parse','offense','#machineDropdown','\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS_Resources/Machine_Icons/','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','charge','forEach','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','alphaRev','hsl(60,\x20100%,\x2070%)','Autoplay:\x20OFF','#clearCanvas','hsl(300,\x20100%,\x2070%)','append','description','#comboList','#charImage','17742uPEXql','1899898svvlbF','\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-block\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22combo-images\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS_Resources/Character_Renders/','all','cos','val','Diff','Top\x20Speed','</select>\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20id=\x22sortAsc\x22>Asc</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20id=\x22sortDesc\x22>Desc</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','#sortAsc,\x20#sortDesc','#secondChoice','#machine1','html','868xNVjgt','#charName','ui-accordion','Boost\x20Power','keys','fill','1mROEmE','hsla','858082LBdAGI','toFixed','hsl(120,\x20100%,\x2030%)','Alt1.webp','</option>','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS_Resources/Character_Icons/','\x20\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h4>Stat\x20Values</h4>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<table\x20class=\x22machine-stats-table\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<thead>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</thead>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tbody>\x0a\x20\x20\x20\x20\x20\x20','<table\x20class=\x22char-stats\x22>','26772SvgrwL','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22charStatValue\x22>','\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20alt=\x22','hsl(120,\x20100%,\x2065%)','alt','character','</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS_Resources/Machine_Renders/','addClass','content','rider1','<option\x20value=\x22','strokeStyle','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<label\x20for=\x22machineSortSelect\x22>Sort\x20by:</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<select\x20id=\x22machineSortSelect\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22\x22>--\x20Select\x20a\x20sort\x20--</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22alpha\x22>Alphabetical\x20(A\x20→\x20Z)</option>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<option\x20value=\x22alphaRev\x22>Alphabetical\x20(Z\x20→\x20A)</option>\x0a\x20\x20\x20\x20','<p>','Weight','lift','#carouselAutoplayBtn','#machineSortSelect','length','click','moveTo','Flight\x20Speed','hsl','true','\x20(km\x20/\x20hr)','Lift','turn','getItem','#rider2',',\x200.2)','hasClass','beginPath','boost','active','myCanvas','#loadCombo','hsl(300,\x20100%,\x2045%)','setItem','Failed\x20to\x20load\x20machines.json','machine','accordion','includes','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td>','slick','<tr>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<td\x20class=\x22charStatName\x22>','30hgPQxH','#sortDesc','json'];_0x3faf=function(){return _0x281158;};return _0x3faf();}function displayComboBlock(_0x4ef3ee,_0x83f69e,_0x510d5b){const _0x7bd50=_0x5ad5ab,_0x1796bd=characterData[_0x4ef3ee],_0x1a1f87=machineData[_0x83f69e],_0x271c38=$(_0x7bd50(0x212)+(_0x1796bd[_0x7bd50(0x271)]+characterAlt)+_0x7bd50(0x22f)+_0x1796bd[_0x7bd50(0x286)]+_0x7bd50(0x1e2)+_0x1a1f87[_0x7bd50(0x271)]+_0x7bd50(0x263)+_0x1a1f87[_0x7bd50(0x286)]+_0x7bd50(0x282));_0x271c38[_0x7bd50(0x1df)](_0x7bd50(0x1ef))['css'](_0x7bd50(0x1ee),_0x510d5b),$(_0x7bd50(0x1e0))[_0x7bd50(0x20c)](_0x271c38);}function combineStats(_0x3e8dae,_0xac0a83){const _0x6e226a=_0x5ad5ab,_0x59e32b=[_0x6e226a(0x273),'boost','charge',_0x6e226a(0x248),_0x6e226a(0x264),_0x6e226a(0x23d),_0x6e226a(0x1f7),_0x6e226a(0x200),_0x6e226a(0x26c),_0x6e226a(0x284)],_0x3f4f6d={};return _0x59e32b[_0x6e226a(0x205)](_0x274efe=>{_0x3f4f6d[_0x274efe]=_0x3e8dae[_0x274efe]*_0xac0a83[_0x274efe]*0x2;}),_0x3f4f6d;}function tryRestoreLastCombo(){const _0x9a257a=_0x5ad5ab;if(!(machinesLoaded&&charactersLoaded))return;const _0x1cb4e0=localStorage[_0x9a257a(0x249)](_0x9a257a(0x279));if(!_0x1cb4e0)return;const _0x37118d=JSON[_0x9a257a(0x1ff)](_0x1cb4e0);$(_0x9a257a(0x1f5))[_0x9a257a(0x215)](_0x37118d[_0x9a257a(0x232)]),$(_0x9a257a(0x201))[_0x9a257a(0x215)](_0x37118d[_0x9a257a(0x255)]),colorIndex=_0x37118d['colorIndex']||0x0;const _0x121f54=combineStats(machineData[_0x37118d['machine']],characterData[_0x37118d['character']]),_0x548b30=rainbowColors[colorIndex%rainbowColors[_0x9a257a(0x240)]];DrawChart(_0x121f54,_0x548b30),displayComboBlock(_0x37118d[_0x9a257a(0x232)],_0x37118d[_0x9a257a(0x255)],_0x548b30),colorIndex+=0x1;}function DrawChart(_0x97a6bb,_0x58d8cd=_0x5ad5ab(0x289)){const _0x260a3f=_0x5ad5ab,_0x401e07=document[_0x260a3f(0x1fa)](_0x260a3f(0x250)),_0x2deb47=_0x401e07[_0x260a3f(0x274)]('2d'),_0x32b079=_0x401e07[_0x260a3f(0x1ed)]/0x2,_0xd14f0a=_0x401e07['height']/0x2,_0x3f7ce0=['topSpeed',_0x260a3f(0x24e),_0x260a3f(0x204),_0x260a3f(0x248),_0x260a3f(0x264),'lift',_0x260a3f(0x1f7),_0x260a3f(0x200),_0x260a3f(0x26c),_0x260a3f(0x284)],_0x17936b=_0x3f7ce0['map'](_0x456896=>_0x97a6bb[_0x456896]),_0x1e86c9=_0x17936b[_0x260a3f(0x240)],_0x5eba6b=0x2*Math['PI']/_0x1e86c9;_0x2deb47[_0x260a3f(0x24d)]();for(let _0x50f8bd=0x0;_0x50f8bd<_0x1e86c9;_0x50f8bd++){const _0x20c40b=_0x50f8bd*_0x5eba6b,_0x4e5fcd=_0x32b079+Math['sin'](_0x20c40b)*_0x17936b[_0x50f8bd],_0x8c5503=_0xd14f0a-Math[_0x260a3f(0x214)](_0x20c40b)*_0x17936b[_0x50f8bd];_0x50f8bd===0x0?_0x2deb47[_0x260a3f(0x242)](_0x4e5fcd,_0x8c5503):_0x2deb47['lineTo'](_0x4e5fcd,_0x8c5503);}_0x2deb47['closePath'](),_0x2deb47[_0x260a3f(0x239)]=_0x58d8cd,_0x2deb47['lineWidth']=0x2,_0x2deb47[_0x260a3f(0x1f2)]=_0x58d8cd[_0x260a3f(0x281)](')',_0x260a3f(0x24b))[_0x260a3f(0x281)](_0x260a3f(0x244),_0x260a3f(0x224)),_0x2deb47['stroke'](),_0x2deb47[_0x260a3f(0x222)]();}function populateGridDropdowns(){const _0x9b50c=_0x5ad5ab,_0x5ebaf6=[_0x9b50c(0x237),_0x9b50c(0x1e6)][_0x9b50c(0x27b)](_0x2df0b2=>document[_0x9b50c(0x1fa)](_0x2df0b2)),_0x4649b2=[_0x9b50c(0x1e4),'machine2']['map'](_0x368bbc=>document[_0x9b50c(0x1fa)](_0x368bbc));for(const _0x49703c in characterData){const _0x2f043e=characterData[_0x49703c];_0x5ebaf6[_0x9b50c(0x205)](_0x49094f=>{const _0x219dc7=_0x9b50c;_0x49094f[_0x219dc7(0x1e7)]+=_0x219dc7(0x238)+_0x49703c+'\x22>'+_0x2f043e[_0x219dc7(0x286)]+'</option>';});}for(const _0x6f99e in machineData){const _0xcfecb4=machineData[_0x6f99e];_0x4649b2['forEach'](_0x529eb0=>{const _0x5e74c0=_0x9b50c;_0x529eb0['innerHTML']+=_0x5e74c0(0x238)+_0x6f99e+'\x22>'+_0xcfecb4[_0x5e74c0(0x286)]+_0x5e74c0(0x229);});}}function getDirectStats(_0x38ad83,_0x4156f5){const _0x1b9423=_0x5ad5ab,_0x495be2=$('#'+_0x38ad83)['val'](),_0x4dfb2a=$('#'+_0x4156f5)['val'](),_0x329855=_0x495be2?characterData[_0x495be2]:null,_0x1ebc51=_0x4dfb2a?machineData[_0x4dfb2a]:null;if(_0x329855&&_0x1ebc51){const _0x31342f={},_0x5ff246=['topSpeed',_0x1b9423(0x24e),_0x1b9423(0x204),_0x1b9423(0x248),_0x1b9423(0x264),_0x1b9423(0x23d),_0x1b9423(0x1f7),_0x1b9423(0x200),_0x1b9423(0x26c),_0x1b9423(0x284)];return _0x5ff246[_0x1b9423(0x205)](_0x495479=>{_0x31342f[_0x495479]=_0x329855[_0x495479]*_0x1ebc51[_0x495479];}),_0x31342f;}else return![];}$('#gridCompareBtn')['on'](_0x5ad5ab(0x241),function(){const _0x44377b=_0x5ad5ab,_0x3b0d4f=getDirectStats(_0x44377b(0x237),'machine1'),_0x486628=getDirectStats(_0x44377b(0x1e6),'machine2');if(!(_0x3b0d4f&&_0x486628)){alert('Pick\x20all\x20four');return;}const _0x32999d=$(_0x44377b(0x270))[_0x44377b(0x215)](),_0x4b8051=$(_0x44377b(0x21b))[_0x44377b(0x215)]();$(_0x44377b(0x27c))[_0x44377b(0x21c)]('\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22images/KARS_Resources/Character_Icons/'+characterData[_0x32999d][_0x44377b(0x271)]+_0x44377b(0x268)+characterData[_0x32999d]['name']+_0x44377b(0x202)+machineData[_0x4b8051][_0x44377b(0x271)]+_0x44377b(0x262)+machineData[_0x4b8051][_0x44377b(0x286)]+_0x44377b(0x26e));const _0x5bed77=$(_0x44377b(0x24a))[_0x44377b(0x215)](),_0x4145c9=$('#machine2')['val']();$(_0x44377b(0x21a))[_0x44377b(0x21c)](_0x44377b(0x22a)+characterData[_0x5bed77][_0x44377b(0x271)]+_0x44377b(0x268)+characterData[_0x5bed77][_0x44377b(0x286)]+_0x44377b(0x202)+machineData[_0x4145c9][_0x44377b(0x271)]+_0x44377b(0x262)+machineData[_0x4145c9][_0x44377b(0x286)]+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20');const _0x1f224b=[_0x44377b(0x273),_0x44377b(0x24e),_0x44377b(0x204),'turn',_0x44377b(0x264),_0x44377b(0x23d),_0x44377b(0x1f7),_0x44377b(0x200),'maxHP',_0x44377b(0x284)];let _0x45c123=0x0,_0x14b1a7=$('#kmOrMi')['val']()=='mi'?0.6213711922:0x1;_0x1f224b[_0x44377b(0x205)](_0x1b20e0=>{const _0xbc17fa=_0x44377b;let _0x5109e1=_0x1b20e0==_0xbc17fa(0x273)?_0x14b1a7:0x1;const _0x2ddd1e=_0x3b0d4f[_0x1b20e0]!==undefined?_0x3b0d4f[_0x1b20e0]*actualStatValues[_0x45c123]*_0x5109e1:undefined,_0x55175d=_0x486628[_0x1b20e0]!==undefined?_0x486628[_0x1b20e0]*actualStatValues[_0x45c123]*_0x5109e1:undefined;$('#'+_0x1b20e0+'1')[_0xbc17fa(0x26b)](_0x2ddd1e!==undefined?_0x2ddd1e[_0xbc17fa(0x226)](0x2):'—'),$('#'+_0x1b20e0+'2')[_0xbc17fa(0x26b)](_0x55175d!==undefined?_0x55175d[_0xbc17fa(0x226)](0x2):'—'),$('#'+_0x1b20e0+_0xbc17fa(0x216))[_0xbc17fa(0x26b)](_0x2ddd1e!==undefined&&_0x55175d!==undefined?(_0x2ddd1e-_0x55175d)[_0xbc17fa(0x226)](0x2):'—'),_0x2ddd1e>0x1&&_0x55175d>0x1?$('#'+_0x1b20e0+_0xbc17fa(0x266))[_0xbc17fa(0x26b)]((_0x2ddd1e/_0x55175d*0x64)[_0xbc17fa(0x226)](0x1)+'%'):$('#'+_0x1b20e0+_0xbc17fa(0x266))[_0xbc17fa(0x26b)]('NA');});});let carouselAutoPlay=!![];function createCarousel(){const _0x425ffc=_0x5ad5ab,_0x48d8af=Object[_0x425ffc(0x221)](characterData);_0x48d8af[_0x425ffc(0x205)](_0x492a14=>{const _0x51d06c=_0x425ffc,_0x4ee9ab=characterData[_0x492a14];$('.characterCarousel')[_0x51d06c(0x20c)](_0x51d06c(0x1f1)+(_0x4ee9ab['image']+characterAlt)+'\x22\x20alt=\x22'+_0x4ee9ab[_0x51d06c(0x286)]+'\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20');}),$(_0x425ffc(0x1f4))[_0x425ffc(0x259)]({'slidesToShow':0x5,'centerMode':!![],'focusOnSelect':!![],'slidesToScroll':0x1,'autoplay':carouselAutoPlay,'autoplaySpeed':0x1388}),$(_0x425ffc(0x1e3))[_0x425ffc(0x26b)]('←'),$('.slick-next')[_0x425ffc(0x26b)]('→'),$(_0x425ffc(0x1f4))['on'](_0x425ffc(0x1e8),function(_0x4411e5,_0xfc203a,_0x3f700f){const _0x534327=_0x425ffc,_0x2319ca=_0x48d8af[_0x3f700f%_0x48d8af[_0x534327(0x240)]];updateCharacterInfo(characterData[_0x2319ca]);}),updateCharacterInfo(characterData[_0x48d8af[0x0]]);}function updateCharacterInfo(_0x4bf627){const _0x5ae23a=_0x5ad5ab;if(!_0x4bf627)return;$(_0x5ae23a(0x20f))[_0x5ae23a(0x27e)](_0x5ae23a(0x260),_0x5ae23a(0x1fc)+(_0x4bf627[_0x5ae23a(0x271)]+characterAlt)),$(_0x5ae23a(0x21e))[_0x5ae23a(0x26b)](_0x4bf627[_0x5ae23a(0x286)]),$(_0x5ae23a(0x1fe))['text'](_0x4bf627[_0x5ae23a(0x20d)]);const _0xa0cdb7=['topSpeed',_0x5ae23a(0x24e),_0x5ae23a(0x204),_0x5ae23a(0x248),'grip',_0x5ae23a(0x23d),'flightSpeed',_0x5ae23a(0x200),_0x5ae23a(0x26c),_0x5ae23a(0x284)];let _0x3283ed=_0x5ae23a(0x22c);_0xa0cdb7['forEach'](_0x378ca1=>{const _0x59bfaa=_0x5ae23a;_0x3283ed+=_0x59bfaa(0x25a)+statNames[_0x378ca1]+_0x59bfaa(0x22e)+_0x4bf627[_0x378ca1]+'</td>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</tr>';}),_0x3283ed+=_0x5ae23a(0x1f3),$(_0x5ae23a(0x276))['html'](_0x3283ed);}$(_0x5ad5ab(0x23e))['on']('click',function(){const _0x5abf1f=_0x5ad5ab,_0x534709=$(this)[_0x5abf1f(0x26b)]()[_0x5abf1f(0x257)]('ON');_0x534709?($(_0x5abf1f(0x1f4))['slick']('slickPause'),$(this)[_0x5abf1f(0x26b)](_0x5abf1f(0x209))[_0x5abf1f(0x235)](_0x5abf1f(0x26f))):($('.characterCarousel')['slick']('slickPlay'),$(this)[_0x5abf1f(0x26b)]('Autoplay:\x20ON')[_0x5abf1f(0x1f9)](_0x5abf1f(0x26f)));});let currentSortProp=null,currentSortDir=0x1;function saveSortSettings(){localStorage['setItem']('machineSortProp',currentSortProp),localStorage['setItem']('machineSortDir',currentSortDir);}function loadSortSettings(){const _0xb0fc8a=_0x5ad5ab;currentSortProp=localStorage[_0xb0fc8a(0x249)](_0xb0fc8a(0x1ec))||'',currentSortDir=Number(localStorage['getItem'](_0xb0fc8a(0x27a))||0x1);}function buildMachineSortControls(){const _0x42392d=_0x5ad5ab,_0x1b1383=$(_0x42392d(0x26d));_0x1b1383[_0x42392d(0x1fd)]();if(Object[_0x42392d(0x221)](machineData)['length']===0x0)return;let _0x4a5f35=_0x42392d(0x23a);Object[_0x42392d(0x221)](statNames)['forEach'](_0x3cb85a=>{const _0x428e02=_0x42392d;_0x4a5f35+=_0x428e02(0x238)+_0x3cb85a+'\x22>'+statNames[_0x3cb85a]+_0x428e02(0x229);}),_0x4a5f35+=_0x42392d(0x218),_0x1b1383[_0x42392d(0x20c)](_0x4a5f35),$(_0x42392d(0x23f))['on']('change',()=>{const _0x516861=_0x42392d;currentSortProp=$(_0x516861(0x23f))['val'](),updateMachineSort();}),$('#sortAsc')['on'](_0x42392d(0x241),()=>{const _0x16f5c5=_0x42392d;currentSortDir=0x1,$('#sortAsc,\x20#sortDesc')['removeClass'](_0x16f5c5(0x24f)),$(_0x16f5c5(0x28b))[_0x16f5c5(0x235)](_0x16f5c5(0x24f)),updateMachineSort();}),$(_0x42392d(0x25c))['on']('click',()=>{const _0x57d103=_0x42392d;currentSortDir=-0x1,$(_0x57d103(0x219))[_0x57d103(0x1f9)]('active'),$(_0x57d103(0x25c))[_0x57d103(0x235)]('active'),updateMachineSort();}),$(_0x42392d(0x23f))[_0x42392d(0x215)](currentSortProp),currentSortDir===0x1?$('#sortAsc')[_0x42392d(0x235)](_0x42392d(0x24f)):$(_0x42392d(0x25c))[_0x42392d(0x235)](_0x42392d(0x24f));}function updateMachineSort(){const _0x33be63=_0x5ad5ab;saveSortSettings();const _0x328aa6=Object['keys'](machineData);if(!currentSortProp){buildMachineAccordion(_0x328aa6);return;}let _0x268dc4;if(currentSortProp===_0x33be63(0x1fb))_0x268dc4=_0x328aa6['sort']((_0x456aad,_0x4e811f)=>machineData[_0x456aad][_0x33be63(0x286)]['localeCompare'](machineData[_0x4e811f][_0x33be63(0x286)]));else currentSortProp===_0x33be63(0x207)?_0x268dc4=_0x328aa6[_0x33be63(0x283)]((_0x3171a9,_0x51221d)=>machineData[_0x51221d]['name'][_0x33be63(0x27f)](machineData[_0x3171a9][_0x33be63(0x286)])):_0x268dc4=_0x328aa6[_0x33be63(0x283)]((_0x4ae6a3,_0x365515)=>{const _0x362fd6=machineData[_0x4ae6a3][currentSortProp],_0x1ca51e=machineData[_0x365515][currentSortProp];return(_0x362fd6>_0x1ca51e?0x1:_0x362fd6<_0x1ca51e?-0x1:0x0)*currentSortDir;});buildMachineAccordion(_0x268dc4);}function buildMachineAccordion(_0x1f6057=null){const _0x33ab8a=_0x5ad5ab,_0x1c238c=$('#accordion');_0x1c238c[_0x33ab8a(0x24c)](_0x33ab8a(0x21f))&&_0x1c238c[_0x33ab8a(0x256)](_0x33ab8a(0x267));_0x1c238c['empty']();if(Object['keys'](machineData)[_0x33ab8a(0x240)]===0x0)return;const _0xba1e51=_0x1f6057||Object[_0x33ab8a(0x221)](machineData);_0xba1e51[_0x33ab8a(0x205)](_0x416fc1=>{const _0x10c752=_0x33ab8a,_0x537ce5=machineData[_0x416fc1],_0x22eddb=$(_0x10c752(0x1ea)+_0x537ce5[_0x10c752(0x271)]+_0x10c752(0x278)+_0x537ce5[_0x10c752(0x286)]+'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20'),_0x42eeb8=$('<div></div>'),_0x306d48=$(_0x10c752(0x25f)+_0x537ce5[_0x10c752(0x286)]+'</h4>\x0a\x20\x20\x20\x20\x20\x20\x20\x20'),_0x1eedc4=$(_0x10c752(0x234)+_0x537ce5[_0x10c752(0x271)]+_0x10c752(0x206)),_0xc3009c=$(_0x10c752(0x23b)+_0x537ce5[_0x10c752(0x20d)]+_0x10c752(0x1e9));let _0x296175=_0x10c752(0x22b),_0x5e5caf=0x0;Object[_0x10c752(0x221)](_0x537ce5)[_0x10c752(0x205)](_0x3d0ba2=>{const _0x2ad9d4=_0x10c752;if([_0x2ad9d4(0x286),_0x2ad9d4(0x271),_0x2ad9d4(0x20d)][_0x2ad9d4(0x257)](_0x3d0ba2))return;let _0x4f13e0=_0x3d0ba2==_0x2ad9d4(0x273)?_0x2ad9d4(0x246):'';_0x296175+=_0x2ad9d4(0x258)+(statNames[_0x3d0ba2]+_0x4f13e0)+_0x2ad9d4(0x203)+Number((_0x537ce5[_0x3d0ba2]*actualStatValues[_0x5e5caf])[_0x2ad9d4(0x226)](0x2))+_0x2ad9d4(0x233),_0x5e5caf++;}),_0x296175+=_0x10c752(0x26a);const _0x35bbee=$(_0x296175);_0x42eeb8['append'](_0x306d48,_0x1eedc4,_0xc3009c,_0x35bbee),_0x1c238c['append'](_0x22eddb,_0x42eeb8);}),$(_0x33ab8a(0x288))['accordion']({'heightStyle':_0x33ab8a(0x236),'collapsible':!![],'animate':0xc8});}function initMachinesUI(){loadSortSettings(),buildMachineSortControls(),buildMachineAccordion();}$(_0x5ad5ab(0x1f6))['on'](_0x5ad5ab(0x241),function(){const _0x106153=_0x5ad5ab;characterAltBool=!characterAltBool,characterAlt=characterAltBool?_0x106153(0x228):'.webp',localStorage[_0x106153(0x253)](_0x106153(0x231),characterAltBool);});
+ "use strict";
+//all images provided by Nintendo. (c. 2024), nintendo.com and some people from air riders community who take these images
+let machineData = {};
+let characterData = {};
+let machinesLoaded = false;
+let charactersLoaded = false;
+//Bellow is a dictionary for using the JSON and displaying names of attributes
+const statNames = {
+        topSpeed: "Top Speed",
+        boost: "Boost Power",
+        charge: "Charge (s)",
+        turn: "Turning (s)",
+        grip: "Grip",
+        lift: "Lift",
+        flightSpeed: "Flight Speed",
+        offense: "Offense",
+        defense: "Defense",
+        maxHP: "Max HP",
+        weight: "Weight"
+    };
+let chartConversionValues = [
+  2.272727273,
+  2.777777778,
+  108.301,
+  210.6942572,
+  5.2,
+  14.7601476,
+  2.040816327,
+  3.225806452,
+  1.346801347,
+  0.7434944238
+];
+
+// HSL rainbow colors
+let colorIndex = 0;
+const rainbowColors = [
+  "hsl(0, 100%, 70%)",   // red bright
+  "hsl(0, 100%, 45%)",   // red dark
+
+  "hsl(30, 100%, 70%)",  // orange bright
+  "hsl(30, 100%, 35%)",  // orange dark
+
+  "hsl(60, 100%, 70%)",  // yellow bright
+  "hsl(60, 100%, 35%)",  // yellow dark
+
+  "hsl(120, 100%, 65%)", // green bright
+  "hsl(120, 100%, 30%)", // green dark
+
+  "hsl(240, 100%, 70%)", // blue bright
+  "hsl(240, 100%, 45%)", // blue dark
+
+  "hsl(275, 100%, 70%)", // indigo bright
+  "hsl(275, 100%, 40%)", // indigo dark
+
+  "hsl(300, 100%, 70%)", // violet bright
+  "hsl(300, 100%, 45%)"  // violet dark
+];
+//bonus function to change alternate colors
+//checks if exists, then sets to value, then sets alt to appropriate value to get alt colors
+let characterAltBool = localStorage.getItem("alt") === "true"; 
+let characterAlt = characterAltBool ? "Alt1.webp" : ".webp";
+
+
+$(document).ready(function () {    //runs when html is loaded and elements can be selected
+
+  async function loadMachines() {  //async to use await for fetching to be done
+  try {                             //error handling try block
+    const response = await fetch("machines.json"); //sends request to machine json file and waits for response
+    const machines = await response.json();        //Parses the response body as json and awaits the resulting promise.
+
+    machineData = machines;       //stores response into global machines
+
+    for (const key in machines) {  //loop through the data
+      const machine = machines[key]; //sets machine to the current machine data on the machines key
+      $("#machineDropdown").append(`<option value="${key}">${machine.name}</option>`); //adds the options to the machine dropdown
+    }
+
+    machinesLoaded = true; //sets the value to be true that machines have been loaded
+  } catch (e) { //catches if error happens in previous block
+    console.error("Failed to load machines.json", e);   //reports custom error and error data to console
+  }
+}
+
+  async function loadCharacters() { // runs async to get json responses for characters
+  try {                             //error handling try block  
+    const response = await fetch("characters.json"); //sends request and awaits for fetching to be done
+    const chars = await response.json(); //awaits response and parsing the json body
+
+    characterData = chars; //variable for storing data
+
+    //goes through each subject in the character json that was parsed, making key the subject then adding to dropdown options
+    for (const key in chars) { 
+      const char = chars[key]; //sets the opject of chars to char
+      $("#characterDropdown").append(
+        `<option value="${key}">${char.name}</option>`
+      );
+    }
+
+    charactersLoaded = true; //for any future check
+    } catch (e) { //catches if error happens in previous block
+      console.error("Failed to load machines.json", e);   //reports custom error and error data to console
+    }
+  }
+
+
+  async function init() {
+    await Promise.all([loadMachines(), loadCharacters()]);  // Load both JSONs in parallel, only moves on after loaded
+    tryRestoreLastCombo();   //tries to restore last combination
+    populateGridDropdowns(); //populates other gird dropdowns
+    createCarousel(); //populates and fills out the carousel
+    initMachinesUI(); //fills out and builds accordion menu and functions(sorting)
+  }
+
+  init(); //activates the previous function
+
+  // Load combo button
+  $("#loadCombo").on("click", function () {
+    //gets current values of what was selected
+    const selectedMachine = $("#machineDropdown").val();   
+    const selectedCharacter = $("#characterDropdown").val();
+
+    //makes sure both are selected
+    if (!selectedMachine || !selectedCharacter) {
+      alert("Pick both!");
+      return;
+    }
+
+    //sends out then gets back a machine rider stat combination
+    const combinedStats = combineStats(
+      machineData[selectedMachine],
+      characterData[selectedCharacter]
+    );
+
+    //selects a current color then moves index up(below the storage) for next load chart
+    const color = rainbowColors[colorIndex % rainbowColors.length];
+
+    //draws to the chart then creates the block for displaying what the combo is for this color
+    DrawChart(combinedStats, color);
+    displayComboBlock(selectedCharacter, selectedMachine, color);
+
+    //sets the current item into local storage
+    localStorage.setItem(
+      "lastCombo",
+      JSON.stringify({
+        character: selectedCharacter,
+        machine: selectedMachine,
+        colorIndex,
+      })
+    );
+    colorIndex++;
+  });
+
+
+
+  // Clear button for clearing graph and combo blocks
+  //gets and removes all drawings from canvas, resets color index, and clears local storage
+  $("#clearCanvas").on("click", function() {
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    $("#comboList").empty();
+    colorIndex = 0;
+    localStorage.removeItem("lastCombo");
+     $("#comboGallery").html("");
+  });
+});
+
+//creates one square with character, machine, and color square
+function displayComboBlock(characterKey, machineKey, color) {
+    // Fetch the actual data objects
+    const charData = characterData[characterKey];
+    const machData = machineData[machineKey];
+    //creates the block html that loads a character image, a machine image, and a blank div to style to a color block
+    const $comboBlock = $(` 
+        <div class="combo-block">
+            <div class="combo-images">
+                <img src="images/KARS_Resources/Character_Renders/${charData.image + characterAlt}"
+                     alt="${charData.name}" class="combo-img">
+                <img src="images/KARS_Resources/Machine_Renders/${machData.image}" 
+                     alt="${machData.name}" class="combo-img">
+                <div class="combo-color-box"></div>
+            </div>
+        </div>
+    `);
+
+    $comboBlock.find(".combo-color-box").css("background", color); // Apply the passed color by the class we just set
+    $("#comboGallery").append($comboBlock); // Append to gallery, allowing for many combos
+}
+
+
+// Combine numeric stats only
+function combineStats(machine, character) {
+  const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","defense","maxHP","weight"];
+  const result = {};
+
+  statKeys.forEach(k => {
+    let val = machine[k];
+
+    // invert charge and turn using 1/value method
+    if (k === "charge" || k === "turn") {
+      val = val !== 0 ? 1 / val : 0; // avoid division by zero
+    }
+
+    // multiply by character modifier and can scale 
+    result[k] = val * character[k]*2;
+  });
+
+  return result;
+}
+
+
+
+function tryRestoreLastCombo() { //restores the last loaded combo
+  if (!(machinesLoaded && charactersLoaded)) return; //if no combo is stored, dont pull anything and just return
+
+  const saved = localStorage.getItem("lastCombo"); //gets the last loaded combo
+  if (!saved) return; //return if no combo found
+
+  const last = JSON.parse(saved);// parses the data that was stored as json (it has character, machine, and colorIndex)
+
+  //makes the dropdowns the same as the combo being loaded
+  $("#characterDropdown").val(last.character);
+  $("#machineDropdown").val(last.machine);
+  colorIndex = last.colorIndex || 0; //sets color or as its starting hsl list value
+
+  //gets the calculated combo values of the stats that are loaded
+  const combinedStats = combineStats(
+    machineData[last.machine],
+    characterData[last.character]
+  );
+
+  const color = rainbowColors[colorIndex % rainbowColors.length]; //ensures the index never exceeds the length
+  DrawChart(combinedStats, color); //draws the chart for loaded combo
+  displayComboBlock(last.character, last.machine, color); //displays loaded combo
+  colorIndex+=1; //moves index to the next from loaded index
+}
+
+
+// DrawChart safely using fixed numeric stats
+function DrawChart(stats, color="blue") {
+  const canvas = document.getElementById("myCanvas"); //gets canvas
+  const ctx = canvas.getContext("2d"); //2d canvas
+
+  //gets the center of the graph image to start chart
+  const middleX = canvas.width / 2; 
+  const middleY = canvas.height / 2;
+
+  //maps the values we will use, using a created array, in the order we will map them
+  const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","maxHP","weight"];
+  const values = statKeys.map(k => stats[k]);
+
+  const total = values.length; //gets the amount of angles we will use
+  const step = (2 * Math.PI) / total; //Radians for each angle
+
+  ctx.beginPath();
+  //does math to translate a directional value along the angled directions for each value
+  //plots the points to the line and moves to the next one
+
+  for (let i = 0; i < total; i++) {
+    const angle = i * step;
+    const x = middleX + Math.sin(angle) * values[i] * chartConversionValues[i];
+    const y = middleY - Math.cos(angle) * values[i] * chartConversionValues[i];
+
+    if (i === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
+  }
+
+  //closes the path, adds the stroke values
+  ctx.closePath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+
+  // HSL transparency, for the color, then adds outline and fill
+  ctx.fillStyle = color.replace(")", ", 0.2)").replace("hsl", "hsla");
+  ctx.stroke();
+  ctx.fill();
+}
+
+
+
+
+
+//adds dropdown values for direct comparison menu
+function populateGridDropdowns() {
+  //shortcut to select the dropdowns into an array
+  const riderSelects = ['rider1','rider2'].map(id => document.getElementById(id));
+  const machineSelects = ['machine1','machine2'].map(id => document.getElementById(id));
+
+  // Add characters to rider dropdowns
+  for (const key in characterData) {
+    const char = characterData[key];
+    riderSelects.forEach(sel => {
+      sel.innerHTML += `<option value="${key}">${char.name}</option>`;
+    });
+  }
+
+  // Add machines to machine dropdowns
+  for (const key in machineData) {
+    const machine = machineData[key];
+    machineSelects.forEach(sel => {
+      sel.innerHTML += `<option value="${key}">${machine.name}</option>`;
+    });
+  }
+}
+
+
+
+
+
+
+
+// Compute stats for direct comparison grid
+function getDirectStats(riderId, machineId) {
+    //gets the values from the class of the id for riders and machines
+    const riderKey = $('#' + riderId).val();
+    const machineKey = $('#' + machineId).val();
+    //checks the value or returns null
+    const rider = riderKey ? characterData[riderKey] : null;
+    const machine = machineKey ? machineData[machineKey] : null;
+    //if both boxes have values, returns combined stats, else returns a false boolean
+    if (rider && machine) {
+        const combined = {};
+        const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","defense","maxHP","weight"];
+        statKeys.forEach(stat => {
+            if(stat=="charge"||stat == "turn"){
+                combined[stat] = ((1/rider[stat]) * (machine[stat]));
+            }else{
+                combined[stat] = (rider[stat]) * (machine[stat]);
+            }
+        });
+        return combined;
+    } else {
+        return false;
+    }
+}
+
+
+$("#gridCompareBtn").on("click", function() {
+    // Get combined stats for Choice 1 and Choice 2
+    const choice1 = getDirectStats('rider1', 'machine1');
+    const choice2 = getDirectStats('rider2', 'machine2');
+
+    //makes sure all 4 boxes were selected
+    if (!(choice1 && choice2)){
+      alert("Pick all four");
+      return;
+    }
+    //gets all values and places in icons and names
+    const rider1Key = $('#rider1').val();
+    const machine1Key = $('#machine1').val();
+    $("#firstChoice").html(`
+        <div>
+            <img src="images/KARS_Resources/Character_Icons/${characterData[rider1Key].image}.webp" alt="">
+            ${characterData[rider1Key].name}
+        </div>
+        <div>
+            <img src="images/KARS_Resources/Machine_Icons/${machineData[machine1Key].image}" alt="">
+            ${machineData[machine1Key].name}
+        </div>
+    `);
+
+    const rider2Key = $('#rider2').val();
+    const machine2Key = $('#machine2').val();
+    $("#secondChoice").html(`
+        <div>
+            <img src="images/KARS_Resources/Character_Icons/${characterData[rider2Key].image}.webp" alt="">
+            ${characterData[rider2Key].name}
+        </div>
+        <div>
+            <img src="images/KARS_Resources/Machine_Icons/${machineData[machine2Key].image}" alt="">
+            ${machineData[machine2Key].name}
+        </div>
+    `);
+
+    // List of stats to display
+    const statKeys = ["topSpeed", "boost", "charge", "turn", "grip", "lift", "flightSpeed", "offense", "defense", "maxHP", "weight"];
+    //base index
+    let i=0;
+    //conversion units
+    let speedUnits = $("#kmOrMi").val() == "mi"? 0.6213711922:1;
+    //goes through to fill in the grid
+    statKeys.forEach(stat => {
+        let speedStat = (stat=="topSpeed"||stat=="flightSpeed")? speedUnits:1        //checks if conversion units needed, otherwise keeps value of 1 modifier (doesn't change values)
+        //multiplies to get direct value from json
+        const val1 = choice1[stat] !== undefined ? choice1[stat] * speedStat : undefined;
+        const val2 = choice2[stat] !== undefined ? choice2[stat] * speedStat : undefined;
+        $('#' + stat + '1').text(val1 !== undefined ? val1.toFixed(2) : '—');
+        $('#' + stat + '2').text(val2 !== undefined ? val2.toFixed(2) : '—');
+        //checks and calculates the number difference
+        //based on first input for differences and percentages
+        $('#' + stat + 'Diff').text((val1 !== undefined && val2 !== undefined)? (val2 - val1).toFixed(2) : '—');
+        //wont return a difference value if too low, otherwise calculates percent
+        if(val1 > .001 && val2 >.001){
+            $('#' + stat + 'DiffPercent').text(((val2/val1)*100).toFixed(1) +"%");
+        }else{
+            $('#' + stat + 'DiffPercent').text("NA");
+        }
+    });
+});
+
+//starting global variable to have carousel auto-cycle
+let carouselAutoPlay = true
+
+function createCarousel() {
+    //gets the keys of the character data
+    const keys = Object.keys(characterData);
+
+    // Build the thumbnail carousel
+    keys.forEach(key => {
+        //gets the dictionary from the key
+        const char = characterData[key];
+        //sets div to append to the carousel div
+        $(".characterCarousel").append(`
+            <div>
+                <img src="images/KARS_Resources/Character_Renders/${char.image + characterAlt}" alt="${char.name}">
+            </div>
+        `);
+    });
+
+    // Initialize thumbnail carousel
+    $('.characterCarousel').slick({
+        slidesToShow: 5,
+        centerMode: true,
+        focusOnSelect: true,
+        slidesToScroll: 1,
+        autoplay: carouselAutoPlay,
+        autoplaySpeed: 5000,
+    });
+    //arrows for sliding carrousel
+    $(".slick-prev").text("\u2190")
+    $(".slick-next").text("\u2192")
+    // Update main display when a thumbnail is clicked / slide changes
+    $('.characterCarousel').on('afterChange', function(event, slick, currentSlide) {
+        const charKey = keys[currentSlide % keys.length]; // wrap safely
+        updateCharacterInfo(characterData[charKey]);
+    });
+
+    //update info on initial load
+    updateCharacterInfo(characterData[keys[0]]);
+}
+
+// Function to update main display (#characterDisplay)
+function updateCharacterInfo(char) {
+    if (!char) return; // safety check
+
+    //for the main display
+    $("#charImage").attr("src", `images/KARS_Resources/Character_Renders/${char.image + characterAlt}`);
+    $("#charName").text(char.name);
+    $("#charDescription").text(char.description);
+
+    // Stats table
+    const statKeys = ["topSpeed","boost","charge","turn","grip","lift","flightSpeed","offense","defense","maxHP","weight"];
+    
+    //table of info and stats
+    let statsHTML = '<table class="char-stats">';
+    statKeys.forEach(stat => {
+        statsHTML += `<tr>
+                        <td class="charStatName">${statNames[stat]}</td>
+                        <td class="charStatValue">${char[stat]}</td>
+                      </tr>`;
+    });
+    statsHTML += '</table>';
+
+    $("#charStats").html(statsHTML);
+}
+
+//determines if the carousel scrolls or not, a toggle
+$("#carouselAutoplayBtn").on("click", function () {
+    //determines if it is on
+    const isOn = $(this).text().includes("ON");
+    //toggle class and auto-scrolling or not
+    if (isOn) {
+        $('.characterCarousel').slick('slickPause');
+        $(this).text("Autoplay: OFF").addClass("off");
+    } else {
+        $('.characterCarousel').slick('slickPlay');
+        $(this).text("Autoplay: ON").removeClass("off");
+    }
+});
+
+
+
+
+
+
+// --- GLOBAL for the vehicle display / accordion---
+let currentSortProp = null;
+let currentSortDir = 1; // 1 = ascending, -1 = descending
+
+//stores the settings of sort and direction from global variables
+function saveSortSettings() {
+    localStorage.setItem("machineSortProp", currentSortProp);
+    localStorage.setItem("machineSortDir", currentSortDir);
+}
+
+//loads the settings to the global variables
+function loadSortSettings() {
+    currentSortProp = localStorage.getItem("machineSortProp") || "";
+    currentSortDir = Number(localStorage.getItem("machineSortDir") || 1);
+}
+
+function buildMachineSortControls() {
+    //declaring a jquery variable to the controls, and empties
+    const $controls = $("#machineSortControls");
+    $controls.empty();
+
+    //if no machines, return
+    if (Object.keys(machineData).length === 0) return;
+
+    //adds alphabetical forward and backward options
+    let html = `
+        <label for="machineSortSelect">Sort by:</label>
+        <select id="machineSortSelect">
+            <option value="">-- Select a sort --</option>
+            <option value="alpha">Alphabetical (A → Z)</option>
+            <option value="alphaRev">Alphabetical (Z → A)</option>
+    `;
+
+    // Add all stats to options to sort by
+    Object.keys(statNames).forEach(stat => {
+        html += `<option value="${stat}">${statNames[stat]}</option>`;
+    });
+
+    //ascending and descending buttons
+    html += `</select>
+
+             <button id="sortAsc">Asc</button>
+             <button id="sortDesc">Desc</button>
+            `;
+    //adds the values to the dropdown.
+    $controls.append(html);
+
+    // Events
+    //when changes, sorts
+    $("#machineSortSelect").on("change", () => {
+        currentSortProp = $("#machineSortSelect").val();
+        updateMachineSort();
+    });
+
+    //selecting ascending or descending, sets sort value and adds classes
+
+    $("#sortAsc").on("click", () => {
+        currentSortDir = 1;
+        $("#sortAsc, #sortDesc").removeClass("active"); // remove active from both
+        $("#sortAsc").addClass("active");              // set active on this one
+        updateMachineSort();
+    });
+
+    $("#sortDesc").on("click", () => {
+
+        currentSortDir = -1;
+        $("#sortAsc, #sortDesc").removeClass("active"); // remove active from both
+        $("#sortDesc").addClass("active");             // set active on this one
+        updateMachineSort();
+    });
+
+
+    // Load saved selection into UI
+    $("#machineSortSelect").val(currentSortProp);
+    if (currentSortDir === 1) {
+        $("#sortAsc").addClass("active");
+    } else {
+        $("#sortDesc").addClass("active");
+    }
+
+
+    $("#kmOrMi2").on("change", () => {
+        updateMachineSort();
+    })
+}
+
+
+
+function updateMachineSort() {
+
+    // Save current settings
+    saveSortSettings();
+
+    const keys = Object.keys(machineData);
+    //if current sort isn't selected/has a value, goes to build accordion with given order
+    if (!currentSortProp) {
+        buildMachineAccordion(keys);
+        return;
+    }
+
+    //sorted variable for storing
+    let sortedKeys;
+
+
+    //sorting algorithms
+    if (currentSortProp === "alpha") {
+        sortedKeys = keys.sort((a, b) =>
+            machineData[a].name.localeCompare(machineData[b].name)
+        );
+    }
+    else if (currentSortProp === "alphaRev") {
+        sortedKeys = keys.sort((a, b) =>
+            machineData[b].name.localeCompare(machineData[a].name)
+        );
+    }
+    //forward or reverses by multiplying by 1 or -1 in algorithm
+    else {
+        sortedKeys = keys.sort((a, b) => {
+            const A = machineData[a][currentSortProp];
+            const B = machineData[b][currentSortProp];
+            return (A > B ? 1 : A < B ? -1 : 0) * currentSortDir;
+        });
+    }
+    //builds accordion with newly sorted values
+    buildMachineAccordion(sortedKeys, currentSortProp);
+}
+
+
+
+
+function buildMachineAccordion(keysOverride = null, sortProp = null) {
+    //setting the jquery variable to the empty accordion div
+    const $acc = $("#accordion");
+    
+    //if it is a built accordion, remove everything
+    if ($acc.hasClass("ui-accordion")) {
+        $acc.accordion("destroy");
+    }
+    $acc.empty();
+    //if no objects in machine data, return
+    if (Object.keys(machineData).length === 0) return;
+
+    //sets the first value thats truthy(in this case, if keysOverride is null, will set normal keys order)
+    const keys = keysOverride || Object.keys(machineData);
+
+    //goes through all keys in order passed above
+    //builds the accordion for each machine
+    keys.forEach(id => {
+        //sets current object
+        const m = machineData[id];
+
+        
+        // Get the stat value if sortProp is provided
+        let statDisplay = "";
+        if (sortProp && m[sortProp] !== undefined) {
+            let units = (sortProp === "topSpeed" || sortProp === "flightSpeed")
+                        ? ($("#kmOrMi2").val() === "mi" ? " mi/hr" : " km/hr")
+                        : "";
+            units = (sortProp === "charge" || sortProp === "turn")
+                      ? " seconds": units;
+            let unitsMod = units == " mi/hr"? 0.6213711922:1;
+            statDisplay = ` - ${(Number(m[sortProp]*unitsMod.toFixed(2)))}${units}`;
+        }
+
+        // Section Header, icon and name
+        const $header = $(`
+            <h3>
+                <img src="images/KARS_Resources/Machine_Icons/${m.image}">
+                ${m.name} 
+                \t ${statDisplay}
+
+            </h3>
+        `);
+
+        // Content block
+        const $content = $("<div></div>");
+
+        
+
+        // Inside Header
+        const $insideHeader = $(`
+            <h4>${m.name}</h4>
+        `);
+
+        // Main image
+        const $img = $(`
+            <img src="images/KARS_Resources/Machine_Renders/${m.image}">
+        `);
+
+        // Description
+        const $desc = $(`<p>${m.description}</p>`);
+
+    //creates stat block with header and table for setting values
+    let statsHTML = `  
+          <h4>Stat Values</h4>
+          <table class="machine-stats-table">
+              <thead>
+                  <tr>
+                  </tr>
+              </thead>
+              <tbody>
+      `;
+    //i for actual stat value array looping
+    let i=0
+    //loops through the values of the machine object and sets the table values
+    Object.keys(m).forEach(prop => {
+          if (["name", "image", "description"].includes(prop)) return; //excludes the values that aren't what we want to use
+          //adds units to top speed
+         let units = (prop === "topSpeed" || prop === "flightSpeed")
+                        ? ($("#kmOrMi2").val() === "mi" ? " (mi / hr)" : " (km / hr)")
+                        : "";
+          
+          //let units = prop=="topSpeed"||"flightSpeed"?" (km / hr)":"";
+          let unitsMultiplier =  units == " (mi / hr)"? 0.6213711922:1;
+          //adds stat title and values
+          statsHTML += `
+              <tr>
+                  <td>${statNames[prop] + units}</td>
+                  <td>${(Number((m[prop]) *unitsMultiplier).toFixed(2)) }</td>
+              </tr>
+          `;
+          //next array value actuator
+          i++
+      });
+      //adds closing tags
+      statsHTML += `
+              </tbody>
+          </table>
+      `;
+
+      //gets element as variable then appends the accordions that are finished
+      const $stats = $(statsHTML);
+
+      $content.append($insideHeader, $img, $desc, $stats);
+
+      $acc.append($header, $content);
+    });
+
+    //ACCORDION and builder
+    $("#accordion").accordion({
+          heightStyle: "content",  // panel height = content height
+          collapsible: true,       // allows panels to be closed
+          animate: 200             // optional animation in ms
+      });
+}
+
+
+//initializes the accordion in order
+function initMachinesUI() {
+    loadSortSettings();
+    buildMachineSortControls();
+    buildMachineAccordion();
+}
+
+//bonus function to change alternate colors
+$("#secret").on("click", function(){
+    characterAltBool = !characterAltBool; //toggle
+    characterAlt = characterAltBool? "Alt1.webp" : ".webp"; //toggle, have webp for redundancy reduction and ease of use
+
+    //keeps if the alt was pressed
+    localStorage.setItem("alt", characterAltBool);
+
+    
+    //refresh the page to get alts, otherwise loads only new renders of alts
+    /*
+    setTimeout(() => {
+        location.reload();
+    }, 500);
+    */
+
+    
+})
+
+
+
+
+
+

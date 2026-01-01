@@ -516,7 +516,7 @@ select, #spiderChart button {
 }
 
 /* styles km/mi toggle button with padding, border, background color, bold text, rounded corners, pointer cursor, and smooth transition */
-#kmOrMi {
+#kmOrMi{
   grid-area: km;
   justify-self: start;
   padding: 6px 10px;
@@ -669,7 +669,7 @@ select, #spiderChart button {
     "img name" 50px
     "img description" 40px
     "img title" 30px
-    "img stats"  260px
+    "img stats"  280px
     /50% 50%;
   background-color: var(--blue1);
   Max-width: 100%;
@@ -895,6 +895,19 @@ select, #spiderChart button {
   100% { background-position: 0%   50%; }
 }
 
+#kmOrMi2{
+  display: block;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
 /* lays out machine sort controls in a row, wraps if needed, centers content, and adds spacing */
 #machineSortControls {
   display: flex;
@@ -970,7 +983,7 @@ select, #spiderChart button {
         "img name" 50px
         "img description" 40px
         "img title" 30px
-        "img stats" 350px
+        "img stats" 380px
         / 500px 500px; /* columns: 500px each */
     gap: 5px 5px;
     align-items: start;

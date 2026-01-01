@@ -137,14 +137,14 @@
                     <div class="grid-item stat-diff" id="boostDiffPercent">—</div>
 
 
-                    <div class="grid-item stat-name">Charge</div>
+                    <div class="grid-item stat-name">Charge (s)</div>
                     <div class="grid-item stat-value" id="charge1">—</div>
                     <div class="grid-item stat-value" id="charge2">—</div>
                     <div class="grid-item stat-diff" id="chargeDiff">—</div>
                     <div class="grid-item stat-diff" id="chargeDiffPercent">—</div>
 
 
-                    <div class="grid-item stat-name">Turn</div>
+                    <div class="grid-item stat-name">Turn (s)</div>
                     <div class="grid-item stat-value" id="turn1">—</div>
                     <div class="grid-item stat-value" id="turn2">—</div>
                     <div class="grid-item stat-diff" id="turnDiff">—</div>
@@ -177,6 +177,12 @@
                     <div class="grid-item stat-value" id="offense2">—</div>
                     <div class="grid-item stat-diff" id="offenseDiff">—</div>
                     <div class="grid-item stat-diff" id="offenseDiffPercent">—</div>
+
+                    <div class="grid-item stat-name">Defense</div>
+                    <div class="grid-item stat-value" id="defense1">—</div>
+                    <div class="grid-item stat-value" id="defense2">—</div>
+                    <div class="grid-item stat-diff" id="defenseDiff">—</div>
+                    <div class="grid-item stat-diff" id="defenseDiffPercent">—</div>
 
 
                     <div class="grid-item stat-name">Max HP</div>
@@ -215,6 +221,13 @@
         <section id = "machineShowcase">
             <!-- Section title-->
             <h2 id="machinestatShowcase">Machine Display and Stats Showcase</h2>
+            
+                    <!-- choosing speed units -->
+            <select id="kmOrMi2">
+                <option value="km">km / hr</option>
+                <option value="mi">mi / hr</option>
+            </select>
+            
             <!-- Empty Sorting controls-->
             <div id="machineSortControls">
             </div>
